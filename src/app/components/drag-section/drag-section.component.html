@@ -1,0 +1,33 @@
+<section class="section">
+  <div class="section-container">
+
+
+    <div class="dragable-items" >
+      <input
+        class="dragable-items__inpute-item"
+        type="text"
+        placeholder="input"
+        cdkDrag
+      />
+
+      <textarea
+        class="dragable-items__textarea-item"
+        placeholder="textarea"
+        cdkDrag
+      ></textarea>
+
+      <button class="dragable-items__button-item" cdkDrag>Button</button>
+      <div class="dragable-items__checkbox-container" cdkDrag>
+        <label for="checkbox">checkbox</label>
+        <input type="checkbox" id="checkbox" />
+      </div>
+
+      <select class="dragable-items__select-item" name="select" cdkDrag>
+        <option value="value1">Значение 1</option>
+        <option value="value2" selected>Значение 2</option>
+        <option value="value3">Значение 3</option>
+      </select>
+    </div>
+
+  </div>
+</section>

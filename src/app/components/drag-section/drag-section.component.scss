@@ -1,0 +1,36 @@
+@import "../../common/colors.scss";
+
+.section-container {
+  border: solid 4px $primary-color;
+  min-height: 100vh;
+
+  .dragable-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+
+
+    &__inpute-item {
+      padding: 10px 20px;
+      margin-bottom: 7px;
+    }
+    &__textarea-item {
+      margin-bottom: 7px;
+      padding: 10px 20px;
+    }
+    &__button-item {
+      margin-bottom: 7px;
+      padding: 10px 20px;
+    }
+    &__checkbox-container {
+      margin-bottom: 7px;
+      padding: 10px 20px;
+    }
+    &__select-item {
+      margin-bottom: 7px;
+      padding: 10px 20px;
+    }
+  }
+}
