@@ -1,7 +1,9 @@
+import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Portal, TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DragSectionComponent } from '../drag-section/drag-section.component';
+import { DragSectionComponent, Element } from '../drag-section/drag-section.component';
+
 
 @Component({
   selector: 'app-drop-section',
@@ -15,6 +17,9 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
   portalOutlette: Portal<any>;
   componentPortal: ComponentPortal<DragSectionComponent>;
 
+
+  elements: Element[] = [];
+
   constructor(private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {
@@ -23,6 +28,21 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // this.templatePortal = new TemplatePortal(this.portalContent, this.viewContainerRef);
     this.componentPortal = new ComponentPortal(DragSectionComponent);
+  }
+
+
+  drop(event: CdkDragDrop<any>) {
+    console.log(event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      copyArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
 }
