@@ -13,7 +13,7 @@
           [ngSwitch]="el.type"
         >
           <div *ngSwitchCase="'input'" cdkDrag>
-            <input type="text" placeholder="input" />
+            <input />
           </div>
 
           <div *ngSwitchCase="'textarea'">
@@ -21,7 +21,7 @@
           </div>
 
           <div class="button" *ngSwitchCase="'button'" cdkDrag>
-            <button>Button</button>
+            <button mat-raised-button>Basic</button>
           </div>
 
           <div *ngSwitchCase="'checkbox'" cdkDrag>
@@ -34,7 +34,6 @@
             <option>Second option</option>
             <option>Third option</option>
           </select>
-          
         </div>
       </div>
     </div>

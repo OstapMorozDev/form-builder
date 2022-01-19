@@ -15,3 +15,8 @@ export const moveFormElement = createAction(
     dropSectionActionsType.moveFormElement,
     props<{ currentIndex: number, nextIndex: number }>()
 );
+
+export const changeElementWidth = createAction(
+    dropSectionActionsType.moveFormElement,
+    props<{ currentIndex: number, nextIndex: number }>()
+);

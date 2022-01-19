@@ -42,15 +42,6 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
     if (event.previousContainer === event.container) {
       this.moveElement(event.previousIndex, event.currentIndex)
     } else {
-      // copyArrayItem(
-      //   event.previousContainer.data,
-      //   event.container.data,
-      //   event.previousIndex,
-      //   event.currentIndex,
-      // );
-      
-      
-
       const newElement: FormElement = {
         id: event.previousContainer.data[event.previousIndex].id,
         type: event.previousContainer.data[event.previousIndex].type
