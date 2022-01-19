@@ -1,39 +1,42 @@
 <section class="section">
   <div class="section-container">
-    <div class="drop-area-container" >
-      <div class="drop-area" cdkDropList [cdkDropListData]="elements" (cdkDropListDropped)="drop($event)">
-        <div
-        class="dragable-items__item"
-        *ngFor="let el of elements"
-        [ngSwitch]="el.type"
+    <div class="drop-area-container">
+      <div
+        class="drop-area"
+        cdkDropList
+        [cdkDropListData]="formElements$"
+        (cdkDropListDropped)="drop($event)"
       >
-        <div *ngSwitchCase="'input'" cdkDrag>
-          <input type="text" placeholder="input" />
-        </div>
+        <div
+          class="dragable-items__item"
+          *ngFor="let el of formElements$ | async"
+          [ngSwitch]="el.type"
+        >
+          <div *ngSwitchCase="'input'" cdkDrag>
+            <input type="text" placeholder="input" />
+          </div>
 
-        <div *ngSwitchCase="'textarea'">
+          <div *ngSwitchCase="'textarea'">
             <textarea name="" id="" cols="30" rows="5" cdkDrag></textarea>
+          </div>
+
+          <div class="button" *ngSwitchCase="'button'" cdkDrag>
+            <button>Button</button>
+          </div>
+
+          <div *ngSwitchCase="'checkbox'" cdkDrag>
+            <label for="checkbox">checkbox</label>
+            <input type="checkbox" />
+          </div>
+
+          <select *ngSwitchCase="'select'" cdkDrag>
+            <option>First option</option>
+            <option>Second option</option>
+            <option>Third option</option>
+          </select>
+          
         </div>
-
-        <div class="button" *ngSwitchCase="'button'" cdkDrag>
-          <button>Button</button>
-        </div>
-
-        <div *ngSwitchCase="'checkbox'" cdkDrag>
-          <label for="checkbox">checkbox</label>
-          <input type="checkbox" />
-        </div>
-
-        <select *ngSwitchCase="'select'" cdkDrag>
-          <option>First option</option>
-          <option>Second option</option>
-          <option>Third option</option>
-        </select>
-
-      </div>
       </div>
     </div>
-
-    <!-- <button (click)="portalOutlette = componentPortal">PortaL Button</button> -->
   </div>
 </section>

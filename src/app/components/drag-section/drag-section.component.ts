@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormElement } from 'src/app/interfaces/FormElement';
 
 
-export interface Element {
-  id: number;
-  type: string;
-}
 
 @Component({
   selector: 'app-drag-section',
@@ -13,10 +10,10 @@ export interface Element {
 })
 export class DragSectionComponent implements OnInit {
 
-  elements: Element[]  = [
+  elements: FormElement[]  = [
     {
       id: 1,
-      type: "input"
+      type: "input",
     },
     {
       id: 2,

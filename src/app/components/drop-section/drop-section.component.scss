@@ -1,20 +1,22 @@
-
 @import "../../common/colors.scss";
 
 .section-container {
-    border: solid 4px $primary-color;
-    min-height: 100vh;
+  border: solid 4px $primary-color;
+  min-height: 100vh;
 
-    .drop-area-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .drop-area-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .drop-area {
-        border: dashed 3px $secondary-color;
-        margin-top: 15px;
-        height: 700px;
-        width: 80%;        
-    }
+  .drop-area {
+    border: dashed 3px $secondary-color;
+    margin-top: 15px;
+    height: 700px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }

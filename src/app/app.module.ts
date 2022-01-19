@@ -6,10 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 import { FormStylingComponent } from './components/form-styling/form-styling.component';
 import { DropSectionComponent } from './components/drop-section/drop-section.component';
 import { DragSectionComponent } from './components/drag-section/drag-section.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,11 @@ import { DragSectionComponent } from './components/drag-section/drag-section.com
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
-    PortalModule, DragDropModule
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+
+    }),
+    PortalModule, DragDropModule, StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

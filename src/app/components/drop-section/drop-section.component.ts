@@ -1,8 +1,12 @@
 import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Portal, TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { DragSectionComponent, Element } from '../drag-section/drag-section.component';
+import { FormElement } from 'src/app/interfaces/FormElement';
+import { addFormElement, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
+import { DropSectionState } from 'src/app/reducers/drop/drop.section.reducer';
+import { selectFormElements } from 'src/app/reducers/drop/drop.section.selectors';
 
 
 @Component({
@@ -11,37 +15,48 @@ import { DragSectionComponent, Element } from '../drag-section/drag-section.comp
   styleUrls: ['./drop-section.component.scss']
 })
 export class DropSectionComponent implements OnInit, AfterViewInit {
-  @ViewChild('portalContent') portalContent: TemplateRef<unknown>;
-  // templatePortal: TemplatePortal<any>;
 
-  portalOutlette: Portal<any>;
-  componentPortal: ComponentPortal<DragSectionComponent>;
+  public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
 
 
-  elements: Element[] = [];
-
-  constructor(private viewContainerRef: ViewContainerRef) { }
+  constructor(private store$: Store<DropSectionState>) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    // this.templatePortal = new TemplatePortal(this.portalContent, this.viewContainerRef);
-    this.componentPortal = new ComponentPortal(DragSectionComponent);
+
+  }
+
+  addElement(newElement: FormElement) {
+    this.store$.dispatch(addFormElement({ formElement: newElement }))
+  }
+
+  moveElement(currentIndex: number, nextIndex: number) {
+    this.store$.dispatch(moveFormElement({ currentIndex: currentIndex, nextIndex: nextIndex }))
   }
 
 
   drop(event: CdkDragDrop<any>) {
     console.log(event);
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.moveElement(event.previousIndex, event.currentIndex)
     } else {
-      copyArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+      // copyArrayItem(
+      //   event.previousContainer.data,
+      //   event.container.data,
+      //   event.previousIndex,
+      //   event.currentIndex,
+      // );
+      
+      
+
+      const newElement: FormElement = {
+        id: event.previousContainer.data[event.previousIndex].id,
+        type: event.previousContainer.data[event.previousIndex].type
+      }
+      this.addElement(newElement)
+
     }
   }
 
