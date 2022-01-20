@@ -2,22 +2,22 @@ import { FormElement } from "src/app/interfaces/FormElement";
 import { createReducer, on } from '@ngrx/store';
 import * as DropSectionActions from './drop.section.actions'
 import { moveItemInArray } from "@angular/cdk/drag-drop";
-import { state } from "@angular/animations";
-
-
 
 export const dropSectionNode = 'drop';
 
 export interface DropSectionState {
-    formElements: FormElement[];
+    formElements: FormElement[],
+    formTitle: string
 }
 
 const initialState: DropSectionState = {
-    formElements: []
+    formElements: [],
+    formTitle: 'My Form'
 }
 
 export const dropSectionReducer = createReducer(
     initialState,
+
     on(DropSectionActions.addFormElement, (state, { formElement }) => ({
         ...state,
         formElements: [...state.formElements, formElement]
@@ -32,4 +32,10 @@ export const dropSectionReducer = createReducer(
             formElements: arrayCopy
         }
     }),
+    on(DropSectionActions.changeTitle, (state, {value}) => {
+        return {
+            ...state,
+            formTitle: value
+        }
+    })
 );

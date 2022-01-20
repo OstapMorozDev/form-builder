@@ -7,5 +7,9 @@ export const selectDropSectionFeature = createFeatureSelector<DropSectionState>(
 
 export const selectFormElements = createSelector(
     selectDropSectionFeature,
-    (state: DropSectionState):FormElement[] => state.formElements
-)
+    (state: DropSectionState):FormElement[] => state.formElements);
+
+export const selectFormTitle = createSelector (
+    selectDropSectionFeature,
+    (state: DropSectionState):string => state.formTitle
+);

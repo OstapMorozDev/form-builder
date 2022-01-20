@@ -4,9 +4,9 @@ import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ViewContainer
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormElement } from 'src/app/interfaces/FormElement';
-import { addFormElement, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
+import { addFormElement, changeTitle, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
 import { DropSectionState } from 'src/app/reducers/drop/drop.section.reducer';
-import { selectFormElements } from 'src/app/reducers/drop/drop.section.selectors';
+import { selectFormElements, selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
 
 
 @Component({
@@ -17,11 +17,24 @@ import { selectFormElements } from 'src/app/reducers/drop/drop.section.selectors
 export class DropSectionComponent implements OnInit, AfterViewInit {
 
   public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
+  public formTitle$: Observable<string> = this.store$.pipe(select(selectFormTitle));
 
+  public titleEditMode: boolean = false;
+
+
+  onInputeDoubleClick($event: any) {
+    this.titleEditMode = true;
+  }
+
+  onTitleInputeBlur($event: any) {
+    this.onTitleChange($event.target.value)
+    this.titleEditMode = false;
+  }
 
   constructor(private store$: Store<DropSectionState>) { }
 
   ngOnInit(): void {
+
   }
 
   ngAfterViewInit() {
@@ -33,7 +46,16 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
   }
 
   moveElement(currentIndex: number, nextIndex: number) {
-    this.store$.dispatch(moveFormElement({ currentIndex: currentIndex, nextIndex: nextIndex }))
+    this.store$.
+      dispatch(moveFormElement({ currentIndex, nextIndex }))
+  }
+
+  onTitleChange(value: string) {
+    this.store$.dispatch(changeTitle({ value }))
+  }
+
+  onElementClick($event: any) {
+    console.log($event)
   }
 
 

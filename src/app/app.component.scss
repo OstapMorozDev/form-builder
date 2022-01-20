@@ -1,12 +1,20 @@
-@import './common/colors.scss';
-
+@import "./common/colors.scss";
 
 body {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.main-content__grid {
+
+
+.main-content__flex {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .main-content__grid {
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr;
-    grid-gap: 1rem;
+    grid-gap: 50px;
+  }
 }
