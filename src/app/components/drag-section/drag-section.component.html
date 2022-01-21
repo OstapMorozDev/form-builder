@@ -5,29 +5,27 @@
         class="dragable-items__item"
         *ngFor="let el of elements"
         [ngSwitch]="el.type"
+        cdkDrag
       >
-        <div *ngSwitchCase="'input'" cdkDrag>
-          <input type="text" placeholder="input" />
+        <div  *ngSwitchCase="'input'"  >
+          Input
         </div>
 
-        <div *ngSwitchCase="'textarea'" cdkDrag>
-          <textarea name="" id="" cols="30" rows="5"></textarea>
+        <div *ngSwitchCase="'textarea'"  >
+          Textarea
         </div>
 
-        <div class="button" *ngSwitchCase="'button'" cdkDrag>
-          <button>Button</button>
+        <div *ngSwitchCase="'button'"  >
+          Button
         </div>
 
-        <div class="checkbox" *ngSwitchCase="'checkbox'" cdkDrag>
-          <label for="checkbox">checkbox</label>
-          <input type="checkbox" />
+        <div *ngSwitchCase="'checkbox'" >
+          Checkbox
         </div>
 
-        <select *ngSwitchCase="'select'" cdkDrag>
-          <option>First option</option>
-          <option>Second option</option>
-          <option>Third option</option>
-        </select>
+        <div *ngSwitchCase="'select'"  >
+          Select
+        </div>
       </div>
     </div>
   </div>

@@ -1,7 +1,35 @@
 <section class="section">
   <div class="section-container">
-    <div>
-        {{selectedFormElement$ | async}}
+    <div class="customize-section">
+      <div *ngIf="selectedFormElement$ | async as el; else noItemToCustomize">
+        <div class="custmize-section__item" [ngSwitch]="el.type">
+          <div *ngSwitchCase="'input'">
+            <form action="">
+              <input
+                (blur)="handlePlaceholderInputBlur($event, el.id)"
+                type="text"
+                id="placeholderText"
+                placeholder="placeholderText"
+              />
+
+              <input type="text" id="width" placeholder="width" />
+
+              <input type="text" id="height" placeholder="height" />
+
+              <div>
+                <label for="required">Is required</label>
+                <input type="checkbox" id="required" placeholder="checkbox" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noItemToCustomize>
+        <div>
+          <h2>Select an item to custmize</h2>
+        </div>
+      </ng-template>
     </div>
   </div>
 </section>

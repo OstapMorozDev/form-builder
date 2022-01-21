@@ -10,25 +10,25 @@ import { FormElement } from 'src/app/interfaces/FormElement';
 })
 export class DragSectionComponent implements OnInit {
 
-  elements: FormElement[]  = [
+  elements: FormElement[] = [
     {
-      id: 1,
+      id: 0,
       type: "input",
     },
     {
-      id: 2,
+      id: 1,
       type: "textarea"
     },
     {
-      id: 3,
+      id: 2,
       type: "button"
     },
     {
-      id: 4,
+      id: 3,
       type: "checkbox"
     },
     {
-      id: 5,
+      id: 4,
       type: "select"
     }
   ]

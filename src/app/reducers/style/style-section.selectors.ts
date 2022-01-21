@@ -8,4 +8,4 @@ export const selectStyleSectionFeature = createFeatureSelector<StyleSectionState
 
 export const selectedElement = createSelector(
     selectStyleSectionFeature,
-    (state: StyleSectionState): number | null => state.selectedFormElementId);
+    (state: StyleSectionState): FormElement | null => state.selectedFormElement);

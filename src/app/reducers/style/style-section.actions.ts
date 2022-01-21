@@ -10,6 +10,6 @@ export enum styleSectionActionsType {
 
 export const setSelectedElement = createAction (
     styleSectionActionsType.setSelectedElement,
-    props<{selectedFormElementId: number}>()
+    props<{selectedElement: FormElement}>()
 );
 

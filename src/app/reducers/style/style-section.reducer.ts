@@ -7,20 +7,20 @@ import * as StyleSectionActions from './style-section.actions'
 export const styleSectionNode = "style";
 
 export interface StyleSectionState {
-    selectedFormElementId: number | null,
+    selectedFormElement: FormElement | null
 }
 
 
 const initialState: StyleSectionState = {
-    selectedFormElementId: 22
+    selectedFormElement: null
 }
 
 export const styleSectionReducer = createReducer(
     initialState,
-    on(StyleSectionActions.setSelectedElement, (state, { selectedFormElementId }) => {
+    on(StyleSectionActions.setSelectedElement, (state, { selectedElement }) => {
         return {
             ...state,
-            selectedFormElementId: selectedFormElementId
+            selectedFormElement: selectedElement
 
         }
     })

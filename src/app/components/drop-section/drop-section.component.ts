@@ -1,12 +1,14 @@
 import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Portal, TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ViewContainerRef, ElementRef } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { FormElementC } from 'src/app/classes/form-element.class';
 import { FormElement } from 'src/app/interfaces/FormElement';
 import { addFormElement, changeTitle, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
 import { DropSectionState } from 'src/app/reducers/drop/drop.section.reducer';
 import { selectFormElements, selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
+import { setSelectedElement } from 'src/app/reducers/style/style-section.actions';
 
 
 @Component({
@@ -16,20 +18,13 @@ import { selectFormElements, selectFormTitle } from 'src/app/reducers/drop/drop.
 })
 export class DropSectionComponent implements OnInit, AfterViewInit {
 
+
   public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
   public formTitle$: Observable<string> = this.store$.pipe(select(selectFormTitle));
 
   public titleEditMode: boolean = false;
 
 
-  onInputeDoubleClick($event: any) {
-    this.titleEditMode = true;
-  }
-
-  onTitleInputeBlur($event: any) {
-    this.onTitleChange($event.target.value)
-    this.titleEditMode = false;
-  }
 
   constructor(private store$: Store<DropSectionState>) { }
 
@@ -41,8 +36,8 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
 
   }
 
-  addElement(newElement: FormElement) {
-    this.store$.dispatch(addFormElement({ formElement: newElement }))
+  addElement(newElement: FormElement, currentIndex: number) {
+    this.store$.dispatch(addFormElement({ formElement: newElement, newIndex: currentIndex }))
   }
 
   moveElement(currentIndex: number, nextIndex: number) {
@@ -50,12 +45,22 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
       dispatch(moveFormElement({ currentIndex, nextIndex }))
   }
 
+  onInputeDoubleClick($event: any) {
+    this.titleEditMode = true;
+  }
+
+  onTitleInputeBlur($event: any) {
+    this.onTitleChange($event.target.value)
+    this.titleEditMode = false;
+  }
+
+
   onTitleChange(value: string) {
     this.store$.dispatch(changeTitle({ value }))
   }
 
-  onElementClick($event: any) {
-    console.log($event)
+  onElementClick(el: FormElement) {
+    this.store$.dispatch(setSelectedElement({ selectedElement: el }))
   }
 
 
@@ -65,12 +70,14 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
       this.moveElement(event.previousIndex, event.currentIndex)
     } else {
       const newElement: FormElement = {
-        id: event.previousContainer.data[event.previousIndex].id,
+        id: Date.now() as number,
         type: event.previousContainer.data[event.previousIndex].type
       }
-      this.addElement(newElement)
-
+      this.addElement(newElement, event.currentIndex)
     }
+
+
+
   }
 
 }
