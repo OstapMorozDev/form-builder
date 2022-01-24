@@ -1,0 +1,66 @@
+<div *ngIf="element.type === 'input'">
+  <form action="">
+    <input
+      [ngModel]="element.placeholderText"
+      class="input"
+      id="placeholderText"
+      type="text"
+      (blur)="handlePlaceholderInputBlur($event, element.id)"
+    />
+
+    <input
+      class="input"
+      id="width"
+      type="text"
+      value="{{ element.width }}"
+      (blur)="handleWidthInputBlur($event, element.id)"
+      placeholder="width"
+    />
+
+    <input
+      class="input"
+      id="height"
+      type="text"
+      placeholder="height"
+      value="{{ element.height }}"
+      (blur)="handleHeightInputBlur($event, element.id)"
+    />
+
+    <div class="checkbox">
+      <label for="required">Is required</label>
+      <input type="checkbox" id="required" placeholder="checkbox" />
+    </div>
+
+    <div>
+      <label for="select">Border style</label>
+      <select class="input" id="select" name="select">
+        <option value="one">Solid</option>
+        <option value="two">Dashed</option>
+      </select>
+    </div>
+
+    <input
+      class="input"
+      id="font-size"
+      type="text"
+      value=""
+      placeholder="font size"
+      (blur)="handleFontSizeInputBlur($event, element.id)"
+    />
+
+    <div>
+      <label for="select">Font weight</label>
+      <select class="input" id="select" name="select">
+        <option value="one">Solid</option>
+        <option value="two">Dashed</option>
+      </select>
+    </div>
+
+    <input
+    class="color"
+    id="color"
+    type="color"
+    value=""
+  />
+  </form>
+</div>

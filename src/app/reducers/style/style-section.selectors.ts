@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FormElement } from 'src/app/interfaces/FormElement';
+import { FormElement } from 'src/app/classes/form-element.class';
 import { styleSectionNode, StyleSectionState } from './style-section.reducer';
 
 

@@ -1,103 +1,21 @@
 <section class="section">
-  <div class="section-container">
-    <div class="drop-area-container">
-      <div class="title" #formTitlte [ngSwitch]="titleEditMode">
-        <h2 *ngSwitchCase="false" (dblclick)="onInputeDoubleClick($event)">
-          {{ formTitle$ | async }}
-        </h2>
+  <div class="drop-area-container">
+    <app-title></app-title>
 
-        <mat-form-field appearance="fill" *ngSwitchCase="true">
-          <mat-label>Form title</mat-label>
-          <input
-            matInput
-            [ngModel]="formTitle$ | async"
-            (blur)="onTitleInputeBlur($event)"
-          />
-        </mat-form-field>
-      </div>
-
+    <div
+      class="drop-area"
+      cdkDropList
+      [cdkDropListData]="formElements$"
+      (cdkDropListDropped)="drop($event)"
+    >
       <div
-        class="drop-area"
-        cdkDropList
-        [cdkDropListData]="formElements$"
-        (cdkDropListDropped)="drop($event)"
+        class="drop-area__list"
+        *ngFor="let el of formElements$ | async"
+        (click)="onElementClick(el)"
       >
-        <div
-          class="drop-area__list"
-          *ngFor="let el of formElements$ | async; let indexOfElement = index"
-          [ngSwitch]="el.type"
-          (click)="onElementClick(el)"
-        >
-          <div
-            class="drop-area__element"
-            *ngSwitchCase="'input'"
-            cdkDrag
-          >
-              <input placeholder="{{el.placeholderText}}"/>
-          </div>
-
-          <div class="drop-area__element" *ngSwitchCase="'textarea'" cdkDrag>
-            <mat-form-field appearance="fill">
-              <mat-label>Textarea</mat-label>
-              <textarea matInput placeholder="Placeholder text"></textarea>
-            </mat-form-field>
-          </div>
-
-          <div class="drop-area__element" *ngSwitchCase="'select'" cdkDrag>
-            <mat-form-field appearance="fill" *ngSwitchCase="'select'" cdkDrag>
-              <mat-label>Select</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div class="drop-area__element" *ngSwitchCase="'button'" cdkDrag>
-            <button mat-raised-button>Basic</button>
-          </div>
-
-          <div class="drop-area__element" *ngSwitchCase="'checkbox'" cdkDrag>
-            <mat-checkbox class="example-margin">Check me!</mat-checkbox>
-          </div>
-        </div>
+        <app-form-element [element]="el"></app-form-element>
+        
       </div>
-
-      <!-- <div
-        class="drop-area"
-        cdkDropList
-        [cdkDropListData]="formElements$"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
-          class="dragable-items__item"
-          *ngFor="let el of formElements$ | async"
-          [ngSwitch]="el.type"
-        >
-          <div *ngSwitchCase="'input'" cdkDrag>
-            <input />
-          </div>
-
-          <div *ngSwitchCase="'textarea'">
-            <textarea name="" id="" cols="30" rows="5" cdkDrag></textarea>
-          </div>
-
-          <div class="button" *ngSwitchCase="'button'" cdkDrag>
-            <button mat-raised-button>Basic</button>
-          </div>
-
-          <div *ngSwitchCase="'checkbox'" cdkDrag>
-            <label for="checkbox">checkbox</label>
-            <input type="checkbox" />
-          </div>
-
-          <select *ngSwitchCase="'select'" cdkDrag>
-            <option>First option</option>
-            <option>Second option</option>
-            <option>Third option</option>
-          </select>
-        </div> -->
-      <!-- </div> -->
     </div>
   </div>
 </section>

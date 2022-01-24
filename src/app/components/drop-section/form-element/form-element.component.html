@@ -1,0 +1,30 @@
+<div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+<div class="drop-area__element" *ngIf="element.type === 'input'" cdkDrag>
+  <input
+    class="drop-area__input"
+    placeholder="{{ element.placeholderText }}"
+    [ngStyle]="{ width: element.width, height: element.height}"
+    
+  />
+</div>
+
+<div class="drop-area__element" *ngIf="element.type === 'textarea'" cdkDrag>
+  <textarea class="drop-area__input" placeholder="Placeholder text"></textarea>
+</div>
+
+<div class="drop-area__element" *ngIf="element.type === 'button'" cdkDrag>
+  <label for="button"></label>
+  <button class="drop-area__button" id="button" name="button">Button</button>
+</div>
+
+<div class="drop-area__element" *ngIf="element.type === 'checkbox'" cdkDrag>
+  <mat-checkbox class="drop-area__checkbox">Check me!</mat-checkbox>
+</div>
+
+<div class="drop-area__element" *ngIf="element.type === 'select'" cdkDrag>
+  <label for="select"></label>
+  <select class="drop-area__input" id="select" name="select">
+    <option value="one">First option</option>
+    <option value="two">Second option</option>
+  </select>
+</div>

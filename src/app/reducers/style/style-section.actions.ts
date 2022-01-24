@@ -1,7 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { FormElement } from '../../interfaces/FormElement'
-
-
+import { FormElement } from 'src/app/classes/form-element.class';
 
 export enum styleSectionActionsType {
     setSelectedElement = '[STYLE-SECTION] setSelectedElement',

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { FormElement } from 'src/app/interfaces/FormElement';
+import { FormElement } from 'src/app/classes/form-element.class';
 import * as StyleSectionActions from './style-section.actions'
 
 

@@ -20,6 +20,10 @@ import { FormStylingComponent } from './components/form-styling/form-styling.com
 import { DropSectionComponent } from './components/drop-section/drop-section.component';
 import { DragSectionComponent } from './components/drag-section/drag-section.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TitleComponent } from './components/drop-section/title/title.component';
+import { FormElementComponent } from './components/drop-section/form-element/form-element.component';
+import { StyleSectionComponent } from './components/form-styling/style-section/style-section.component';
+
 
 
 @NgModule({
@@ -27,7 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     FormStylingComponent,
     DropSectionComponent,
-    DragSectionComponent
+    DragSectionComponent,
+    TitleComponent,
+    FormElementComponent,
+    StyleSectionComponent
   ],
   imports: [
     BrowserModule,

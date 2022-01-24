@@ -1,11 +1,14 @@
 import { createAction, props } from '@ngrx/store';
-import { FormElement } from '../../interfaces/FormElement'
+import { FormElement } from 'src/app/classes/form-element.class';
 
 export enum dropSectionActionsType {
     addFormElement = '[DROP-SECTION] addFormElement',
     moveFormElement = '[DROP-SECTION] moveFormElement',
     changeTitle = '[DROP-SECTION] changeTitle',
-    changePlaceholderText = '[DROP-SECTION] changePlaceholderText'
+    changePlaceholderText = '[DROP-SECTION] changePlaceholderText',
+    changeWith = '[DROP-SECTION] changeWidth',
+    changeHeight = '[DROP-SECTION] changeHeight',
+    changeFontSize = '[DROP-SECTION] changeFontSize',
 }
 
 
@@ -30,4 +33,19 @@ export const changeTitle = createAction(
 export const changePlaceholderText = createAction (
     dropSectionActionsType.changePlaceholderText,
     props<{elementID: number, newText: string}>()
+)
+
+export const changeWidth = createAction (
+    dropSectionActionsType.changeWith,
+    props<{elementID: number, width: string}>()
+)
+
+export const changeHeight = createAction (
+    dropSectionActionsType.changeHeight,
+    props<{elementID: number, height: string}>()
+)
+
+export const changeFontSize = createAction (
+    dropSectionActionsType.changeFontSize,
+    props<{elementID: number, fontSize: string}>()
 )

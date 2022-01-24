@@ -3,8 +3,8 @@ import { Portal, TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ViewContainerRef, ElementRef } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { FormElementC } from 'src/app/classes/form-element.class';
-import { FormElement } from 'src/app/interfaces/FormElement';
+import { FormElement } from 'src/app/classes/form-element.class';
+
 import { addFormElement, changeTitle, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
 import { DropSectionState } from 'src/app/reducers/drop/drop.section.reducer';
 import { selectFormElements, selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
@@ -20,9 +20,6 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
 
 
   public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
-  public formTitle$: Observable<string> = this.store$.pipe(select(selectFormTitle));
-
-  public titleEditMode: boolean = false;
 
 
 
@@ -45,19 +42,6 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
       dispatch(moveFormElement({ currentIndex, nextIndex }))
   }
 
-  onInputeDoubleClick($event: any) {
-    this.titleEditMode = true;
-  }
-
-  onTitleInputeBlur($event: any) {
-    this.onTitleChange($event.target.value)
-    this.titleEditMode = false;
-  }
-
-
-  onTitleChange(value: string) {
-    this.store$.dispatch(changeTitle({ value }))
-  }
 
   onElementClick(el: FormElement) {
     this.store$.dispatch(setSelectedElement({ selectedElement: el }))
@@ -69,14 +53,9 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
     if (event.previousContainer === event.container) {
       this.moveElement(event.previousIndex, event.currentIndex)
     } else {
-      const newElement: FormElement = {
-        id: Date.now() as number,
-        type: event.previousContainer.data[event.previousIndex].type
-      }
+      const newElement = new FormElement(event.previousContainer.data[event.previousIndex].type);
       this.addElement(newElement, event.currentIndex)
     }
-
-
 
   }
 

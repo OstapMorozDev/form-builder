@@ -1,17 +1,22 @@
-export class FormElementC<T> {
+export class FormElement {
     id: number;
     type: string;
     placeholderText?: string;
     width?: string;
     height?: string;
+    fontSize?: string;
 
-    constructor(id: number, type: string, placeholderText: string = "placeholder text",
-        width: string = "100%", height: string = "100px") {
+    constructor(type: string) {
 
-        this.id = id;
+        this.id = Date.now() as number;
         this.type = type;
-        this.placeholderText = placeholderText;
-        this.width = width;
-        this.height = height;
+
+        switch (type) {
+            case 'input':
+                this.placeholderText = 'input';
+                this.width = "100%";
+                this.height = "40px"
+                this.fontSize = "16px"
+        }
     }
 }

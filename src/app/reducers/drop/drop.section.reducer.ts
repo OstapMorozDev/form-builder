@@ -1,4 +1,4 @@
-import { FormElement } from "src/app/interfaces/FormElement";
+import { FormElement } from 'src/app/classes/form-element.class';
 import { createReducer, on } from '@ngrx/store';
 import * as DropSectionActions from './drop.section.actions'
 import { moveItemInArray } from "@angular/cdk/drag-drop";
@@ -47,8 +47,8 @@ export const dropSectionReducer = createReducer(
     on(DropSectionActions.changePlaceholderText, (state, { elementID, newText }) => {
 
         const arrayCopy = state.formElements.map((el, index) => {
-            if(el.id === elementID) {
-                return {...el, placeholderText:newText}
+            if (el.id === elementID) {
+                return { ...el, placeholderText: newText }
             } return el;
         })
 
@@ -58,5 +58,46 @@ export const dropSectionReducer = createReducer(
         }
     }),
 
+    on(DropSectionActions.changeWidth, (state, { elementID, width }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, width: width }
+            } return el;
+        })
+
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
+    on(DropSectionActions.changeHeight, (state, { elementID, height }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, height: height }
+            } return el;
+        })
+
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
+    on(DropSectionActions.changeFontSize, (state, { elementID, fontSize }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, fontSize: fontSize }
+            } return el;
+        })
+
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
 
 );

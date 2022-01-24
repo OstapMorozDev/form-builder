@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormElement } from 'src/app/interfaces/FormElement';
+import { FormElement } from 'src/app/classes/form-element.class';
 
 
 
