@@ -9,6 +9,9 @@ export enum dropSectionActionsType {
     changeWith = '[DROP-SECTION] changeWidth',
     changeHeight = '[DROP-SECTION] changeHeight',
     changeFontSize = '[DROP-SECTION] changeFontSize',
+    toggleIsRequired = '[DROP-SECTION] toggleIsRequired',
+    changeBorderStyle = '[DROP-SECTION] changeBorderStyle',
+    changeTextColor = '[DROP-SECTION] changeTextColor',
 }
 
 
@@ -48,4 +51,20 @@ export const changeHeight = createAction (
 export const changeFontSize = createAction (
     dropSectionActionsType.changeFontSize,
     props<{elementID: number, fontSize: string}>()
+)
+
+export const toggleIsRequired = createAction (
+    dropSectionActionsType.toggleIsRequired,
+    props<{elementID: number, isRequired: boolean}>()
+)
+
+
+export const changeBorderStyle = createAction (
+    dropSectionActionsType.changeBorderStyle,
+    props<{elementID: number, borderStyle: string}>()
+)
+
+export const changeTextColor = createAction (
+    dropSectionActionsType.changeTextColor,
+    props<{elementID: number, textColor: string}>()
 )

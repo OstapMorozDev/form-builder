@@ -1,5 +1,6 @@
 <section class="section">
   <div class="element-styling-container">
+    
     <div *ngIf="selectedFormElement$ | async as el; else noItemToCustomize">
       
       <app-style-section [element]="el"></app-style-section>

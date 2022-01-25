@@ -8,6 +8,7 @@ import { FormElement } from 'src/app/classes/form-element.class';
   templateUrl: './drag-section.component.html',
   styleUrls: ['./drag-section.component.scss']
 })
+
 export class DragSectionComponent implements OnInit {
 
   elements: FormElement[] = [

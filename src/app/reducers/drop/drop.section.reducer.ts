@@ -100,4 +100,46 @@ export const dropSectionReducer = createReducer(
         }
     }),
 
+    on(DropSectionActions.toggleIsRequired, (state, { elementID, isRequired }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, isRequired: isRequired }
+            } return el;
+        })
+
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
+    on(DropSectionActions.changeBorderStyle, (state, { elementID, borderStyle }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, borderStyle: borderStyle }
+            } return el;
+        })
+
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
+
+    on(DropSectionActions.changeTextColor, (state, { elementID, textColor }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, textColor: textColor }
+            } return el;
+        })
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
 );

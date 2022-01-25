@@ -1,13 +1,12 @@
-import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Portal, TemplatePortal, ComponentPortal } from '@angular/cdk/portal';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ViewContainerRef, ElementRef } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormElement } from 'src/app/classes/form-element.class';
 
-import { addFormElement, changeTitle, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
+import { addFormElement, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
 import { DropSectionState } from 'src/app/reducers/drop/drop.section.reducer';
-import { selectFormElements, selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
+import { selectFormElements } from 'src/app/reducers/drop/drop.section.selectors';
 import { setSelectedElement } from 'src/app/reducers/style/style-section.actions';
 
 
@@ -20,7 +19,6 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
 
 
   public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
-
 
 
   constructor(private store$: Store<DropSectionState>) { }

@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -47,9 +47,9 @@ import { StyleSectionComponent } from './components/form-styling/style-section/s
       maxAge: 25, // Retains last 25 states
 
     }),
-    PortalModule, DragDropModule, BrowserAnimationsModule, 
-    MatButtonModule, MatFormFieldModule, MatInputModule, 
-    MatSelectModule, MatCheckboxModule, FormsModule
+    PortalModule, DragDropModule, BrowserAnimationsModule,
+    MatButtonModule, MatFormFieldModule, MatInputModule,
+    MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

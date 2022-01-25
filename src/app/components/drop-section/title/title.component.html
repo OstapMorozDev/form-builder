@@ -6,6 +6,7 @@
   <mat-form-field appearance="fill" *ngSwitchCase="true">
     <mat-label>Form title</mat-label>
     <input
+    
       matInput
       [ngModel]="formTitle$ | async"
       (blur)="onTitleInputeBlur($event)"
