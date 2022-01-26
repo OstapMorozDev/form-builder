@@ -1,3 +1,5 @@
+
+
 export class FormElement {
     id: number;
     type: string;
@@ -5,9 +7,12 @@ export class FormElement {
     width?: string;
     height?: string;
     fontSize?: string;
-    isRequired?: boolean
-    borderStyle?: string
-    textColor?: string
+    isRequired?: boolean;
+    textColor?: string;
+    borderStyle?: string;
+    borderWidth?: string;
+    borderColor?: string;
+    fontWeight?: string
 
     constructor(type: string) {
 
@@ -21,8 +26,25 @@ export class FormElement {
                 this.height = "40px";
                 this.fontSize = "16px";
                 this.isRequired = false;
-                this.borderStyle = "solid";
                 this.textColor = "#17252a";
+                this.borderWidth = "2px";
+                this.borderStyle = "solid";
+                this.borderColor = "#2b7a78";
+                this.fontWeight = "400";
+                break;
+
+            case 'textarea':
+                this.placeholderText = 'textarea';
+                this.width = "100%";
+                this.height = "60px";
+                this.fontSize = "16px";
+                this.isRequired = false;
+                this.textColor = "#17252a";
+                this.borderWidth = "2px";
+                this.borderStyle = "solid";
+                this.borderColor = "#2b7a78";
+                this.fontWeight = "400";
+                break;
         }
     }
 }

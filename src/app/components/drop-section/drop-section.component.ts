@@ -45,6 +45,10 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
     this.store$.dispatch(setSelectedElement({ selectedElement: el }))
   }
 
+  valueChanges(output: any) {
+    console.log(output.event, output.elementID)
+  }
+
 
   drop(event: CdkDragDrop<any>) {
     console.log(event);

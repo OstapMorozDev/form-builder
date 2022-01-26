@@ -129,11 +129,51 @@ export const dropSectionReducer = createReducer(
     }),
 
 
+    on(DropSectionActions.changeBorderWidth, (state, { elementID, width }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, borderWidth: width }
+            } return el;
+        })
+
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
+    on(DropSectionActions.changeBorderColor, (state, { elementID, color }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, borderColor: color }
+            } return el;
+        })
+
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
     on(DropSectionActions.changeTextColor, (state, { elementID, textColor }) => {
 
         const arrayCopy = state.formElements.map((el, index) => {
             if (el.id === elementID) {
                 return { ...el, textColor: textColor }
+            } return el;
+        })
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
+    on(DropSectionActions.changeFontWeight, (state, { elementID, weight }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, fontWeight: weight }
             } return el;
         })
         return {

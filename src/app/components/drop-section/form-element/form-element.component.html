@@ -2,13 +2,18 @@
   <div class="custom-placeholder" *cdkDragPlaceholder></div>
   <input
     cdkDrag
+    [(ngModel)]="inputTempValue"
     class="drop-area__input"
     placeholder="{{ element.placeholderText }}"
     [ngStyle]="{
       width: element.width,
       height: element.height,
-      border: element.borderStyle,
-      color: element.textColor
+      borderStyle: element.borderStyle,
+      borderColor: element.borderColor,
+      borderWidth: element.borderWidth,
+      color: element.textColor,
+      fontSize: element.fontSize,
+      fontWeight: element.fontWeight
     }"
     required="{{ element.isRequired }}"
   />
@@ -22,9 +27,13 @@
     [ngStyle]="{
       width: element.width,
       height: element.height,
-      border: element.borderStyle,
-      color: element.textColor
+      borderStyle: element.borderStyle,
+      borderColor: element.borderColor,
+      borderWidth: element.borderWidth,
+      color: element.textColor,
+      fontSize: element.fontSize
     }"
+    required="{{ element.isRequired }}"
     cdkDrag
   ></textarea>
 </div>
@@ -47,5 +56,3 @@
     <option value="two">Second option</option>
   </select>
 </div>
-
-

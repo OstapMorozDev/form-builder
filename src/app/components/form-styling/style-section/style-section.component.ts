@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 
 import { FormElement } from 'src/app/classes/form-element.class';
-import { changePlaceholderText, changeWidth, changeHeight, changeFontSize, toggleIsRequired, changeBorderStyle, changeTextColor } from 'src/app/reducers/drop/drop.section.actions';
+import { changePlaceholderText, changeWidth, changeHeight, changeFontSize, toggleIsRequired, changeBorderStyle, changeTextColor, changeBorderColor, changeBorderWidth, changeFontWeight } from 'src/app/reducers/drop/drop.section.actions';
 import { StyleSectionState } from 'src/app/reducers/style/style-section.reducer';
 import { selectedElement } from 'src/app/reducers/style/style-section.selectors';
 
@@ -41,8 +41,20 @@ export class StyleSectionComponent {
     this.store$.dispatch(changeFontSize({ elementID, fontSize }))
   }
 
+  changeFontWeight(elementID: number, weight: string) {
+    this.store$.dispatch(changeFontWeight({ elementID, weight }))
+  }
+
   changeBorderStyle(elementID: number, borderStyle: string) {
     this.store$.dispatch(changeBorderStyle({ elementID, borderStyle }));
+  }
+
+  changeBorderColor(elementID: number, color: string) {
+    this.store$.dispatch(changeBorderColor({ elementID, color }))
+  }
+
+  changeBorderWidth(elementID: number, width: "string") {
+    this.store$.dispatch(changeBorderWidth({ elementID, width }))
   }
 
   toggleIsRequired(elementID: number, isRequired: boolean) {
@@ -69,7 +81,11 @@ export class StyleSectionComponent {
   }
 
   handleFontSizeInputBlur($event: any, elementID: number) {
-    this.changeHeight(elementID, $event.target.value);
+    this.changeFontSize(elementID, $event.target.value);
+  }
+
+  handleFontWeightChange($event: any, elementID: number) {
+    this.changeFontWeight(elementID, $event.target.value);
   }
 
   handleCheckboxChange($event: any, elementID: number) {
@@ -80,12 +96,24 @@ export class StyleSectionComponent {
   }
 
   onBorderSelection($event: any, elementID: number) {
-
     console.log($event.target)
     this.changeBorderStyle(elementID, $event.target.value)
   }
 
+  handleBorderColorInput($event: any, elementID: number) {
+    console.log($event);
+
+    this.changeBorderColor(elementID, $event as string)
+  }
+
+  handleBorderWidthInput($event: any, elementID: number) {
+    this.changeBorderWidth(elementID, $event.target.value)
+  }
+
+
+
   handleTextColorInput($event: any, elementID: number) {
     this.changeTextColor(elementID, $event as string)
   }
+
 }

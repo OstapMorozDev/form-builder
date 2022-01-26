@@ -11,14 +11,18 @@ export enum dropSectionActionsType {
     changeFontSize = '[DROP-SECTION] changeFontSize',
     toggleIsRequired = '[DROP-SECTION] toggleIsRequired',
     changeBorderStyle = '[DROP-SECTION] changeBorderStyle',
+    changeBorderWidth = '[DROP-SECTION] changeBorderWidth',
+    changeBorderColor = '[DROP-SECTION] changeBorderColor',
     changeTextColor = '[DROP-SECTION] changeTextColor',
+    changeInputValue = '[DROP-SECTION] changeInputValue',
+    changeFontWeight = '[DROP-SECTION] changeFontWeight'
 }
 
 
 
 export const addFormElement = createAction(
     dropSectionActionsType.addFormElement,
-    props<{ formElement: FormElement,  newIndex: number}>()
+    props<{ formElement: FormElement, newIndex: number }>()
 );
 
 export const moveFormElement = createAction(
@@ -33,38 +37,55 @@ export const changeTitle = createAction(
 );
 
 
-export const changePlaceholderText = createAction (
+export const changePlaceholderText = createAction(
     dropSectionActionsType.changePlaceholderText,
-    props<{elementID: number, newText: string}>()
+    props<{ elementID: number, newText: string }>()
 )
 
-export const changeWidth = createAction (
+export const changeWidth = createAction(
     dropSectionActionsType.changeWith,
-    props<{elementID: number, width: string}>()
+    props<{ elementID: number, width: string }>()
 )
 
-export const changeHeight = createAction (
+export const changeHeight = createAction(
     dropSectionActionsType.changeHeight,
-    props<{elementID: number, height: string}>()
+    props<{ elementID: number, height: string }>()
 )
 
-export const changeFontSize = createAction (
+export const changeFontSize = createAction(
     dropSectionActionsType.changeFontSize,
-    props<{elementID: number, fontSize: string}>()
+    props<{ elementID: number, fontSize: string }>()
 )
 
-export const toggleIsRequired = createAction (
+export const toggleIsRequired = createAction(
     dropSectionActionsType.toggleIsRequired,
-    props<{elementID: number, isRequired: boolean}>()
+    props<{ elementID: number, isRequired: boolean }>()
 )
 
 
-export const changeBorderStyle = createAction (
+export const changeBorderStyle = createAction(
     dropSectionActionsType.changeBorderStyle,
-    props<{elementID: number, borderStyle: string}>()
+    props<{ elementID: number, borderStyle: string }>()
 )
 
-export const changeTextColor = createAction (
+export const changeBorderWidth = createAction(
+    dropSectionActionsType.changeBorderWidth,
+    props<{ elementID: number, width: string }>()
+)
+
+
+export const changeBorderColor = createAction(
+    dropSectionActionsType.changeBorderColor,
+    props<{ elementID: number, color: string }>()
+)
+
+
+export const changeTextColor = createAction(
     dropSectionActionsType.changeTextColor,
-    props<{elementID: number, textColor: string}>()
+    props<{ elementID: number, textColor: string }>()
+)
+
+export const changeFontWeight = createAction(
+    dropSectionActionsType.changeTextColor,
+    props<{ elementID: number, weight: string }>()
 )
