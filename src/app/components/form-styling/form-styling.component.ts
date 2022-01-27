@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -11,15 +11,13 @@ import { selectedElement } from '../../reducers/style/style-section.selectors'
   templateUrl: './form-styling.component.html',
   styleUrls: ['./form-styling.component.scss']
 })
-export class FormStylingComponent implements OnInit {
+export class FormStylingComponent  {
 
   public selectedFormElement$: Observable<FormElement | null> = this.store$.pipe(select(selectedElement));
 
 
   constructor(private store$: Store<StyleSectionState>) { }
 
-  
-  ngOnInit(): void {
-  }
+
 
 }

@@ -14,8 +14,8 @@ export enum dropSectionActionsType {
     changeBorderWidth = '[DROP-SECTION] changeBorderWidth',
     changeBorderColor = '[DROP-SECTION] changeBorderColor',
     changeTextColor = '[DROP-SECTION] changeTextColor',
-    changeInputValue = '[DROP-SECTION] changeInputValue',
-    changeFontWeight = '[DROP-SECTION] changeFontWeight'
+    changeFontWeight = '[DROP-SECTION] changeFontWeight',
+    changeBackgroundColor = '[DROP-SECTION] changeBackgroundColor'
 }
 
 
@@ -88,4 +88,9 @@ export const changeTextColor = createAction(
 export const changeFontWeight = createAction(
     dropSectionActionsType.changeTextColor,
     props<{ elementID: number, weight: string }>()
+)
+
+export const changeBackgroundColor = createAction(
+    dropSectionActionsType.changeBackgroundColor,
+    props<{ elementID: number, color: string }>()
 )

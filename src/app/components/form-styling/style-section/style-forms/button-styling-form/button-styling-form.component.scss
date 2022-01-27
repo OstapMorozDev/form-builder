@@ -1,18 +1,16 @@
-@import "../../../common/colors.scss";
+@import "../../../../../common/colors.scss";
 
-.input {
+.form-group__input {
   padding: 12px 20px;
   border: 2px solid $primary-color;
   border-radius: 4px;
   display: block;
   box-sizing: border-box;
   margin: 0 5px 7px 5px;
-  outline:none;
+  outline: none;
 }
-
 
 .checkbox {
-    margin: 0 auto;
-    text-align: center;
+  margin: 0 auto;
+  text-align: center;
 }
-

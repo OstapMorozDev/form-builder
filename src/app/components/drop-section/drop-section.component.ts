@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormElement } from 'src/app/classes/form-element.class';
@@ -15,21 +15,13 @@ import { setSelectedElement } from 'src/app/reducers/style/style-section.actions
   templateUrl: './drop-section.component.html',
   styleUrls: ['./drop-section.component.scss']
 })
-export class DropSectionComponent implements OnInit, AfterViewInit {
+export class DropSectionComponent {
 
 
-  public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
+  public formElements$: Observable < FormElement[] > = this.store$.pipe(select(selectFormElements));
 
 
   constructor(private store$: Store<DropSectionState>) { }
-
-  ngOnInit(): void {
-
-  }
-
-  ngAfterViewInit() {
-
-  }
 
   addElement(newElement: FormElement, currentIndex: number) {
     this.store$.dispatch(addFormElement({ formElement: newElement, newIndex: currentIndex }))
@@ -51,10 +43,10 @@ export class DropSectionComponent implements OnInit, AfterViewInit {
 
 
   drop(event: CdkDragDrop<any>) {
-    console.log(event);
     if (event.previousContainer === event.container) {
       this.moveElement(event.previousIndex, event.currentIndex)
     } else {
+
       const newElement = new FormElement(event.previousContainer.data[event.previousIndex].type);
       this.addElement(newElement, event.currentIndex)
     }

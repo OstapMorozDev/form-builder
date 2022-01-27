@@ -12,7 +12,8 @@ export class FormElement {
     borderStyle?: string;
     borderWidth?: string;
     borderColor?: string;
-    fontWeight?: string
+    fontWeight?: string;
+    backgroundColor?: string;
 
     constructor(type: string) {
 
@@ -45,6 +46,19 @@ export class FormElement {
                 this.borderColor = "#2b7a78";
                 this.fontWeight = "400";
                 break;
+
+            case 'button':
+                this.width = "100%";
+                this.height = "40px";
+                this.fontSize = "16px";
+                this.textColor = "#17252a";
+                this.borderWidth = "2px";
+                this.borderColor = "#2b7a78";
+                this.fontWeight = "400";
+                this.backgroundColor = "#2b7a78"
+                break;
+            
+            
         }
     }
 }

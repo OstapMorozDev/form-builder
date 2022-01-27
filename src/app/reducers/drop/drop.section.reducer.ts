@@ -182,4 +182,17 @@ export const dropSectionReducer = createReducer(
         }
     }),
 
+    on(DropSectionActions.changeBackgroundColor, (state, { elementID, color }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, backgroundColor: color }
+            } return el;
+        })
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
 );

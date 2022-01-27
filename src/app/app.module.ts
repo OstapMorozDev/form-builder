@@ -22,8 +22,11 @@ import { DragSectionComponent } from './components/drag-section/drag-section.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleComponent } from './components/drop-section/title/title.component';
 import { FormElementComponent } from './components/drop-section/form-element/form-element.component';
-import { StyleSectionComponent } from './components/form-styling/style-section/style-section.component';
-
+import { StyleSectionComponent } from './components/form-styling/style-section/styling-section.component';
+import { FormChangesHandlingService } from './services/form-changes-handling.service';
+import { InputStylingFormComponent } from './components/form-styling/style-section/style-forms/input-styling-form/input-styling-form.component';
+import { ButtonStyleFormComponent } from './components/form-styling/style-section/style-forms/button-styling-form/button-styling-form.component';
+import { SelectStylingFormComponent } from './components/form-styling/style-section/style-forms/select-styling-form/select-styling-form.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { StyleSectionComponent } from './components/form-styling/style-section/s
     DragSectionComponent,
     TitleComponent,
     FormElementComponent,
-    StyleSectionComponent
+    StyleSectionComponent,
+    InputStylingFormComponent,
+    ButtonStyleFormComponent,
+    SelectStylingFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,7 @@ import { StyleSectionComponent } from './components/form-styling/style-section/s
     MatButtonModule, MatFormFieldModule, MatInputModule,
     MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [FormChangesHandlingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

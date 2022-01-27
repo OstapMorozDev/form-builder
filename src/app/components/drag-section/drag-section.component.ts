@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormElement } from 'src/app/classes/form-element.class';
 
 
@@ -9,7 +9,7 @@ import { FormElement } from 'src/app/classes/form-element.class';
   styleUrls: ['./drag-section.component.scss']
 })
 
-export class DragSectionComponent implements OnInit {
+export class DragSectionComponent {
 
   elements: FormElement[] = [
     {
@@ -34,9 +34,5 @@ export class DragSectionComponent implements OnInit {
     }
   ]
 
-  constructor() { }
 
-  ngOnInit(): void {
-
-  }
 }

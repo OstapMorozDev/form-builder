@@ -31,7 +31,8 @@
       borderColor: element.borderColor,
       borderWidth: element.borderWidth,
       color: element.textColor,
-      fontSize: element.fontSize
+      fontSize: element.fontSize,
+      fontWeight: element.fontWeight
     }"
     required="{{ element.isRequired }}"
     cdkDrag
@@ -40,7 +41,22 @@
 
 <div class="drop-area__element" *ngIf="element.type === 'button'">
   <label for="button"></label>
-  <button class="drop-area__button" id="button" name="button" cdkDrag>
+  <button
+    class="drop-area__button"
+    id="button"
+    name="button"
+    [ngStyle]="{
+      width: element.width,
+      height: element.height,
+      borderColor: element.borderColor,
+      borderWidth: element.borderWidth,
+      color: element.textColor,
+      fontSize: element.fontSize,
+      fontWeight: element.fontWeight,
+      backgroundColor: element.backgroundColor
+    }"
+    cdkDrag
+  >
     Button
   </button>
 </div>
@@ -51,7 +67,22 @@
 
 <div class="drop-area__element" *ngIf="element.type === 'select'">
   <label for="select"></label>
-  <select class="drop-area__input" id="select" name="select" cdkDrag>
+  <select
+    class="drop-area__input"
+    id="select"
+    name="select"
+    cdkDrag
+    [ngStyle]="{
+      width: element.width,
+      height: element.height,
+      borderColor: element.borderColor,
+      borderWidth: element.borderWidth,
+      color: element.textColor,
+      fontSize: element.fontSize,
+      fontWeight: element.fontWeight,
+      backgroundColor: element.backgroundColor
+    }"
+  >
     <option value="one">First option</option>
     <option value="two">Second option</option>
   </select>

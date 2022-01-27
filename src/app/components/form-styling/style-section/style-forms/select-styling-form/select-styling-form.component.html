@@ -1,0 +1,76 @@
+<form [formGroup]="customFormGroup" novalidate>
+    <div class="form-group">
+      <label for="widthInput">Width</label>
+      <input
+        class="form-group__input"
+        id="widthInput"
+        type="text"
+        formControlName="widthInput"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="heightInput">Height</label>
+      <input
+        class="form-group__input"
+        id="heightInput"
+        type="text"
+        formControlName="heightInput"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="fontSize">Font Size</label>
+      <input
+        class="form-group__input"
+        id="fontSize"
+        type="text"
+        formControlName="fontSize"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="fontWeight">Font Weight</label>
+      <input
+        class="form-group__input"
+        id="fontWeight"
+        type="text"
+        formControlName="fontWeight"
+      />
+    </div>
+    <div class="form-group">
+      <label for="borderWidth">Border Width</label>
+      <input
+        class="form-group__input"
+        id="borderWidth"
+        type="text"
+        formControlName="borderWidth"
+      />
+    </div>
+  
+    <div>
+      <label for="backgroundColor">Background Color</label>
+      <input
+        name="backgroundColor"
+        class="color"
+        type="color"
+        formControlName="backgroundColor"
+      />
+    </div>
+  
+    <div>
+      <label for="borderColor">Border Color</label>
+      <input
+        name="borderColor"
+        class="color"
+        type="color"
+        formControlName="borderColor"
+      />
+    </div>
+  
+    <div>
+      <label>Text Color</label>
+      <input formControlName="textColor" class="color" id="color" type="color" />
+    </div>
+  </form>
+  
