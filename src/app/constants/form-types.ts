@@ -10,4 +10,5 @@ export enum FormTypes {
     borderColor = "borderColor",
     textColor = "textColor",
     backgroundColor = "backgroundColor",
+    borderControl = "borderControl",
 }

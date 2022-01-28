@@ -195,4 +195,17 @@ export const dropSectionReducer = createReducer(
         }
     }),
 
+    on(DropSectionActions.changeBorderControl, (state, { elementID, borderControl }) => {
+
+        const arrayCopy = state.formElements.map((el, index) => {
+            if (el.id === elementID) {
+                return { ...el, borderControl: {...borderControl} }
+            } return el;
+        })
+        return {
+            ...state,
+            formElements: arrayCopy
+        }
+    }),
+
 );

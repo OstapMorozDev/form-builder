@@ -1,3 +1,4 @@
+import { BorderControl } from "../interfaces/borderControl";
 
 
 export class FormElement {
@@ -14,6 +15,7 @@ export class FormElement {
     borderColor?: string;
     fontWeight?: string;
     backgroundColor?: string;
+    borderControl?: BorderControl;
 
     constructor(type: string) {
 
@@ -32,6 +34,12 @@ export class FormElement {
                 this.borderStyle = "solid";
                 this.borderColor = "#2b7a78";
                 this.fontWeight = "400";
+                this.borderControl = {
+                    borderBottom: true,
+                    borderTop: true,
+                    borderLeft: true,
+                    borderRight: true
+                };
                 break;
 
             case 'textarea':
@@ -45,6 +53,12 @@ export class FormElement {
                 this.borderStyle = "solid";
                 this.borderColor = "#2b7a78";
                 this.fontWeight = "400";
+                this.borderControl = {
+                    borderBottom: true,
+                    borderTop: true,
+                    borderLeft: true,
+                    borderRight: true
+                };
                 break;
 
             case 'button':
@@ -56,9 +70,15 @@ export class FormElement {
                 this.borderColor = "#2b7a78";
                 this.fontWeight = "400";
                 this.backgroundColor = "#2b7a78"
+                this.borderControl = {
+                    borderBottom: true,
+                    borderTop: true,
+                    borderLeft: true,
+                    borderRight: true
+                };
                 break;
-            
-            
+
+
         }
     }
 }

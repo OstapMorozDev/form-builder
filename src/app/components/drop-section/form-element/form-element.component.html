@@ -34,6 +34,12 @@
       fontSize: element.fontSize,
       fontWeight: element.fontWeight
     }"
+    [ngClass]="{
+      hideBottomBorder: !element.borderControl?.borderBottom,
+      hideTopBorder: !element.borderControl?.borderTop,
+      hideLeftBorder: !element.borderControl?.borderLeft,
+      hideRightBorder: !element.borderControl?.borderRight
+    }"
     required="{{ element.isRequired }}"
     cdkDrag
   ></textarea>

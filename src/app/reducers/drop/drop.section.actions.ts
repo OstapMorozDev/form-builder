@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { FormElement } from 'src/app/classes/form-element.class';
+import { BorderControl } from 'src/app/interfaces/borderControl';
 
 export enum dropSectionActionsType {
     addFormElement = '[DROP-SECTION] addFormElement',
@@ -15,7 +16,8 @@ export enum dropSectionActionsType {
     changeBorderColor = '[DROP-SECTION] changeBorderColor',
     changeTextColor = '[DROP-SECTION] changeTextColor',
     changeFontWeight = '[DROP-SECTION] changeFontWeight',
-    changeBackgroundColor = '[DROP-SECTION] changeBackgroundColor'
+    changeBackgroundColor = '[DROP-SECTION] changeBackgroundColor',
+    changeBorderControl = '[DROP-SECTION] changeBorderControl'
 }
 
 
@@ -93,4 +95,9 @@ export const changeFontWeight = createAction(
 export const changeBackgroundColor = createAction(
     dropSectionActionsType.changeBackgroundColor,
     props<{ elementID: number, color: string }>()
+)
+
+export const changeBorderControl = createAction(
+    dropSectionActionsType.changeBorderControl,
+    props<{ elementID: number, borderControl: BorderControl }>()
 )

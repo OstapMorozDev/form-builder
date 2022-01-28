@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 
 import { FormStylingComponent } from './components/form-styling/form-styling.component';
 import { DropSectionComponent } from './components/drop-section/drop-section.component';
@@ -27,6 +27,7 @@ import { FormChangesHandlingService } from './services/form-changes-handling.ser
 import { InputStylingFormComponent } from './components/form-styling/style-section/style-forms/input-styling-form/input-styling-form.component';
 import { ButtonStyleFormComponent } from './components/form-styling/style-section/style-forms/button-styling-form/button-styling-form.component';
 import { SelectStylingFormComponent } from './components/form-styling/style-section/style-forms/select-styling-form/select-styling-form.component';
+import { BorderInputComponent } from './components/form-styling/style-section/style-forms/border-input/border-input.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { SelectStylingFormComponent } from './components/form-styling/style-sect
     InputStylingFormComponent,
     ButtonStyleFormComponent,
     SelectStylingFormComponent,
+    BorderInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { SelectStylingFormComponent } from './components/form-styling/style-sect
     }),
     PortalModule, DragDropModule, BrowserAnimationsModule,
     MatButtonModule, MatFormFieldModule, MatInputModule,
-    MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule
+    MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [FormChangesHandlingService],
   bootstrap: [AppComponent]

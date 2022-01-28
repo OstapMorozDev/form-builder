@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { FormTypes } from '../constants/form-types';
-import { changeBackgroundColor, changeBorderColor, changeBorderStyle, changeBorderWidth, changeFontSize, changeFontWeight, changeHeight, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
+import { BorderControl } from '../interfaces/borderControl';
+import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeFontSize, changeFontWeight, changeHeight, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
 import { StyleSectionState } from '../reducers/style/style-section.reducer';
 
 @Injectable({
@@ -43,6 +45,13 @@ export class FormChangesHandlingService {
         break;
       case FormTypes.backgroundColor:
         this.changeBackgroundColor(elementId, value)
+        break;
+
+      case FormTypes.borderControl:
+        this.changeBorderControl(elementId, (value as unknown) as BorderControl)
+        break;
+
+
     }
 
   }
@@ -90,6 +99,10 @@ export class FormChangesHandlingService {
 
   private changeBackgroundColor(elementID: number, color: string) {
     this.store$.dispatch(changeBackgroundColor({ elementID, color }));
+  }
+
+  private changeBorderControl(elementID: number, borderControl: BorderControl) {
+    this.store$.dispatch(changeBorderControl({ elementID, borderControl }));
   }
 }
 
