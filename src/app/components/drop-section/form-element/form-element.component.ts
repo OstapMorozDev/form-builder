@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormElement } from 'src/app/classes/form-element.class';
 
 @Component({
@@ -6,17 +6,9 @@ import { FormElement } from 'src/app/classes/form-element.class';
   templateUrl: './form-element.component.html',
   styleUrls: ['./form-element.component.scss']
 })
-export class FormElementComponent implements OnInit {
+export class FormElementComponent   {
 
   @Input() element: FormElement
-
-  inputTempValue: string;
-
-  constructor() { }
-
-  ngOnInit(): void {
-
-  }
 
 
 }

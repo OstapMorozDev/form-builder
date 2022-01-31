@@ -1,19 +1,29 @@
 @import "../../common/colors.scss";
 
 .section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+
+  .form-accordition {
+    display: block;
+
+    .form-accordition__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      padding: 7px;
+
+      .header {
+        margin: 0;
+      }
+
+      .form-accordition__arrow-icon {
+        font-size: 0.8 rem;
+      }
+    }
+  }
 }
 
 .element-styling-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: dashed 2px $secondary-color;
-  border-radius: 5px;
-  min-height: 500px;
-  max-width: 250px;
   margin: 0 10px;
 }

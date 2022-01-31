@@ -1,6 +1,6 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, pairwise, startWith, tap } from 'rxjs';
+import { map, pairwise, startWith, Subject, takeUntil, tap } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { FormElement } from 'src/app/classes/form-element.class';
@@ -13,7 +13,7 @@ import { FormChangesHandlingService } from 'src/app/services/form-changes-handli
   templateUrl: './styling-section.component.html',
   styleUrls: ['./styling-section.component.scss'],
 })
-export class StyleSectionComponent implements OnInit, OnChanges {
+export class StyleSectionComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() element: FormElement;
 
@@ -32,6 +32,7 @@ export class StyleSectionComponent implements OnInit, OnChanges {
     borderControl: new FormControl()
   })
 
+  private destroy$: Subject<boolean> = new Subject<boolean>();
   private formValues: Object;
 
   constructor(private store$: Store<StyleSectionState>, private formChangesService: FormChangesHandlingService) {
@@ -88,27 +89,31 @@ export class StyleSectionComponent implements OnInit, OnChanges {
     this.myForm.patchValue(this.formValues);
 
     const formSubscription = this.myForm.valueChanges
-      .pipe(startWith(this.formValues),
+      .pipe(
+        takeUntil(this.destroy$),
+        startWith(this.formValues),
         tap(val => console.log(val)),
         pairwise(),
         map((valChangesPair) => {
-          let formType: string = "";
-          console.log(valChangesPair)
+          let inputType: string = "";
 
           for (let key in valChangesPair[0]) {
             if (valChangesPair[0][key] !== valChangesPair[1][key]) {
-              formType = key;
+              inputType = key;
             }
-          } return { type: formType, value: valChangesPair[1][formType]  }
+          } return { type: inputType, value: valChangesPair[1][inputType] }
         })
       )
 
     formSubscription.subscribe(formChanges => {
-      console.log(formChanges);
       this.formChangesService.handleChanges(formChanges.type, formChanges.value, this.element.id)
     })
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
 
 }

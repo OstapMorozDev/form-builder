@@ -1,17 +1,36 @@
 <section class="section">
-  <div class="element-styling-container">
-    
-    <div *ngIf="selectedFormElement$ | async as el; else noItemToCustomize">
-      
-      <app-styling-section [element]="el"></app-styling-section>
-    
-    </div>
-
-    <ng-template #noItemToCustomize>
-      <div>
-        <h2>Select an item to custmize</h2>
+  <div cdk-accordion class="form-accordition">
+    <cdk-accordion-item
+      class="form-accordition__item"
+      #accordionItem="cdkAccordionItem"
+      role="button"
+    >
+      <div class="form-accordition__header" (click)="accordionItem.toggle()">
+        <h2 class="header">Field Styling</h2>
+        <mat-icon
+          class="form-accordition__arrow-icon"
+          *ngIf="!accordionItem.expanded"
+          >keyboard_arrow_down</mat-icon
+        >
+        <mat-icon
+          class="form-accordition__arrow-icon"
+          *ngIf="accordionItem.expanded"
+          >keyboard_arrow_up</mat-icon
+        >
       </div>
-    </ng-template>
 
+      <div
+        class="element-styling-container"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+      >
+        <div *ngIf="selectedFormElement$ | async as el; else elementNotSelected">
+          <app-styling-section [element]="el"></app-styling-section>
+        </div>
+      </div>
+
+      <ng-template #elementNotSelected>
+        <h3>Select an item for customization</h3>
+      </ng-template>
+    </cdk-accordion-item>
   </div>
 </section>

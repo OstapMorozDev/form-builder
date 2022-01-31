@@ -1,76 +1,102 @@
-<form [formGroup]="customFormGroup" novalidate>
-    <div class="form-group">
-      <label for="widthInput">Width</label>
-      <input
-        class="form-group__input"
-        id="widthInput"
-        type="text"
-        formControlName="widthInput"
-      />
-    </div>
-  
-    <div class="form-group">
-      <label for="heightInput">Height</label>
-      <input
-        class="form-group__input"
-        id="heightInput"
-        type="text"
-        formControlName="heightInput"
-      />
-    </div>
-  
-    <div class="form-group">
-      <label for="fontSize">Font Size</label>
-      <input
-        class="form-group__input"
-        id="fontSize"
-        type="text"
-        formControlName="fontSize"
-      />
-    </div>
-  
-    <div class="form-group">
-      <label for="fontWeight">Font Weight</label>
-      <input
-        class="form-group__input"
-        id="fontWeight"
-        type="text"
-        formControlName="fontWeight"
-      />
-    </div>
-    <div class="form-group">
-      <label for="borderWidth">Border Width</label>
-      <input
-        class="form-group__input"
-        id="borderWidth"
-        type="text"
-        formControlName="borderWidth"
-      />
-    </div>
-  
-    <div>
-      <label for="backgroundColor">Background Color</label>
-      <input
-        name="backgroundColor"
-        class="color"
-        type="color"
-        formControlName="backgroundColor"
-      />
-    </div>
-  
-    <div>
-      <label for="borderColor">Border Color</label>
-      <input
-        name="borderColor"
-        class="color"
-        type="color"
-        formControlName="borderColor"
-      />
-    </div>
-  
-    <div>
-      <label>Text Color</label>
-      <input formControlName="textColor" class="color" id="color" type="color" />
-    </div>
-  </form>
-  
+<form class="form-group" [formGroup]="customFormGroup" novalidate>
+  <mat-form-field class="form-group__field">
+    <mat-label for="placeholderInput">Placeholder</mat-label>
+    <input
+      matInput
+      class="form-group__input"
+      id="placeholderInput"
+      name="placeholderInput"
+      type="text"
+      formControlName="placeholderText"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="widthInput">Width</mat-label>
+    <input
+      class="form-group__input"
+      id="widthInput"
+      type="text"
+      formControlName="widthInput"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="heightInput">Height</mat-label>
+    <input
+      class="form-group__input"
+      id="heightInput"
+      type="text"
+      formControlName="heightInput"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="fontSize">Font Size</mat-label>
+    <input
+      class="form-group__input"
+      id="fontSize"
+      type="text"
+      formControlName="fontSize"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="fontWeight">Font Weight</mat-label>
+    <input
+      class="form-group__input"
+      id="fontWeight"
+      type="text"
+      formControlName="fontWeight"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="borderWidth">Border Width</mat-label>
+    <input
+      class="form-group__input"
+      id="borderWidth"
+      type="text"
+      formControlName="borderWidth"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field  class="form-group__field">
+    <mat-label>Favorite food</mat-label>
+    <mat-select id="select" name="select" formControlName="borderStyle">
+      <mat-option value="solid">Solid</mat-option>
+      <mat-option value="dashed">Dashed</mat-option>
+      <mat-option value="dotted">Dotted</mat-option>
+      <mat-option value="double">Double</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="borderColor">Border Color</mat-label>
+    <input
+      name="borderColor"
+      class="color"
+      type="color"
+      formControlName="borderColor"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label>Text Color</mat-label>
+    <input
+      formControlName="textColor"
+      class="color"
+      id="color"
+      type="color"
+      matInput
+    />
+  </mat-form-field>
+
+  <app-border-input formControlName="borderControl"></app-border-input>
+</form>

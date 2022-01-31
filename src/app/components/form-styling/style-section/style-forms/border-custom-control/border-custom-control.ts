@@ -1,17 +1,17 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-border-input',
-  templateUrl: './border-input.component.html',
-  styleUrls: ['./border-input.component.scss'],
+  templateUrl: './border-custom-control-component.html',
+  styleUrls: ['./border-custom-control.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => BorderInputComponent),
+    useExisting: forwardRef(() => BorderCustomControl),
     multi: true
   }]
 })
-export class BorderInputComponent implements ControlValueAccessor {
+export class BorderCustomControl implements ControlValueAccessor {
 
   public value: any;
   onTouched: () => void;

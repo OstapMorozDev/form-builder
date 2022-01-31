@@ -6,12 +6,11 @@
 
 .drop-area__input {
   padding: 12px 20px;
-  border-radius: 4px;
   box-sizing: border-box;
+  outline: none;
 }
 
 .drop-area__button {
-
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -20,48 +19,25 @@
   .drop-area__checkbox {
     margin-bottom: 5px;
   }
-  // &:hover {
-  //   background-color: $secondary-color;
-  //   color: $font-secondary;
-  // }
 }
 
 mat-form-field.mat-form-field {
   display: block;
 }
 
-// /* Animate items as they're being sorted. */
-// .cdk-drop-list-dragging .cdk-drag {
-//   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-// }
-
-// /* Animate an item that has been dropped. */
-// .cdk-drag-animating {
-//   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-// }
-
-
-
-// .custom-placeholder {
-//   background: rgb(252, 0, 0);
-//   border: dotted 3px rgb(109, 0, 0);
-//   min-height: 60px;
-//   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-// }
-
 
 .hideBottomBorder {
-  border-bottom: none !important;
+  border-bottom: transparent !important;
 }
 
 .hideTopBorder {
-  border-top: none !important
+  border-top: transparent !important;
 }
 
 .hideLeftBorder {
-  border-left: none !important;
+  border-left: transparent !important;
 }
 
 .hideRightBorder {
-  border-right: none !important;
+  border-right: transparent !important;
 }

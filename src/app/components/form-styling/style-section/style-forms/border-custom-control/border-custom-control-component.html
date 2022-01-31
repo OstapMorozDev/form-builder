@@ -1,0 +1,41 @@
+<div class="container">
+  <h3>Hide borders</h3>
+  <div class="icons-container">
+    <mat-icon
+      [ngClass]="{
+        selected: value.borderTop,
+        unselected: !value.borderTop
+      }"
+      (click)="topClick()"
+    >
+      border_top</mat-icon
+    >
+    <mat-icon
+      [ngClass]="{
+        selected: value.borderRight,
+        unselected: !value.borderRight
+      }"
+      (click)="rightClick()"
+    >
+      border_right</mat-icon
+    >
+    <mat-icon
+      [ngClass]="{
+        selected: value.borderBottom,
+        unselected: !value.borderBottom
+      }"
+      (click)="bottomClick()"
+    >
+      border_bottom</mat-icon
+    >
+    <mat-icon
+      [ngClass]="{
+        selected: value.borderLeft,
+        unselected: !value.borderLeft
+      }"
+      (click)="leftClick()"
+    >
+      border_left</mat-icon
+    >
+  </div>
+</div>

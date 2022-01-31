@@ -27,7 +27,10 @@ import { FormChangesHandlingService } from './services/form-changes-handling.ser
 import { InputStylingFormComponent } from './components/form-styling/style-section/style-forms/input-styling-form/input-styling-form.component';
 import { ButtonStyleFormComponent } from './components/form-styling/style-section/style-forms/button-styling-form/button-styling-form.component';
 import { SelectStylingFormComponent } from './components/form-styling/style-section/style-forms/select-styling-form/select-styling-form.component';
-import { BorderInputComponent } from './components/form-styling/style-section/style-forms/border-input/border-input.component';
+import { BorderCustomControl } from './components/form-styling/style-section/style-forms/border-custom-control/border-custom-control';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -42,7 +45,9 @@ import { BorderInputComponent } from './components/form-styling/style-section/st
     InputStylingFormComponent,
     ButtonStyleFormComponent,
     SelectStylingFormComponent,
-    BorderInputComponent,
+    BorderCustomControl,
+    HeaderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,7 @@ import { BorderInputComponent } from './components/form-styling/style-section/st
     PortalModule, DragDropModule, BrowserAnimationsModule,
     MatButtonModule, MatFormFieldModule, MatInputModule,
     MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule,
-    MatIconModule
+    MatIconModule, CdkAccordionModule
   ],
   providers: [FormChangesHandlingService],
   bootstrap: [AppComponent]
