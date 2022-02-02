@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="login-form">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login-form-container">
+      <mat-form-field class="form-group__field">
+        <mat-label for="username">Email</mat-label>
+        <input
+          class="login-form__input"
+          id="email"
+          type="text"
+          formControlName="email"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="form-group__field">
+        <mat-label for="password">Password</mat-label>
+        <input
+          class="login-form__input"
+          id="password"
+          type="password"
+          formControlName="password"
+          autocomplete="on"
+          matInput
+        />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Primary
+      </button>
+    </div>
+  </form>
+</div>

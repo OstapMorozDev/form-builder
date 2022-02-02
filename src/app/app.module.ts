@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,7 +32,16 @@ import { BorderCustomControl } from './components/form-styling/style-section/sty
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { AuthService } from './services/auth.service';
+import { EffectsModule } from '@ngrx/effects';
 
+
+const appRoutes: Routes = [
+  { path: 'log-in', component: LoginComponent },
+  { path: '', component: HomeComponent },
+  { path: '**', redirectTo: '/' }
+]
 
 @NgModule({
   declarations: [
@@ -48,24 +58,28 @@ import { LoginComponent } from './components/login/login.component';
     BorderCustomControl,
     HeaderComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PortalModule, DragDropModule, BrowserAnimationsModule,
+    MatButtonModule, MatFormFieldModule, MatInputModule,
+    MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule,
+    MatIconModule, CdkAccordionModule,
     StoreModule.forRoot({}, {}),
+
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
-
     }),
-    PortalModule, DragDropModule, BrowserAnimationsModule,
-    MatButtonModule, MatFormFieldModule, MatInputModule,
-    MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule,
-    MatIconModule, CdkAccordionModule
+    RouterModule.forRoot(appRoutes),
+
+
   ],
-  providers: [FormChangesHandlingService],
+  providers: [FormChangesHandlingService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

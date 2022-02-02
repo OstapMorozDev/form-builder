@@ -7,16 +7,3 @@
   border: 0;
 }
 
-.main-grid {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: 1fr;
-  grid-gap: 0.5rem;
-}
-
-.main-section {
-  -webkit-box-shadow: 0px 5px 10px 2px rgba(43, 122, 120, 0.4) inset;
-  -moz-box-shadow: 0px 5px 10px 2px rgba(43, 122, 120, 0.4) inset;
-  box-shadow: 0px 5px 10px 2px rgba(43, 122, 120, 0.4) inset;
-}

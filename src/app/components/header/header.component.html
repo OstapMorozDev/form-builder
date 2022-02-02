@@ -1,6 +1,7 @@
 <header class="header">
   <div class="header__logo">Form Builder</div>
   <div class="">
-    <button class="header__button" mat-button color="primary">Log out</button>
+    <a class="header__button" mat-stroked-button color="primary" *ngIf="!isLogged">Log out</a>
+    <a class="header__button" routerLink="/log-in" mat-stroked-button color="primary" *ngIf="isLogged">Log in</a>
   </div>
 </header>

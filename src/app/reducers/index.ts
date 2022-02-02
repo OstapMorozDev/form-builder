@@ -1,8 +1,5 @@
 import {
-  ActionReducer,
   ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
@@ -12,11 +9,14 @@ import { styleSectionNode, StyleSectionState, styleSectionReducer } from './styl
 export interface State {
   [dropSectionNode]: DropSectionState
   [styleSectionNode]: StyleSectionState
+
 }
 
 export const reducers: ActionReducerMap<State> = {
   [dropSectionNode]: dropSectionReducer,
-  [styleSectionNode]: styleSectionReducer
+  [styleSectionNode]: styleSectionReducer,
+
+
 };
 
 
