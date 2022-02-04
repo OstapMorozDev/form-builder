@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
@@ -7,7 +7,7 @@ import { User } from '../interfaces/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private BASE_URL: string = "http://localhost:3000";
+  private baseUrl: string = "http://localhost:8000";
 
   constructor(private http: HttpClient) { }
 
@@ -15,11 +15,8 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-
-
-  logIn(email: string, password: string): Observable<any> {
-    const url = `${this.BASE_URL}/auth/login`;
-    return this.http.post<User>(url, {email, password});
+  login(body: { email: string, password: string }) {
+    console.log(body)
+    return this.http.post<any>(`${this.baseUrl}/auth/login`, body);
   }
-
 }

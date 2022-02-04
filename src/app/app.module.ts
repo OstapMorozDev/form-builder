@@ -8,8 +8,12 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,17 +33,19 @@ import { InputStylingFormComponent } from './components/form-styling/style-secti
 import { ButtonStyleFormComponent } from './components/form-styling/style-section/style-forms/button-styling-form/button-styling-form.component';
 import { SelectStylingFormComponent } from './components/form-styling/style-section/style-forms/select-styling-form/select-styling-form.component';
 import { BorderCustomControl } from './components/form-styling/style-section/style-forms/border-custom-control/border-custom-control';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './services/auth.service';
-import { EffectsModule } from '@ngrx/effects';
-
+import { AuthEffects } from './reducers/auth/auth.effects';
+import { TokenInterceptor } from './services/token-interceptor.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const appRoutes: Routes = [
   { path: 'log-in', component: LoginComponent },
-  { path: '', component: HomeComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '/' }
 ]
 
@@ -59,8 +65,11 @@ const appRoutes: Routes = [
     HeaderComponent,
     LoginComponent,
     HomeComponent,
+    SignUpComponent,
+
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     PortalModule, DragDropModule, BrowserAnimationsModule,
@@ -69,17 +78,22 @@ const appRoutes: Routes = [
     MatIconModule, CdkAccordionModule,
     StoreModule.forRoot({}, {}),
 
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),
     RouterModule.forRoot(appRoutes),
+    EffectsModule.forRoot([AuthEffects])
 
 
   ],
-  providers: [FormChangesHandlingService, AuthService],
+  providers: [FormChangesHandlingService, AuthService, AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

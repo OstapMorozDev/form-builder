@@ -1,7 +1,22 @@
 <header class="header">
   <div class="header__logo">Form Builder</div>
   <div class="">
-    <a class="header__button" mat-stroked-button color="primary" *ngIf="!isLogged">Log out</a>
-    <a class="header__button" routerLink="/log-in" mat-stroked-button color="primary" *ngIf="isLogged">Log in</a>
+    <a
+      class="header__button"
+      routerLink="/log-in"
+      mat-stroked-button
+      color="primary"
+      *ngIf="isAuth$ | async"
+      (click) = "logOut()"
+      >Log out</a
+    >
+    <!-- <a
+      class="header__button"
+      routerLink="/log-in"
+      mat-stroked-button
+      color="primary"
+      *ngIf="(isAuth$ | async) === false"
+      >Log in</a
+    > -->
   </div>
 </header>

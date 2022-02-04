@@ -1,40 +1,55 @@
-import { pipe } from '../../../../node_modules/rxjs/src/internal/util/pipe';
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { mergeMap, Observable, switchMap, map, catchError, EMPTY, tap } from 'rxjs';
-
-
-import * as AuthActions from './auth.actions'
-
+import { Router } from '@angular/router';
+import { act, Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import * as AuthActions from './auth.actions'
 
 
 @Injectable()
 export class AuthEffects {
-    constructor(
-        private actions$: Actions,
-        private authService$: AuthService,
 
-    ) { }
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
-    logIn$ = createEffect(() => this.actions$.pipe(
-        ofType(AuthActions.logIn),
-        switchMap((payload) => {
-            return this.authService$.logIn(payload.email, payload.password).pipe(
-                map((user) => {
-                    console.log(user);
-                    return AuthActions.logInSucces({ email: user.email, token: user.token });
-                }),
-                catchError(() => EMPTY)
-            )
+  login$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.logIn),
+    switchMap(action => this.authService.login({ email: action.email, password: action.password })
+      .pipe(
+        tap(data => console.log(data)),
+        map(data => {
+          return AuthActions.logInSuccess({ token: data.access_token })
+        }),
+        catchError((response) => {
+          return of(AuthActions.logInFailure({ message: response.error.message }));
         })
-    ))
+      ))
+  ))
 
-    logInSuccess$ = createEffect(() => this.actions$.pipe(
-        ofType(AuthActions.logInSucces),
-        tap(user => {
-            localStorage.setItem('token', user.token);
-            
+  loginSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logInSuccess),
+        tap((data) => {
+          localStorage.setItem('token', data.token);
+          this.router.navigate(['/'])
         })
-    ))
+      ),
+    { dispatch: false }
+  );
+
+  loginFailure$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.logInFailure),
+  ), { dispatch: false })
+
+
+  logOut$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.logOut),
+    tap(() => {
+      localStorage.removeItem('token');
+    })
+  ), { dispatch: false })
 }
