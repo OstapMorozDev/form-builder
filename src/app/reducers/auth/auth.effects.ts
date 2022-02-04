@@ -52,4 +52,28 @@ export class AuthEffects {
       localStorage.removeItem('token');
     })
   ), { dispatch: false })
+
+
+  signUp$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.signUp),
+    switchMap(action => this.authService.signUp({ email: action.email, password: action.password })
+      .pipe(
+        tap(data => console.log("befor", data)),
+        map(data => AuthActions.signUpSuccess({token: data.access_token}))
+      ))
+  ))
+
+  signUpSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.signUpSuccess),
+        tap((data) => {
+          console.log("after", data)
+          localStorage.setItem('token', data.token);
+          this.router.navigate(['/'])
+        })
+      ),
+    { dispatch: false }
+  );
+
 }

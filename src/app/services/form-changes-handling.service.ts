@@ -18,10 +18,10 @@ export class FormChangesHandlingService {
       case FormTypes.placeholderText:
         this.changePlaceholderText(elementId, value);
         break;
-      case FormTypes.widthInput:
+      case FormTypes.width:
         this.changeWidth(elementId, value);
         break;
-      case FormTypes.heightInput:
+      case FormTypes.height:
         this.changeHeight(elementId, value);
         break;
       case FormTypes.fontSize:

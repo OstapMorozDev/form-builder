@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FormStylingComponent } from './components/form-styling/form-styling.component';
 import { DropSectionComponent } from './components/drop-section/drop-section.component';
@@ -75,7 +77,7 @@ const appRoutes: Routes = [
     PortalModule, DragDropModule, BrowserAnimationsModule,
     MatButtonModule, MatFormFieldModule, MatInputModule,
     MatSelectModule, MatCheckboxModule, FormsModule, ReactiveFormsModule,
-    MatIconModule, CdkAccordionModule,
+    MatIconModule, CdkAccordionModule, MatDividerModule,
     StoreModule.forRoot({}, {}),
 
     StoreModule.forRoot(reducers),

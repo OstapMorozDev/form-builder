@@ -1,7 +1,7 @@
 export enum FormTypes {
     placeholderText = "placeholderText",
-    widthInput = "widthInput",
-    heightInput = "heightInput",
+    width = "width",
+    height = "height",
     isRequired = "isRequired",
     borderStyle = "borderStyle",
     borderWidth = "borderWidth",

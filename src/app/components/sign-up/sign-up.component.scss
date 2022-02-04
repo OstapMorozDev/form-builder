@@ -1,4 +1,6 @@
-.login-form {
+@import "../../common/colors.scss";
+
+.signup-form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +10,7 @@
   -moz-box-shadow: 0px 5px 10px 2px rgba(43, 122, 120, 0.4) inset;
   box-shadow: 0px 5px 10px 2px rgba(43, 122, 120, 0.4) inset;
 
-  &-container {
+  .form-container {
     width: 550px;
     display: flex;
     justify-content: center;
@@ -16,10 +18,22 @@
     flex-direction: column;
   }
 
-  &__field {
+  .form-field {
+    width: 80%;
+
+    .input {
+      height: 45px;
+      font-size: 1.25rem;
+    }
+  }
+
+  .button {
     width: 80%;
   }
 
-  &__
-
+  .sign-up-btn {
+    background-color: $primary-color;
+    width: 25%;
+    margin-top: 20px;
+  }
 }

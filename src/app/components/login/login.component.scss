@@ -1,3 +1,5 @@
+@import "../../common/colors.scss";
+
 .login-form {
   display: flex;
   justify-content: center;
@@ -14,9 +16,24 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
 
-    .form-group__field {
-      width: 80%;
+  &__field {
+    width: 80%;
+
+    .input {
+      height: 45px;
+      font-size: 1.25rem;
     }
+  }
+
+  .button {
+    width: 80%;
+  }
+
+  .sign-up-btn {
+    background-color: $primary-color;
+    width: 25%;
+    margin-top: 40px;
   }
 }

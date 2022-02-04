@@ -1,4 +1,6 @@
 <div class="style-section">
+  <ng-template cdkPortalOutlet #portalContainer></ng-template>
+
   <app-input-styling-form
     *ngIf="element.type === 'input' || element.type === 'textarea'"
     [element]="element"

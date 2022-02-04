@@ -16,7 +16,11 @@ export class AuthService {
   }
 
   login(body: { email: string, password: string }) {
-    console.log(body)
     return this.http.post<any>(`${this.baseUrl}/auth/login`, body);
+  }
+
+  signUp(body: { email: string, password: string }) {
+    console.log(body);
+    return this.http.post<any>(`${this.baseUrl}/auth/register`, body);
   }
 }

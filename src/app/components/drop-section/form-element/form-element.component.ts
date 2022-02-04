@@ -8,6 +8,8 @@ import { FormElement } from 'src/app/classes/form-element.class';
 })
 export class FormElementComponent   {
 
+  inputValue: string = '';
+
   @Input() element: FormElement
 
 

@@ -1,3 +1,4 @@
+<div *cdkDragPlaceholder class="placeholder"></div>
 <div class="drop-area__element" *ngIf="element.type === 'input'">
   <div class="custom-placeholder" *cdkDragPlaceholder></div>
   <input
@@ -79,7 +80,12 @@
 </div>
 
 <div class="drop-area__element" *ngIf="element.type === 'checkbox'">
-  <mat-checkbox class="drop-area__checkbox" cdkDrag>Check me!</mat-checkbox>
+  <mat-checkbox
+    class="drop-area__checkbox"
+   
+    cdkDrag
+    >Check me!</mat-checkbox
+  >
 </div>
 
 <div class="drop-area__element" *ngIf="element.type === 'select'">

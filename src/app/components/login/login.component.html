@@ -1,10 +1,10 @@
 <div class="login-form">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="login-form-container">
-      <mat-form-field class="form-group__field">
+      <mat-form-field class="login-form__field">
         <mat-label for="username">Email</mat-label>
         <input
-          class="login-form__input"
+          class="input"
           id="email"
           type="text"
           formControlName="email"
@@ -12,10 +12,10 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="form-group__field">
+      <mat-form-field class="login-form__field">
         <mat-label for="password">Password</mat-label>
         <input
-          class="login-form__input"
+          class="input"
           id="password"
           type="password"
           formControlName="password"
@@ -24,14 +24,30 @@
         />
       </mat-form-field>
 
+
+      <label for="log-in"></label>
       <button
-      class="login-form__button"
+        class="button"
+        id="log-in"
         mat-raised-button
         color="primary"
         type="submit"
         [disabled]="loginForm.invalid"
       >
         Log in
+      </button>
+
+      <mat-divider class="divider"></mat-divider>
+
+      <label for="sig-up"></label>
+      <button
+        class="button sign-up-btn"
+        routerLink="/sign-up"
+        id="sign-up"
+        mat-raised-button
+        color="primary"
+      >
+        Sign up
       </button>
     </div>
   </form>
