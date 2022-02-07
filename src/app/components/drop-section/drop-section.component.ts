@@ -38,13 +38,12 @@ export class DropSectionComponent {
   }
 
 
-
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       this.moveElement(event.previousIndex, event.currentIndex)
     } else {
 
-      const newElement = new FormElement(event.previousContainer.data[event.previousIndex].type);
+      const newElement = new FormElement(event.previousContainer.data[event.previousIndex]);
       this.addElement(newElement, event.currentIndex)
     }
 

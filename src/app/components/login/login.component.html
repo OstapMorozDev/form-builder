@@ -1,3 +1,4 @@
+
 <div class="login-form">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="login-form-container">
@@ -24,6 +25,9 @@
         />
       </mat-form-field>
 
+      <div class="error-container">
+        <mat-error *ngIf="errorMessage$ | async">{{ errorMessage$ }}</mat-error>
+      </div>
 
       <label for="log-in"></label>
       <button
@@ -37,8 +41,6 @@
         Log in
       </button>
 
-      <mat-divider class="divider"></mat-divider>
-
       <label for="sig-up"></label>
       <button
         class="button sign-up-btn"
@@ -51,4 +53,6 @@
       </button>
     </div>
   </form>
+
+  <button (click)="logErrors()">Log</button>
 </div>

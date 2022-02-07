@@ -1,7 +1,6 @@
-import { EmailValidator } from '@angular/forms';
 import { createAction, props } from '@ngrx/store';
-import { FormElement } from 'src/app/classes/form-element.class';
-import { User } from 'src/app/interfaces/user';
+import { AuthData } from 'src/app/interfaces/AuthData';
+
 
 export enum authActionTypes {
   logIn = '[AUTH] Login',
@@ -10,6 +9,7 @@ export enum authActionTypes {
   logOut = '[Auth] Logout',
   signUp = '[Auth] Signup',
   signtUpSuccess = '[Auth] Signup Success',
+  initAuth = '[Auth] Initial Auth'
 }
 
 
@@ -21,7 +21,7 @@ export const logIn = createAction(
 
 export const logInSuccess = createAction(
   authActionTypes.logInSucces,
-  props<{ token: string }>()
+  props<{ authData: AuthData }>()
 );
 
 export const logInFailure = createAction(
@@ -41,6 +41,11 @@ export const signUp = createAction(
 
 export const signUpSuccess = createAction(
   authActionTypes.signtUpSuccess,
-  props<{ token: string }>()
+
+);
+
+export const initAuth = createAction(
+  authActionTypes.initAuth,
+
 );
 

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { FormElement } from 'src/app/classes/form-element.class';
-import { BorderControl } from 'src/app/interfaces/borderControl';
+import { BorderControl } from 'src/app/interfaces/BorderControl';
 
 export enum dropSectionActionsType {
     addFormElement = '[DROP-SECTION] addFormElement',

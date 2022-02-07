@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { changeTitle } from 'src/app/reducers/drop/drop.section.actions';
@@ -10,20 +10,19 @@ import { selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
   templateUrl: './title.component.html',
   styleUrls: ['./title.component.scss']
 })
-export class TitleComponent implements OnInit {
+export class TitleComponent  {
 
   public formTitle$: Observable<string> = this.store$.pipe(select(selectFormTitle));
   public titleEditMode: boolean = false;
 
   constructor(private store$: Store<DropSectionState>) { }
 
-  ngOnInit(): void {
-  }
+
 
   onTitleChange(value: string) {
     this.store$.dispatch(changeTitle({ value }))
   }
-  
+
   onInputeDoubleClick($event: any) {
     this.titleEditMode = true;
   }

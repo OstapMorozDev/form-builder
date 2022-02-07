@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { act, Actions, createEffect, ofType } from '@ngrx/effects';
+import {  Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { AuthData } from 'src/app/interfaces/AuthData';
 import { AuthService } from 'src/app/services/auth.service';
 import * as AuthActions from './auth.actions'
 
@@ -19,9 +20,8 @@ export class AuthEffects {
     ofType(AuthActions.logIn),
     switchMap(action => this.authService.login({ email: action.email, password: action.password })
       .pipe(
-        tap(data => console.log(data)),
         map(data => {
-          return AuthActions.logInSuccess({ token: data.access_token })
+          return AuthActions.logInSuccess({ authData: data })
         }),
         catchError((response) => {
           return of(AuthActions.logInFailure({ message: response.error.message }));
@@ -34,22 +34,20 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.logInSuccess),
         tap((data) => {
-          localStorage.setItem('token', data.token);
+          console.log('after', data)
+          localStorage.setItem('authData', JSON.stringify(data.authData));
           this.router.navigate(['/'])
         })
       ),
     { dispatch: false }
   );
 
-  loginFailure$ = createEffect(() => this.actions$.pipe(
-    ofType(AuthActions.logInFailure),
-  ), { dispatch: false })
-
 
   logOut$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logOut),
     tap(() => {
-      localStorage.removeItem('token');
+      localStorage.removeItem('authData');
+      this.router.navigate(['/log-in'])
     })
   ), { dispatch: false })
 
@@ -59,7 +57,7 @@ export class AuthEffects {
     switchMap(action => this.authService.signUp({ email: action.email, password: action.password })
       .pipe(
         tap(data => console.log("befor", data)),
-        map(data => AuthActions.signUpSuccess({token: data.access_token}))
+        map(data => AuthActions.signUpSuccess())
       ))
   ))
 
@@ -68,12 +66,29 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.signUpSuccess),
         tap((data) => {
-          console.log("after", data)
-          localStorage.setItem('token', data.token);
-          this.router.navigate(['/'])
+          this.router.navigate(['/log-in'])
         })
       ),
     { dispatch: false }
   );
 
+
+  initialAuth$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.initAuth),
+    map(() => {
+      const authDataString = localStorage.getItem('authData');
+      if (!authDataString) {
+        return AuthActions.logOut();
+      }
+
+      const authData: AuthData = JSON.parse(authDataString);
+
+      if ((authData.exp * 1000 - 10 * 1000 - Date.now()) < 0) {
+        return AuthActions.logOut();
+      }
+
+      console.log("initial", authData)
+      return AuthActions.logInSuccess({ authData });
+    })
+  ))
 }

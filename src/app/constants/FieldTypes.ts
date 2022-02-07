@@ -1,4 +1,4 @@
-export enum FormTypes {
+export enum FieldTypes {
     placeholderText = "placeholderText",
     width = "width",
     height = "height",

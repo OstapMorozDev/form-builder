@@ -3,10 +3,9 @@
     {{ formTitle$ | async }}
   </h2>
 
-  <mat-form-field appearance="fill" *ngSwitchCase="true">
+  <mat-form-field  *ngSwitchCase="true">
     <mat-label>Form title</mat-label>
     <input
-    
       matInput
       [ngModel]="formTitle$ | async"
       (blur)="onTitleInputeBlur($event)"

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormElement } from 'src/app/classes/form-element.class';
+import { TemplatePortal } from '@angular/cdk/portal';
+import { AfterViewInit, Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { DragableElements } from 'src/app/constants/DragableElements';
 
 
 
@@ -9,30 +10,19 @@ import { FormElement } from 'src/app/classes/form-element.class';
   styleUrls: ['./drag-section.component.scss']
 })
 
-export class DragSectionComponent {
+export class DragSectionComponent implements AfterViewInit {
 
-  elements: FormElement[] = [
-    {
-      id: 0,
-      type: "input",
-    },
-    {
-      id: 1,
-      type: "textarea"
-    },
-    {
-      id: 2,
-      type: "button"
-    },
-    {
-      id: 3,
-      type: "checkbox"
-    },
-    {
-      id: 4,
-      type: "select"
-    }
-  ]
+  @ViewChild('templatePortalContent') templatePortalContent: TemplateRef<unknown>;
+
+  elements = DragableElements;
+  templatePortal: TemplatePortal<any>;
 
 
+  constructor(private _viewContainerRef: ViewContainerRef) { }
+
+  ngAfterViewInit() {
+
+    this.templatePortal = new TemplatePortal(this.templatePortalContent, this._viewContainerRef);
+
+  }
 }

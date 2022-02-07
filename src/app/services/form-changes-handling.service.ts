@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { FormTypes } from '../constants/form-types';
-import { BorderControl } from '../interfaces/borderControl';
+import { FieldTypes } from '../constants/FieldTypes';
+import { BorderControl } from '../interfaces/BorderControl';
 import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeFontSize, changeFontWeight, changeHeight, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
 import { StyleSectionState } from '../reducers/style/style-section.reducer';
 
@@ -15,39 +15,39 @@ export class FormChangesHandlingService {
 
   handleChanges(formType: string, value: string, elementId: number): void {
     switch (formType) {
-      case FormTypes.placeholderText:
+      case FieldTypes.placeholderText:
         this.changePlaceholderText(elementId, value);
         break;
-      case FormTypes.width:
+      case FieldTypes.width:
         this.changeWidth(elementId, value);
         break;
-      case FormTypes.height:
+      case FieldTypes.height:
         this.changeHeight(elementId, value);
         break;
-      case FormTypes.fontSize:
+      case FieldTypes.fontSize:
         this.changeFontSize(elementId, value);
         break;
-      case FormTypes.fontWeight:
+      case FieldTypes.fontWeight:
         this.changeFontWeight(elementId, value);
         break;
-      case FormTypes.borderStyle:
+      case FieldTypes.borderStyle:
         this.changeBorderStyle(elementId, value);
         break;
-      case FormTypes.borderColor:
+      case FieldTypes.borderColor:
         this.changeBorderColor(elementId, value);
         break;
-      case FormTypes.borderWidth:
+      case FieldTypes.borderWidth:
         this.changeBorderWidth(elementId, value);
         break;
 
-      case FormTypes.textColor:
+      case FieldTypes.textColor:
         this.changeTextColor(elementId, value);
         break;
-      case FormTypes.backgroundColor:
+      case FieldTypes.backgroundColor:
         this.changeBackgroundColor(elementId, value)
         break;
 
-      case FormTypes.borderControl:
+      case FieldTypes.borderControl:
         this.changeBorderControl(elementId, (value as unknown) as BorderControl)
         break;
 

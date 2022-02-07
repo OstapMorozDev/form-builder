@@ -1,37 +1,41 @@
 <section class="section">
   <div class="section-container">
-    <div class="dragable-items" cdkDropList [cdkDropListData]="elements">
-      <div
-        class="dragable-items__item"
-        *ngFor="let el of elements"
-        [ngSwitch]="el.type"
-        cdkDrag
-      >
-        <div class="flex" *ngSwitchCase="'input'">
-          <div>Input</div>
-          <mat-icon>input</mat-icon>
-        </div>
+    <ng-template [cdkPortalOutlet]="templatePortal"></ng-template>
+  </div>
+</section>
 
-        <div class="flex" *ngSwitchCase="'textarea'">
-          <div>Textarea</div>
-          <mat-icon>text_rotation_none</mat-icon>
-        </div>
+<ng-template #templatePortalContent>
+  <div class="dragable-items" cdkDropList [cdkDropListData]="elements">
+    <div
+      class="dragable-items__item"
+      *ngFor="let el of elements"
+      [ngSwitch]="el"
+      cdkDrag
+    >
+      <div class="flex" *ngSwitchCase="'input'">
+        <div>Input</div>
+        <mat-icon>input</mat-icon>
+      </div>
 
-        <div class="flex" *ngSwitchCase="'button'">
-          <div>Button</div>
-          <mat-icon>power_settings_new</mat-icon>
-        </div>
+      <div class="flex" *ngSwitchCase="'textarea'">
+        <div>Textarea</div>
+        <mat-icon>text_rotation_none</mat-icon>
+      </div>
 
-        <div class="flex" *ngSwitchCase="'checkbox'">
-          <div>Checkbox</div>
-          <mat-icon>check_box</mat-icon>
-        </div>
+      <div class="flex" *ngSwitchCase="'button'">
+        <div>Button</div>
+        <mat-icon>power_settings_new</mat-icon>
+      </div>
 
-        <div class="flex" *ngSwitchCase="'select'">
-          <div>Seleсt</div>
-          <mat-icon>list</mat-icon>
-        </div>
+      <div class="flex" *ngSwitchCase="'checkbox'">
+        <div>Checkbox</div>
+        <mat-icon>check_box</mat-icon>
+      </div>
+
+      <div class="flex" *ngSwitchCase="'select'">
+        <div>Seleсt</div>
+        <mat-icon>list</mat-icon>
       </div>
     </div>
   </div>
-</section>
+</ng-template>

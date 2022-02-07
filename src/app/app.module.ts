@@ -43,6 +43,7 @@ import { AuthEffects } from './reducers/auth/auth.effects';
 import { TokenInterceptor } from './services/token-interceptor.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 const appRoutes: Routes = [
   { path: 'log-in', component: LoginComponent },
@@ -85,8 +86,15 @@ const appRoutes: Routes = [
       maxAge: 25, // Retains last 25 states
     }),
     RouterModule.forRoot(appRoutes),
-    EffectsModule.forRoot([AuthEffects])
-
+    EffectsModule.forRoot([AuthEffects]),
+    JwtModule.forRoot({
+      config: {
+        // ...
+        tokenGetter: (req) => {
+          return localStorage.getItem("token");
+        },
+      },
+    })
 
   ],
   providers: [FormChangesHandlingService, AuthService, AuthGuardService,
@@ -94,7 +102,7 @@ const appRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

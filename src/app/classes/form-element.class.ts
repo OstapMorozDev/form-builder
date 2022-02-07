@@ -1,4 +1,4 @@
-import { BorderControl } from "../interfaces/borderControl";
+import { BorderControl } from "../interfaces/BorderControl";
 
 
 const PRIMARY_COLOR: string = "#3aafa9";
