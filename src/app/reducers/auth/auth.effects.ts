@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {  Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
 import { AuthData } from 'src/app/interfaces/AuthData';
 import { AuthService } from 'src/app/services/auth.service';
 import * as AuthActions from './auth.actions'
@@ -34,7 +34,6 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.logInSuccess),
         tap((data) => {
-          console.log('after', data)
           localStorage.setItem('authData', JSON.stringify(data.authData));
           this.router.navigate(['/'])
         })
@@ -45,6 +44,10 @@ export class AuthEffects {
 
   logOut$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logOut),
+    filter(() => {
+      const authData = localStorage.getItem('authData');
+      return authData ? true : false;
+    }),
     tap(() => {
       localStorage.removeItem('authData');
       this.router.navigate(['/log-in'])
@@ -56,7 +59,6 @@ export class AuthEffects {
     ofType(AuthActions.signUp),
     switchMap(action => this.authService.signUp({ email: action.email, password: action.password })
       .pipe(
-        tap(data => console.log("befor", data)),
         map(data => AuthActions.signUpSuccess())
       ))
   ))
@@ -65,7 +67,7 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.signUpSuccess),
-        tap((data) => {
+        tap(() => {
           this.router.navigate(['/log-in'])
         })
       ),
@@ -87,7 +89,6 @@ export class AuthEffects {
         return AuthActions.logOut();
       }
 
-      console.log("initial", authData)
       return AuthActions.logInSuccess({ authData });
     })
   ))

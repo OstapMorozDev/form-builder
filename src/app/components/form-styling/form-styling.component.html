@@ -23,7 +23,9 @@
         class="element-styling-container"
         [style.display]="accordionItem.expanded ? '' : 'none'"
       >
-        <div *ngIf="selectedFormElement$ | async as el; else elementNotSelected">
+        <div
+          *ngIf="selectedFormElement$ | async as el; else elementNotSelected"
+        >
           <app-styling-section [element]="el"></app-styling-section>
         </div>
       </div>

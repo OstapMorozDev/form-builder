@@ -7,11 +7,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrls: ['./border-custom-control.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => BorderCustomControl),
+    useExisting: forwardRef(() => BorderControlComponent),
     multi: true
   }]
 })
-export class BorderCustomControl implements ControlValueAccessor {
+export class BorderControlComponent implements ControlValueAccessor {
 
   public value: any;
   onTouched: () => void;

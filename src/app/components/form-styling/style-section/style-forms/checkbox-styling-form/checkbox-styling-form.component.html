@@ -1,0 +1,55 @@
+<form class="form-group" [formGroup]="customFormGroup" novalidate>
+  <mat-form-field class="form-group__field">
+    <mat-label for="placeholderInput">Label text</mat-label>
+    <input
+      matInput
+      class="form-group__input"
+      id="placeholderInput"
+      name="placeholderInput"
+      type="text"
+      formControlName="labelText"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="fontSize">Font Size</mat-label>
+    <input
+      class="form-group__input"
+      id="fontSize"
+      type="text"
+      formControlName="fontSize"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label for="fontWeight">Font Weight</mat-label>
+    <input
+      class="form-group__input"
+      id="fontWeight"
+      type="text"
+      formControlName="fontWeight"
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label>Checkbox style</mat-label>
+    <mat-select id="select" name="select" formControlName="checkboxStyle">
+      <mat-option value="primary">Primary</mat-option>
+      <mat-option value="accent">Accent</mat-option>
+      <mat-option value="warn">Warn</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form-group__field">
+    <mat-label>Text Color</mat-label>
+    <input
+      formControlName="textColor"
+      class="color"
+      id="color"
+      type="color"
+      matInput
+    />
+  </mat-form-field>
+</form>

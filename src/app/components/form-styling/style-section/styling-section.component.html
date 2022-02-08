@@ -18,5 +18,13 @@
     *ngIf="element.type === 'select'"
     [element]="element"
     [customFormGroup]="myForm"
-  ></app-select-styling-form>
+  >
+  </app-select-styling-form>
+
+  <app-checkbox-styling-form
+    *ngIf="element.type === 'checkbox'"
+    [element]="element"
+    [customFormGroup]="myForm"
+  >
+  </app-checkbox-styling-form>
 </div>

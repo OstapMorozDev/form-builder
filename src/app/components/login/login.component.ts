@@ -1,12 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { select, Store } from '@ngrx/store';
+import {  Store } from '@ngrx/store';
 
-import { Observable } from 'rxjs';
+
 import { logIn } from 'src/app/reducers/auth/auth.actions';
 import { AuthState } from 'src/app/reducers/auth/auth.reducer';
-import { selectAuthErrorMsg } from 'src/app/reducers/auth/auth.selectors';
 
 
 @Component({
@@ -24,14 +22,11 @@ export class LoginComponent {
   constructor(private store$: Store<AuthState>) { }
 
 
-  public errorMessage$: Observable<string> = this.store$.select(selectAuthErrorMsg);
 
   onSubmit() {
     const { email, password } = this.loginForm.value
     this.store$.dispatch(logIn({ email, password }));
   }
 
-  logErrors() {
-    console.log(this.errorMessage$);
-  }
+
 }

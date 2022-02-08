@@ -12,7 +12,9 @@
         class="drop-area__list"
         *ngFor="let el of formElements$ | async"
         (click)="onElementClick(el)"
+        cdkDrag
       >
+        <div class="drag-placeholder" *cdkDragPlaceholder></div>
         <app-form-element [element]="el"></app-form-element>
       </div>
     </div>

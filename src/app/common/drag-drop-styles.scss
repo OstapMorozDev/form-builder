@@ -1,0 +1,17 @@
+
+.drag-placeholder {
+  border: dashed 4px $secondary-color;
+  min-height: 50px;
+  margin: 5px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Animate items as they're being sorted. */
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms;
+}
+
+/* Animate an item that has been dropped. */
+.cdk-drag-animating {
+  transition: transform 200ms;
+}

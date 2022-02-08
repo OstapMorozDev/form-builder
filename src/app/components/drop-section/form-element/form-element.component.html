@@ -1,8 +1,5 @@
-<div *cdkDragPlaceholder class="placeholder"></div>
 <div class="drop-area__element" *ngIf="element.type === 'input'">
-  <div class="custom-placeholder" *cdkDragPlaceholder></div>
   <input
-    cdkDrag
     class="drop-area__input hideBottomBorder"
     placeholder="{{ element.placeholderText }}"
     [ngStyle]="{
@@ -47,7 +44,6 @@
       hideRightBorder: !element.borderControl?.borderRight
     }"
     required="{{ element.isRequired }}"
-    cdkDrag
   ></textarea>
 </div>
 
@@ -73,7 +69,6 @@
       hideLeftBorder: !element.borderControl?.borderLeft,
       hideRightBorder: !element.borderControl?.borderRight
     }"
-    cdkDrag
   >
     Button
   </button>
@@ -81,10 +76,14 @@
 
 <div class="drop-area__element" *ngIf="element.type === 'checkbox'">
   <mat-checkbox
+    [ngStyle]="{
+      color: element.textColor,
+      fontSize: element.fontSize,
+      fontWeight: element.fontWeight
+    }"
+    [color]="element.checkboxStyle"
     class="drop-area__checkbox"
-   
-    cdkDrag
-    >Check me!</mat-checkbox
+    >{{ element.labelText }}</mat-checkbox
   >
 </div>
 
@@ -94,7 +93,6 @@
     class="drop-area__input"
     id="select"
     name="select"
-    cdkDrag
     [ngStyle]="{
       width: element.width,
       height: element.height,

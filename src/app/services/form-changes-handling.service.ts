@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { FieldTypes } from '../constants/FieldTypes';
 import { BorderControl } from '../interfaces/BorderControl';
-import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeFontSize, changeFontWeight, changeHeight, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
+import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeCheckboxStyle, changeFontSize, changeFontWeight, changeHeight, changeLabelText, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
 import { StyleSectionState } from '../reducers/style/style-section.reducer';
 
 @Injectable({
@@ -43,14 +43,23 @@ export class FormChangesHandlingService {
       case FieldTypes.textColor:
         this.changeTextColor(elementId, value);
         break;
+
       case FieldTypes.backgroundColor:
         this.changeBackgroundColor(elementId, value)
+        break;
+
+
+      case FieldTypes.labelText:
+        this.changeLabelText(elementId, value)
         break;
 
       case FieldTypes.borderControl:
         this.changeBorderControl(elementId, (value as unknown) as BorderControl)
         break;
+      case FieldTypes.checkboxStyle:
 
+        this.changecheckboxStyle(elementId, value)
+        break;
 
     }
 
@@ -103,6 +112,15 @@ export class FormChangesHandlingService {
 
   private changeBorderControl(elementID: number, borderControl: BorderControl) {
     this.store$.dispatch(changeBorderControl({ elementID, borderControl }));
+  }
+
+  private changecheckboxStyle(elementID: number, style: string) {
+    console.log("1234")
+    this.store$.dispatch(changeCheckboxStyle({ elementID, style }));
+  }
+
+  private changeLabelText(elementID: number, labelText: string) {
+    this.store$.dispatch(changeLabelText({ elementID, labelText }));
   }
 }
 

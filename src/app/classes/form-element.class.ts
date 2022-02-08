@@ -20,6 +20,8 @@ export class FormElement {
   fontWeight?: string;
   backgroundColor?: string;
   borderControl?: BorderControl;
+  labelText?: string;
+  checkboxStyle?: string;
 
 
 
@@ -102,21 +104,11 @@ export class FormElement {
         };
         break;
       case 'checkbox':
-        this.width = "100%";
-        this.height = "45px";
+        this.textColor= FONT_PRIMARY;
         this.fontSize = "16px";
-        this.isRequired = false;
-        this.textColor = FONT_PRIMARY;
-        this.borderWidth = "2px";
-        this.borderStyle = "solid";
-        this.borderColor = PRIMARY_COLOR;
         this.fontWeight = "400";
-        this.borderControl = {
-          borderBottom: true,
-          borderTop: true,
-          borderLeft: true,
-          borderRight: true
-        };
+        this.labelText = 'Check me!';
+        this.checkboxStyle = "primary";
     }
   }
 }

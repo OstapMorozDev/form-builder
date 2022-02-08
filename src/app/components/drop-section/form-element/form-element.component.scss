@@ -37,18 +37,7 @@
   border-right: transparent !important;
 }
 
-/* Animate items as they're being sorted. */
-.cdk-drop-list-dragging .cdk-drag {
-  transition: transform 250ms;
-}
 
-/* Animate an item that has been dropped. */
-.cdk-drag-animating {
-  transition: transform 300ms;
-}
-
-.placeholder {
-  width: 200px;
-  height: 200px;
-  background-color: red;
+.drop-area__checkbox {
+scale: 2;
 }

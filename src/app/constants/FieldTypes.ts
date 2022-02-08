@@ -11,4 +11,6 @@ export enum FieldTypes {
     textColor = "textColor",
     backgroundColor = "backgroundColor",
     borderControl = "borderControl",
+    labelText = "labelText",
+    checkboxStyle = "checkboxStyle"
 }

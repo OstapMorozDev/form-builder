@@ -41,11 +41,9 @@ export const signUp = createAction(
 
 export const signUpSuccess = createAction(
   authActionTypes.signtUpSuccess,
-
 );
 
 export const initAuth = createAction(
   authActionTypes.initAuth,
-
 );
 

@@ -11,11 +11,11 @@ import { selectedElement } from '../../reducers/style/style-section.selectors'
   templateUrl: './form-styling.component.html',
   styleUrls: ['./form-styling.component.scss']
 })
+
+
 export class FormStylingComponent  {
 
   public selectedFormElement$: Observable<FormElement | null> = this.store$.pipe(select(selectedElement));
-
-
   constructor(private store$: Store<StyleSectionState>) { }
 
 

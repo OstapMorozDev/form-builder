@@ -1,5 +1,5 @@
 import { TemplatePortal } from '@angular/cdk/portal';
-import { AfterViewInit, Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { DragableElements } from 'src/app/constants/DragableElements';
 
 
@@ -10,7 +10,7 @@ import { DragableElements } from 'src/app/constants/DragableElements';
   styleUrls: ['./drag-section.component.scss']
 })
 
-export class DragSectionComponent implements AfterViewInit {
+export class DragSectionComponent implements OnInit {
 
   @ViewChild('templatePortalContent') templatePortalContent: TemplateRef<unknown>;
 
@@ -20,7 +20,7 @@ export class DragSectionComponent implements AfterViewInit {
 
   constructor(private _viewContainerRef: ViewContainerRef) { }
 
-  ngAfterViewInit() {
+  ngOnInit() {
 
     this.templatePortal = new TemplatePortal(this.templatePortalContent, this._viewContainerRef);
 
