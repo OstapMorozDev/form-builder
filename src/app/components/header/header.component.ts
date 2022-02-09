@@ -20,6 +20,7 @@ export class HeaderComponent {
 
 
   logOut() {
+    console.log(this.isAuth$)
     this.store$.dispatch(logOut())
   }
 }

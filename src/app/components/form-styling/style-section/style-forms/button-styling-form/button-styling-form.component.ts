@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { startWith, pairwise, map } from 'rxjs';
 import { FormElement } from 'src/app/classes/form-element.class';
-import { StyleSectionState } from 'src/app/reducers/style/style-section.reducer';
+import { StyleSectionState } from 'src/app/reducers/fields-styles/style-section.reducer';
 import { FormChangesHandlingService } from 'src/app/services/form-changes-handling.service';
 
 @Component({

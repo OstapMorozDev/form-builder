@@ -23,7 +23,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 
-import { FormStylingComponent } from './components/form-styling/form-styling.component';
+import { StylingComponent } from './components/form-styling/styling.component';
 import { DropSectionComponent } from './components/drop-section/drop-section.component';
 import { DragSectionComponent } from './components/drag-section/drag-section.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,6 +44,7 @@ import { TokenInterceptor } from './services/token-interceptor.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { CheckboxStylingFormComponent } from './components/form-styling/style-section/style-forms/checkbox-styling-form/checkbox-styling-form.component';
+import { FormGeneralStylingComponent } from './components/drop-section/form-general-styling/form-general-styling.component';
 
 
 const appRoutes: Routes = [
@@ -56,7 +57,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FormStylingComponent,
+    StylingComponent,
     DropSectionComponent,
     DragSectionComponent,
     TitleComponent,
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
     HomeComponent,
     SignUpComponent,
     CheckboxStylingFormComponent,
+    FormGeneralStylingComponent,
   ],
   imports: [
     HttpClientModule,

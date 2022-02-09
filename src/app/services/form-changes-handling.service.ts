@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { FieldTypes } from '../constants/FieldTypes';
 import { BorderControl } from '../interfaces/BorderControl';
 import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeCheckboxStyle, changeFontSize, changeFontWeight, changeHeight, changeLabelText, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
-import { StyleSectionState } from '../reducers/style/style-section.reducer';
+import { StyleSectionState } from '../reducers/fields-styles/style-section.reducer';
 
 @Injectable({
   providedIn: 'root'

@@ -2,21 +2,31 @@
   <div class="drop-area-container">
     <app-title></app-title>
 
-    <div
-      class="drop-area"
-      cdkDropList
-      [cdkDropListData]="formElements$"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div
-        class="drop-area__list"
-        *ngFor="let el of formElements$ | async"
-        (click)="onElementClick(el)"
-        cdkDrag
+    <ng-container *ngIf="(formStyles$ | async) as formStyles">
+      <form
+        class="drop-area"
+        cdkDropList
+        [cdkDropListData]="formElements$"
+        (cdkDropListDropped)="drop($event)"
+        [ngStyle]="{
+          width: formStyles.width,
+          height: formStyles.height,
+          borderStyle: formStyles.borderStyle,
+          borderWidth: formStyles.borderWidth,
+          borderColor: formStyles.borderColor,
+          backgroundColor: formStyles.backgroundColor
+        }"
       >
-        <div class="drag-placeholder" *cdkDragPlaceholder></div>
-        <app-form-element [element]="el"></app-form-element>
-      </div>
-    </div>
+        <div
+          class="drop-area__list"
+          *ngFor="let el of formElements$ | async"
+          (click)="onElementClick(el)"
+          cdkDrag
+        >
+          <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <app-form-element [element]="el"></app-form-element>
+        </div>
+      </form>
+    </ng-container>
   </div>
 </section>

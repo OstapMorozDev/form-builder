@@ -1,13 +1,13 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '@angular/core';
+import {  Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, map, pairwise, startWith, Subject, takeUntil, tap } from 'rxjs';
+import {  map, pairwise, startWith, Subject, takeUntil } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { FormElement } from 'src/app/classes/form-element.class';
 
-import { StyleSectionState } from 'src/app/reducers/style/style-section.reducer';
+import { StyleSectionState } from 'src/app/reducers/fields-styles/style-section.reducer';
 import { FormChangesHandlingService } from 'src/app/services/form-changes-handling.service';
-import { ComponentPortal, Portal } from '@angular/cdk/portal';
+import {  Portal } from '@angular/cdk/portal';
 
 
 @Component({
@@ -43,12 +43,9 @@ export class StyleSectionComponent implements OnInit, OnChanges, OnDestroy {
 
   }
 
-
   ngOnInit(): void {
 
-
     this.myForm.patchValue(this.element);
-
     const formSubscription = this.myForm.valueChanges
       .pipe(
         takeUntil(this.destroy$),

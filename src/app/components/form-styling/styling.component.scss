@@ -3,10 +3,10 @@
 .section {
   height: 100%;
 
-  .form-accordition {
+  .accordition {
     display: block;
 
-    .form-accordition__header {
+    .accordition__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -17,7 +17,7 @@
         margin: 0;
       }
 
-      .form-accordition__arrow-icon {
+      .arrow-icon {
         font-size: 0.8 rem;
       }
     }

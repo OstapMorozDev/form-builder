@@ -8,12 +8,14 @@ export const dropSectionNode = 'drop';
 
 export interface DropSectionState {
   formElements: FormElement[],
-  formTitle: string
+  formTitle: string,
+
 }
 
 const initialState: DropSectionState = {
   formElements: [],
-  formTitle: 'My Form'
+  formTitle: 'My Form',
+
 }
 
 export const dropSectionReducer = createReducer(

@@ -1,0 +1,57 @@
+<section class="section">
+  <cdk-accordion class="accordition">
+    <cdk-accordion-item
+      class="accordition__item"
+      #accordionItem1="cdkAccordionItem"
+      role="button"
+    >
+      <div class="accordition__header" (click)="accordionItem1.toggle()">
+        <h2 class="header">Form Styling</h2>
+        <mat-icon class="arrow-icon" *ngIf="!accordionItem1.expanded"
+          >keyboard_arrow_down</mat-icon
+        >
+        <mat-icon class="arrow-icon" *ngIf="accordionItem1.expanded"
+          >keyboard_arrow_up</mat-icon
+        >
+      </div>
+
+      <div
+        class="element-styling-container"
+        [style.display]="accordionItem1.expanded ? '' : 'none'"
+      >
+        <ng-template [cdkPortalOutlet]="componentPortal"></ng-template>
+      </div>
+    </cdk-accordion-item>
+
+    <cdk-accordion-item
+      class="accordition__item"
+      #accordionItem2="cdkAccordionItem"
+      role="button"
+    >
+      <div class="accordition__header" (click)="accordionItem2.toggle()">
+        <h2 class="header">Field Styling</h2>
+        <mat-icon class="arrow-icon" *ngIf="!accordionItem2.expanded"
+          >keyboard_arrow_down</mat-icon
+        >
+        <mat-icon class="arrow-icon" *ngIf="accordionItem2.expanded"
+          >keyboard_arrow_up</mat-icon
+        >
+      </div>
+
+      <div
+        class="element-styling-container"
+        [style.display]="accordionItem2.expanded ? '' : 'none'"
+      >
+        <div
+          *ngIf="selectedFormElement$ | async as el; else elementNotSelected"
+        >
+          <app-styling-section [element]="el"></app-styling-section>
+        </div>
+      </div>
+
+      <ng-template #elementNotSelected>
+        <h3>Select an item for customization</h3>
+      </ng-template>
+    </cdk-accordion-item>
+  </cdk-accordion>
+</section>
