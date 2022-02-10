@@ -1,13 +1,14 @@
-import {  Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {  map, pairwise, startWith, Subject, takeUntil } from 'rxjs';
+import { map, pairwise, startWith, Subject, takeUntil } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { FormElement } from 'src/app/classes/form-element.class';
 
 import { StyleSectionState } from 'src/app/reducers/fields-styles/style-section.reducer';
-import { FormChangesHandlingService } from 'src/app/services/form-changes-handling.service';
-import {  Portal } from '@angular/cdk/portal';
+import { FieldChangesHandlingService } from 'src/app/services/field-changes-handling.service';
+import { Portal } from '@angular/cdk/portal';
+import { FormBuilderStyling } from 'src/app/classes/form-builder-styling.class';
 
 
 @Component({
@@ -15,11 +16,9 @@ import {  Portal } from '@angular/cdk/portal';
   templateUrl: './styling-section.component.html',
   styleUrls: ['./styling-section.component.scss'],
 })
-export class StyleSectionComponent implements OnInit, OnChanges, OnDestroy {
+export class StyleSectionComponent extends FormBuilderStyling implements OnInit, OnChanges, OnDestroy {
 
-  @Input() element: FormElement;
-
-  public myForm: FormGroup = new FormGroup({
+  styleFormGroup: FormGroup = new FormGroup({
     placeholderText: new FormControl(),
     width: new FormControl(),
     height: new FormControl(),
@@ -35,35 +34,23 @@ export class StyleSectionComponent implements OnInit, OnChanges, OnDestroy {
     checkboxStyle: new FormControl(),
     labelText: new FormControl(),
   })
+  initValues: any;
 
-  private destroy$: Subject<boolean> = new Subject<boolean>();
+  @Input() element: FormElement;
+
+
   public selectedPortal: Portal<any>;
 
-  constructor(private store$: Store<StyleSectionState>, private formChangesService: FormChangesHandlingService) {
-
+  constructor(private store$: Store<StyleSectionState>, private fieldChangesHandlingService: FieldChangesHandlingService) {
+    super();
   }
 
   ngOnInit(): void {
 
-    this.myForm.patchValue(this.element);
-    const formSubscription = this.myForm.valueChanges
-      .pipe(
-        takeUntil(this.destroy$),
-        startWith(this.element),
-        pairwise(),
-        map((valChangesPair) => {
-          let inputType: string = "";
+    this.initValues = this.element;
 
-          for (let key in valChangesPair[0]) {
-            if (valChangesPair[0][key] !== valChangesPair[1][key]) {
-              inputType = key;
-            }
-          } return { type: inputType, value: valChangesPair[1][inputType] }
-        })
-      )
-
-    formSubscription.subscribe(formChanges => {
-      this.formChangesService.handleChanges(formChanges.type, formChanges.value, this.element.id)
+    this.valueChanges().subscribe(formChanges => {
+      this.fieldChangesHandlingService.handleChanges(formChanges.type, formChanges.value, this.element.id)
     })
   }
 
@@ -76,15 +63,14 @@ export class StyleSectionComponent implements OnInit, OnChanges, OnDestroy {
       const current = chng.currentValue['id']
 
       if (prev !== current) {
-        this.myForm.patchValue(this.element);
+        this.styleFormGroup.patchValue(this.element);
       }
     }
   }
 
 
   ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+    this.destroyStream();
   }
 
 

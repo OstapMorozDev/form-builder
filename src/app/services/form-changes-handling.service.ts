@@ -1,127 +1,37 @@
 import { Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { FieldTypes } from '../constants/FieldTypes';
-import { BorderControl } from '../interfaces/BorderControl';
-import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeCheckboxStyle, changeFontSize, changeFontWeight, changeHeight, changeLabelText, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
-import { StyleSectionState } from '../reducers/fields-styles/style-section.reducer';
+import { FormStyleTypes } from '../constants/FormStyleTypes';
+import { changeBackgroundColor, changeBorderColor, changeBorderStyle, changeBorderWidth, changeHeight, changeWidth } from '../reducers/form-styles/form-stlyes.actions';
+import { FormStylingState } from '../reducers/form-styles/form-styles.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormChangesHandlingService {
 
-  constructor(private store$: Store<StyleSectionState>) { }
-
-  handleChanges(formType: string, value: string, elementId: number): void {
-    switch (formType) {
-      case FieldTypes.placeholderText:
-        this.changePlaceholderText(elementId, value);
-        break;
-      case FieldTypes.width:
-        this.changeWidth(elementId, value);
-        break;
-      case FieldTypes.height:
-        this.changeHeight(elementId, value);
-        break;
-      case FieldTypes.fontSize:
-        this.changeFontSize(elementId, value);
-        break;
-      case FieldTypes.fontWeight:
-        this.changeFontWeight(elementId, value);
-        break;
-      case FieldTypes.borderStyle:
-        this.changeBorderStyle(elementId, value);
-        break;
-      case FieldTypes.borderColor:
-        this.changeBorderColor(elementId, value);
-        break;
-      case FieldTypes.borderWidth:
-        this.changeBorderWidth(elementId, value);
-        break;
-
-      case FieldTypes.textColor:
-        this.changeTextColor(elementId, value);
-        break;
-
-      case FieldTypes.backgroundColor:
-        this.changeBackgroundColor(elementId, value)
-        break;
+  constructor(private store$: Store<FormStylingState>) { }
 
 
-      case FieldTypes.labelText:
-        this.changeLabelText(elementId, value)
+  handleChanges(type: string, value: string) {
+    switch (type) {
+      case FormStyleTypes.width:
+        this.store$.dispatch(changeWidth({ width: value }))
         break;
-
-      case FieldTypes.borderControl:
-        this.changeBorderControl(elementId, (value as unknown) as BorderControl)
+      case FormStyleTypes.height:
+        this.store$.dispatch(changeHeight({ height: value }))
         break;
-      case FieldTypes.checkboxStyle:
-
-        this.changecheckboxStyle(elementId, value)
+      case FormStyleTypes.backgroundColor:
+        this.store$.dispatch(changeBackgroundColor({ color: value }))
         break;
-
+      case FormStyleTypes.borderColor:
+        this.store$.dispatch(changeBorderColor({ borderColor: value }))
+        break;
+      case FormStyleTypes.borderStyle:
+        this.store$.dispatch(changeBorderStyle({ borderStyle: value }))
+        break;
+      case FormStyleTypes.borderWidth:
+        this.store$.dispatch(changeBorderWidth({ borderWidth: value }))
+        break;
     }
-
-  }
-
-  private changePlaceholderText(elementID: number, newText: string) {
-    this.store$.dispatch(changePlaceholderText({ elementID, newText }))
-  }
-
-
-  private changeWidth(elementID: number, width: string) {
-    this.store$.dispatch(changeWidth({ elementID, width }))
-  }
-
-  private changeHeight(elementID: number, height: string) {
-    this.store$.dispatch(changeHeight({ elementID, height }))
-  }
-
-  private changeFontSize(elementID: number, fontSize: string) {
-    this.store$.dispatch(changeFontSize({ elementID, fontSize }))
-  }
-
-  private changeFontWeight(elementID: number, weight: string) {
-    this.store$.dispatch(changeFontWeight({ elementID, weight }))
-  }
-
-  private changeBorderStyle(elementID: number, borderStyle: string) {
-    this.store$.dispatch(changeBorderStyle({ elementID, borderStyle }));
-  }
-
-  private changeBorderColor(elementID: number, color: string) {
-    this.store$.dispatch(changeBorderColor({ elementID, color }))
-  }
-
-  private changeBorderWidth(elementID: number, width: string) {
-    this.store$.dispatch(changeBorderWidth({ elementID, width }))
-  }
-
-  private toggleIsRequired(elementID: number, isRequired: boolean) {
-    this.store$.dispatch(toggleIsRequired({ elementID, isRequired }))
-  }
-
-  private changeTextColor(elementID: number, textColor: string) {
-    this.store$.dispatch(changeTextColor({ elementID, textColor }));
-  }
-
-  private changeBackgroundColor(elementID: number, color: string) {
-    this.store$.dispatch(changeBackgroundColor({ elementID, color }));
-  }
-
-  private changeBorderControl(elementID: number, borderControl: BorderControl) {
-    this.store$.dispatch(changeBorderControl({ elementID, borderControl }));
-  }
-
-  private changecheckboxStyle(elementID: number, style: string) {
-    console.log("1234")
-    this.store$.dispatch(changeCheckboxStyle({ elementID, style }));
-  }
-
-  private changeLabelText(elementID: number, labelText: string) {
-    this.store$.dispatch(changeLabelText({ elementID, labelText }));
   }
 }
-
-

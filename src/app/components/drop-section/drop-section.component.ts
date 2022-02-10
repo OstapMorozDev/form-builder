@@ -1,6 +1,6 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormElement } from 'src/app/classes/form-element.class';
@@ -18,7 +18,8 @@ import { FormGeneralStylingComponent } from './form-general-styling/form-general
 @Component({
   selector: 'app-drop-section',
   templateUrl: './drop-section.component.html',
-  styleUrls: ['./drop-section.component.scss']
+  styleUrls: ['./drop-section.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropSectionComponent {
 
@@ -32,7 +33,6 @@ export class DropSectionComponent {
 
   addElement(newElement: FormElement, currentIndex: number) {
     this.store$.dispatch(addFormElement({ formElement: newElement, newIndex: currentIndex }))
-    console.log(this.formElements$)
   }
 
   moveElement(currentIndex: number, nextIndex: number) {

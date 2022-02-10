@@ -30,7 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleComponent } from './components/drop-section/title/title.component';
 import { FormElementComponent } from './components/drop-section/form-element/form-element.component';
 import { StyleSectionComponent } from './components/form-styling/style-section/styling-section.component';
-import { FormChangesHandlingService } from './services/form-changes-handling.service';
+import { FieldChangesHandlingService } from './services/field-changes-handling.service';
 import { InputStylingFormComponent } from './components/form-styling/style-section/style-forms/input-styling-form/input-styling-form.component';
 import { ButtonStyleFormComponent } from './components/form-styling/style-section/style-forms/button-styling-form/button-styling-form.component';
 import { SelectStylingFormComponent } from './components/form-styling/style-section/style-forms/select-styling-form/select-styling-form.component';
@@ -45,7 +45,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { CheckboxStylingFormComponent } from './components/form-styling/style-section/style-forms/checkbox-styling-form/checkbox-styling-form.component';
 import { FormGeneralStylingComponent } from './components/drop-section/form-general-styling/form-general-styling.component';
-
+import { ErrorMessagePipe } from "src/app/components/login/error-message.pipe"
 
 const appRoutes: Routes = [
   { path: 'log-in', component: LoginComponent },
@@ -73,6 +73,7 @@ const appRoutes: Routes = [
     SignUpComponent,
     CheckboxStylingFormComponent,
     FormGeneralStylingComponent,
+    ErrorMessagePipe
   ],
   imports: [
     HttpClientModule,
@@ -100,7 +101,7 @@ const appRoutes: Routes = [
     })
 
   ],
-  providers: [FormChangesHandlingService, AuthService, AuthGuardService,
+  providers: [FieldChangesHandlingService, AuthService, AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -1,5 +1,5 @@
 import { TemplatePortal } from '@angular/cdk/portal';
-import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { DragableElements } from 'src/app/constants/DragableElements';
 
 
@@ -7,12 +7,14 @@ import { DragableElements } from 'src/app/constants/DragableElements';
 @Component({
   selector: 'app-drag-section',
   templateUrl: './drag-section.component.html',
-  styleUrls: ['./drag-section.component.scss']
+  styleUrls: ['./drag-section.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 
 export class DragSectionComponent implements OnInit {
 
-  @ViewChild('templatePortalContent') templatePortalContent: TemplateRef<unknown>;
+  @ViewChild('templatePortalContent', { static: true }) templatePortalContent: TemplateRef<unknown>;
 
   elements = DragableElements;
   templatePortal: TemplatePortal<any>;

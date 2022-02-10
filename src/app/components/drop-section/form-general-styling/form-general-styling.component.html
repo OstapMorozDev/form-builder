@@ -1,5 +1,5 @@
 <div>
-  <form>
+  <form [formGroup]="styleFormGroup">
     <mat-form-field class="form-group__field">
       <mat-label for="formWidth">Form width</mat-label>
       <input
@@ -8,18 +8,65 @@
         id="formWidth"
         name="formWidth"
         type="text"
+        formControlName="width"
       />
     </mat-form-field>
     <mat-form-field class="form-group__field">
-      <mat-label for="formHeight">Form height</mat-label>
+      <mat-label for="formHeight">Form minimal height</mat-label>
       <input
         matInput
         class="form-group__input"
         id="formHeight"
         name="formHeight"
         type="text"
+        formControlName="height"
       />
     </mat-form-field>
 
+    <mat-form-field class="form-group__field">
+      <mat-label for="borderWidth">Border width</mat-label>
+      <input
+        matInput
+        class="form-group__input"
+        id="borderWidth"
+        name="borderWidth"
+        type="text"
+        formControlName="borderWidth"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="form-group__field">
+      <mat-label>Border style</mat-label>
+      <mat-select id="select" name="select" formControlName="borderStyle">
+        <mat-option value="solid">Solid</mat-option>
+        <mat-option value="dashed">Dashed</mat-option>
+        <mat-option value="dotted">Dotted</mat-option>
+        <mat-option value="double">Double</mat-option>
+        <mat-option value="none">None</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-group__field">
+      <mat-label for="borderColor">Border color</mat-label>
+      <input
+        matInput
+        class="form-group__input"
+        id="borderColor"
+        name="borderColor"
+        type="color"
+        formControlName="borderColor"
+      />
+    </mat-form-field>
+    <mat-form-field class="form-group__field">
+      <mat-label for="backgroundColor">Background color</mat-label>
+      <input
+        matInput
+        class="form-group__input"
+        id="backgroundColor"
+        name="backgroundColor"
+        type="color"
+        formControlName="backgroundColor"
+      />
+    </mat-form-field>
   </form>
 </div>

@@ -9,4 +9,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  &__field {
+    width: 100%;
+  }
 }

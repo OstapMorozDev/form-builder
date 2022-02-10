@@ -1,5 +1,5 @@
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,8 @@ import { FormGeneralStylingComponent } from '../drop-section/form-general-stylin
 @Component({
   selector: 'app-styling',
   templateUrl: './styling.component.html',
-  styleUrls: ['./styling.component.scss']
+  styleUrls: ['./styling.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
