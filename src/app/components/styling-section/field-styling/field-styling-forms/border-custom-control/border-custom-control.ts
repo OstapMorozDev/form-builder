@@ -4,7 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'app-border-input',
   templateUrl: './border-custom-control-component.html',
-  styleUrls: ['./border-custom-control.component.scss'],
+  styleUrls: ['./border-custom-control.component.scss', '../../field-styling.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => BorderControlComponent),

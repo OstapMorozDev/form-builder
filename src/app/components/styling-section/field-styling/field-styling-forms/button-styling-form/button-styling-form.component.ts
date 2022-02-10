@@ -5,7 +5,7 @@ import { FormElement } from 'src/app/classes/form-element.class';
 @Component({
   selector: 'app-button-styling-form',
   templateUrl: './button-styling-form.component.html',
-  styleUrls: ['./button-styling-form.component.scss']
+  styleUrls: ['./button-styling-form.component.scss', '../../field-styling.component.scss']
 })
 export class ButtonStyleFormComponent  {
 

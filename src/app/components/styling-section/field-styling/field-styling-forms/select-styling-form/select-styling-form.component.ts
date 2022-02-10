@@ -5,10 +5,11 @@ import { FormElement } from 'src/app/classes/form-element.class';
 @Component({
   selector: 'app-select-styling-form',
   templateUrl: './select-styling-form.component.html',
-  styleUrls: ['./select-styling-form.component.scss']
+  styleUrls: ['./select-styling-form.component.scss', '../../field-styling.component.scss']
 })
 export class SelectStylingFormComponent {
 
   @Input() element: FormElement;
   @Input() customFormGroup: FormGroup;
 }
+

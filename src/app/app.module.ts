@@ -23,18 +23,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 
-import { StylingComponent } from './components/form-styling/styling.component';
+
 import { DropSectionComponent } from './components/drop-section/drop-section.component';
 import { DragSectionComponent } from './components/drag-section/drag-section.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleComponent } from './components/drop-section/title/title.component';
 import { FormElementComponent } from './components/drop-section/form-element/form-element.component';
-import { StyleSectionComponent } from './components/form-styling/style-section/styling-section.component';
+import { StylingComponent } from './components/styling-section/styling.component';
 import { FieldChangesHandlingService } from './services/field-changes-handling.service';
-import { InputStylingFormComponent } from './components/form-styling/style-section/style-forms/input-styling-form/input-styling-form.component';
-import { ButtonStyleFormComponent } from './components/form-styling/style-section/style-forms/button-styling-form/button-styling-form.component';
-import { SelectStylingFormComponent } from './components/form-styling/style-section/style-forms/select-styling-form/select-styling-form.component';
-import { BorderControlComponent } from './components/form-styling/style-section/style-forms/border-custom-control/border-custom-control';
+import { InputStylingFormComponent } from './components/styling-section/field-styling/field-styling-forms/input-styling-form/input-styling-form.component';
+import { ButtonStyleFormComponent } from './components/styling-section/field-styling/field-styling-forms/button-styling-form/button-styling-form.component';
+import { SelectStylingFormComponent } from './components/styling-section/field-styling/field-styling-forms/select-styling-form/select-styling-form.component';
+import { BorderControlComponent } from './components/styling-section/field-styling/field-styling-forms/border-custom-control/border-custom-control';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -43,9 +43,10 @@ import { AuthEffects } from './reducers/auth/auth.effects';
 import { TokenInterceptor } from './services/token-interceptor.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { CheckboxStylingFormComponent } from './components/form-styling/style-section/style-forms/checkbox-styling-form/checkbox-styling-form.component';
+import { CheckboxStylingFormComponent } from './components/styling-section/field-styling/field-styling-forms/checkbox-styling-form/checkbox-styling-form.component';
 import { FormGeneralStylingComponent } from './components/drop-section/form-general-styling/form-general-styling.component';
 import { ErrorMessagePipe } from "src/app/components/login/error-message.pipe"
+import { FieldStylingComponent } from './components/styling-section/field-styling/field-styling.component';
 
 const appRoutes: Routes = [
   { path: 'log-in', component: LoginComponent },
@@ -57,12 +58,11 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    StylingComponent,
     DropSectionComponent,
     DragSectionComponent,
     TitleComponent,
     FormElementComponent,
-    StyleSectionComponent,
+    StylingComponent,
     InputStylingFormComponent,
     ButtonStyleFormComponent,
     SelectStylingFormComponent,
@@ -73,7 +73,8 @@ const appRoutes: Routes = [
     SignUpComponent,
     CheckboxStylingFormComponent,
     FormGeneralStylingComponent,
-    ErrorMessagePipe
+    ErrorMessagePipe,
+    FieldStylingComponent
   ],
   imports: [
     HttpClientModule,

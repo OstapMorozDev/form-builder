@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, pairwise, startWith, Subject, takeUntil } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { FormElement } from 'src/app/classes/form-element.class';
@@ -12,11 +11,11 @@ import { FormBuilderStyling } from 'src/app/classes/form-builder-styling.class';
 
 
 @Component({
-  selector: 'app-styling-section',
-  templateUrl: './styling-section.component.html',
-  styleUrls: ['./styling-section.component.scss'],
+  selector: 'app-field-styling',
+  templateUrl: './field-styling.component.html',
+  styleUrls: ['./field-styling.component.scss'],
 })
-export class StyleSectionComponent extends FormBuilderStyling implements OnInit, OnChanges, OnDestroy {
+export class FieldStylingComponent extends FormBuilderStyling implements OnInit, OnChanges, OnDestroy {
 
   styleFormGroup: FormGroup = new FormGroup({
     placeholderText: new FormControl(),
