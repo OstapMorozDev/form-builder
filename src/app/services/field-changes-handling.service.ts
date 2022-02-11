@@ -39,7 +39,7 @@ export class FieldChangesHandlingService {
         this.changeBorderWidth(elementId, value);
         break;
 
-      case FieldTypes.textColor:
+      case FieldTypes.color:
         this.changeTextColor(elementId, value);
         break;
 
@@ -101,8 +101,8 @@ export class FieldChangesHandlingService {
     this.store$.dispatch(toggleIsRequired({ elementID, isRequired }))
   }
 
-  private changeTextColor(elementID: number, textColor: string) {
-    this.store$.dispatch(changeTextColor({ elementID, textColor }));
+  private changeTextColor(elementID: number, color: string) {
+    this.store$.dispatch(changeTextColor({ elementID, color }));
   }
 
   private changeBackgroundColor(elementID: number, color: string) {
@@ -114,7 +114,6 @@ export class FieldChangesHandlingService {
   }
 
   private changecheckboxStyle(elementID: number, style: string) {
-    console.log("1234")
     this.store$.dispatch(changeCheckboxStyle({ elementID, style }));
   }
 

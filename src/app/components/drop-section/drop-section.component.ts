@@ -23,6 +23,7 @@ import { FormGeneralStylingComponent } from './form-general-styling/form-general
 })
 export class DropSectionComponent {
 
+  
 
   public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
   public formStyles$: Observable<FormStylingState> = this.store$.pipe(select(selectFormStyles))

@@ -8,7 +8,7 @@ export enum FieldTypes {
     fontSize = "fontSize",
     fontWeight = "fontWeight",
     borderColor = "borderColor",
-    textColor = "textColor",
+    color = "textColor",
     backgroundColor = "backgroundColor",
     borderControl = "borderControl",
     labelText = "labelText",

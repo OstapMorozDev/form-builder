@@ -158,11 +158,11 @@ export const dropSectionReducer = createReducer(
       formElements: arrayCopy
     }
   }),
-  on(DropSectionActions.changeTextColor, (state, { elementID, textColor }) => {
+  on(DropSectionActions.changeTextColor, (state, { elementID, color }) => {
 
     const arrayCopy = state.formElements.map((el, index) => {
       if (el.id === elementID) {
-        return { ...el, textColor: textColor }
+        return { ...el, color: color }
       } return el;
     })
     return {

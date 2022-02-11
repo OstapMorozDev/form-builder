@@ -1,5 +1,5 @@
 import { ComponentPortal } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -15,9 +15,7 @@ import { FormGeneralStylingComponent } from '../drop-section/form-general-stylin
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-
 export class StylingComponent implements OnInit {
-
 
   public selectedFormElement$: Observable<FormElement | null> = this.store$.pipe(select(selectedElement));
   public componentPortal: ComponentPortal<FormGeneralStylingComponent>
@@ -27,7 +25,5 @@ export class StylingComponent implements OnInit {
   ngOnInit(): void {
     this.componentPortal = new ComponentPortal(FormGeneralStylingComponent);
   }
-
-
 
 }

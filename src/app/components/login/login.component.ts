@@ -25,8 +25,6 @@ export class LoginComponent {
 
   constructor(private store$: Store<AuthState>) { }
 
-
-
   onSubmit() {
     const { email, password } = this.loginForm.value
     this.store$.dispatch(logIn({ email, password }));

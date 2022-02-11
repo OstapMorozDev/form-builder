@@ -3,12 +3,17 @@
 
 .drop-area-container {
   padding: 50px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   .drop-area {
+
     border-radius: 5px;
-    min-height: 100px;
     box-sizing: border-box;
     padding: 10px 15px;
+
   }
 }
 

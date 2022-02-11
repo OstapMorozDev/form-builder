@@ -13,7 +13,7 @@ export class FormElement {
   height?: string;
   fontSize?: string;
   isRequired?: boolean;
-  textColor?: string;
+  color?: string;
   borderStyle?: string;
   borderWidth?: string;
   borderColor?: string;
@@ -37,7 +37,7 @@ export class FormElement {
         this.height = "40px";
         this.fontSize = "16px";
         this.isRequired = false;
-        this.textColor = FONT_PRIMARY;
+        this.color = FONT_PRIMARY;
         this.borderWidth = "2px";
         this.borderStyle = "solid";
         this.borderColor = PRIMARY_COLOR;
@@ -56,7 +56,7 @@ export class FormElement {
         this.height = "60px";
         this.fontSize = "16px";
         this.isRequired = false;
-        this.textColor = FONT_PRIMARY;
+        this.color = FONT_PRIMARY;
         this.borderWidth = "2px";
         this.borderStyle = "solid";
         this.borderColor = PRIMARY_COLOR;
@@ -73,7 +73,7 @@ export class FormElement {
         this.width = "100%";
         this.height = "40px";
         this.fontSize = "16px";
-        this.textColor = FONT_PRIMARY;
+        this.color = FONT_PRIMARY;
         this.borderWidth = "2px";
         this.borderColor = "#2b7a78";
         this.fontWeight = "400";
@@ -91,7 +91,7 @@ export class FormElement {
         this.height = "45px";
         this.fontSize = "16px";
         this.isRequired = false;
-        this.textColor = FONT_PRIMARY;
+        this.color = FONT_PRIMARY;
         this.borderWidth = "2px";
         this.borderStyle = "solid";
         this.borderColor = PRIMARY_COLOR;
@@ -104,7 +104,7 @@ export class FormElement {
         };
         break;
       case 'checkbox':
-        this.textColor= FONT_PRIMARY;
+        this.color= FONT_PRIMARY;
         this.fontSize = "16px";
         this.fontWeight = "400";
         this.labelText = 'Check me!';

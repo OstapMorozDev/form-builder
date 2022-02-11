@@ -38,11 +38,7 @@
     <mat-form-field class="form-group__field">
       <mat-label>Border style</mat-label>
       <mat-select id="select" name="select" formControlName="borderStyle">
-        <mat-option value="solid">Solid</mat-option>
-        <mat-option value="dashed">Dashed</mat-option>
-        <mat-option value="dotted">Dotted</mat-option>
-        <mat-option value="double">Double</mat-option>
-        <mat-option value="none">None</mat-option>
+        <mat-option *ngFor="let style of borderStyles" value="{{style}}">{{style}}</mat-option>
       </mat-select>
     </mat-form-field>
 

@@ -1,13 +1,12 @@
-import { TemplatePortal } from '@angular/cdk/portal';
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { DragableElements } from 'src/app/constants/DragableElements';
-
+import {TemplatePortal} from '@angular/cdk/portal';
+import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {DragableElements} from 'src/app/constants/DragableElements';
 
 
 @Component({
   selector: 'app-drag-section',
   templateUrl: './drag-section.component.html',
-  styleUrls: ['./drag-section.component.scss'],
+  styleUrls: ['./drag-section.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })

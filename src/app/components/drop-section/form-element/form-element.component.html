@@ -1,23 +1,9 @@
 <div class="drop-area__element" *ngIf="element.type === 'input'">
   <input
-    class="drop-area__input hideBottomBorder"
+    class="drop-area__input"
     placeholder="{{ element.placeholderText }}"
-    [ngStyle]="{
-      width: element.width,
-      height: element.height,
-      borderStyle: element.borderStyle,
-      borderColor: element.borderColor,
-      borderWidth: element.borderWidth,
-      color: element.textColor,
-      fontSize: element.fontSize,
-      fontWeight: element.fontWeight
-    }"
-    [ngClass]="{
-      hideBottomBorder: !element.borderControl?.borderBottom,
-      hideTopBorder: !element.borderControl?.borderTop,
-      hideLeftBorder: !element.borderControl?.borderLeft,
-      hideRightBorder: !element.borderControl?.borderRight
-    }"
+    [ngStyle]="getElementStyles()"
+    [ngClass]="hideBorders()"
     required="{{ element.isRequired }}"
   />
 </div>
@@ -25,24 +11,9 @@
 <div class="drop-area__element" *ngIf="element.type === 'textarea'">
   <textarea
     class="drop-area__input"
-    placeholder="Placeholder text"
     placeholder="{{ element.placeholderText }}"
-    [ngStyle]="{
-      width: element.width,
-      height: element.height,
-      borderStyle: element.borderStyle,
-      borderColor: element.borderColor,
-      borderWidth: element.borderWidth,
-      color: element.textColor,
-      fontSize: element.fontSize,
-      fontWeight: element.fontWeight
-    }"
-    [ngClass]="{
-      hideBottomBorder: !element.borderControl?.borderBottom,
-      hideTopBorder: !element.borderControl?.borderTop,
-      hideLeftBorder: !element.borderControl?.borderLeft,
-      hideRightBorder: !element.borderControl?.borderRight
-    }"
+    [ngStyle]="getElementStyles()"
+    [ngClass]="hideBorders()"
     required="{{ element.isRequired }}"
   ></textarea>
 </div>
@@ -53,22 +24,8 @@
     class="drop-area__button"
     id="button"
     name="button"
-    [ngStyle]="{
-      width: element.width,
-      height: element.height,
-      borderColor: element.borderColor,
-      borderWidth: element.borderWidth,
-      color: element.textColor,
-      fontSize: element.fontSize,
-      fontWeight: element.fontWeight,
-      backgroundColor: element.backgroundColor
-    }"
-    [ngClass]="{
-      hideBottomBorder: !element.borderControl?.borderBottom,
-      hideTopBorder: !element.borderControl?.borderTop,
-      hideLeftBorder: !element.borderControl?.borderLeft,
-      hideRightBorder: !element.borderControl?.borderRight
-    }"
+    [ngStyle]="getElementStyles()"
+    [ngClass]="hideBorders()"
   >
     Button
   </button>
@@ -76,11 +33,7 @@
 
 <div class="drop-area__element" *ngIf="element.type === 'checkbox'">
   <mat-checkbox
-    [ngStyle]="{
-      color: element.textColor,
-      fontSize: element.fontSize,
-      fontWeight: element.fontWeight
-    }"
+    [ngStyle]="getElementStyles()"
     [color]="element.checkboxStyle"
     class="drop-area__checkbox"
     >{{ element.labelText }}</mat-checkbox
@@ -93,22 +46,8 @@
     class="drop-area__input"
     id="select"
     name="select"
-    [ngStyle]="{
-      width: element.width,
-      height: element.height,
-      borderStyle: element.borderStyle,
-      borderColor: element.borderColor,
-      borderWidth: element.borderWidth,
-      color: element.textColor,
-      fontSize: element.fontSize,
-      fontWeight: element.fontWeight
-    }"
-    [ngClass]="{
-      hideBottomBorder: !element.borderControl?.borderBottom,
-      hideTopBorder: !element.borderControl?.borderTop,
-      hideLeftBorder: !element.borderControl?.borderLeft,
-      hideRightBorder: !element.borderControl?.borderRight
-    }"
+    [ngStyle]="getElementStyles()"
+    [ngClass]="hideBorders()"
   >
     <option value="one">First option</option>
     <option value="two">Second option</option>

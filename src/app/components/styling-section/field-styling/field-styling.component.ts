@@ -37,7 +37,6 @@ export class FieldStylingComponent extends FormBuilderStyling implements OnInit,
 
   @Input() element: FormElement;
 
-
   public selectedPortal: Portal<any>;
 
   constructor(private store$: Store<StyleSectionState>, private fieldChangesHandlingService: FieldChangesHandlingService) {
@@ -66,7 +65,6 @@ export class FieldStylingComponent extends FormBuilderStyling implements OnInit,
       }
     }
   }
-
 
   ngOnDestroy(): void {
     this.destroyStream();

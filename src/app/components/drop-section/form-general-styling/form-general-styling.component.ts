@@ -1,12 +1,9 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { map, pairwise, startWith, Subject, takeUntil } from 'rxjs';
 import { FormBuilderStyling } from 'src/app/classes/form-builder-styling.class';
 import { initialValues } from 'src/app/constants/FormStyleTypes';
-import { FormStylingState } from 'src/app/reducers/form-styles/form-styles.reducer';
 import { FormChangesHandlingService } from 'src/app/services/form-changes-handling.service';
-
+import { BorderStyles } from 'src/app/constants/BorderStyles';
 
 @Component({
   selector: 'app-form-general-styling',
@@ -14,6 +11,8 @@ import { FormChangesHandlingService } from 'src/app/services/form-changes-handli
   styleUrls: ['./form-general-styling.component.scss']
 })
 export class FormGeneralStylingComponent extends FormBuilderStyling implements OnInit, OnDestroy{
+
+  readonly borderStyles = BorderStyles;
 
   public styleFormGroup: FormGroup = new FormGroup({
     backgroundColor: new FormControl(),
@@ -30,9 +29,7 @@ export class FormGeneralStylingComponent extends FormBuilderStyling implements O
     super()
   }
 
-
   ngOnInit(): void {
-
     this.valueChanges().subscribe(formChanges => {
       this.handleChangesService.handleChanges(formChanges.type, formChanges.value)
     })

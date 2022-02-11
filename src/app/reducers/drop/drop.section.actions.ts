@@ -86,7 +86,7 @@ export const changeBorderColor = createAction(
 
 export const changeTextColor = createAction(
   dropSectionActionsType.changeTextColor,
-  props<{ elementID: number, textColor: string }>()
+  props<{ elementID: number, color: string }>()
 )
 
 export const changeFontWeight = createAction(

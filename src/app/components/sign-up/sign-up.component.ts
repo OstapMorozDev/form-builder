@@ -17,7 +17,6 @@ export class SignUpComponent {
 
   constructor(private store$: Store) { }
 
-
   onSubmit() {
     this.store$.dispatch(signUp(this.signUpForm.value))
   }
