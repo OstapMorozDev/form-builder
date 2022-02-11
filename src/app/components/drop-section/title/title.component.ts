@@ -31,6 +31,4 @@ export class TitleComponent  {
     this.onTitleChange($event.target.value)
     this.titleEditMode = false;
   }
-
-
 }

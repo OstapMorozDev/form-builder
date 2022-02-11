@@ -1,16 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FormBuilderStyling } from 'src/app/classes/form-builder-styling.class';
-import { initialValues } from 'src/app/constants/FormStyleTypes';
 import { FormChangesHandlingService } from 'src/app/services/form-changes-handling.service';
 import { BorderStyles } from 'src/app/constants/BorderStyles';
+import { FormStylingState } from 'src/app/reducers/form-styles/form-styles.reducer';
+import { select, Store } from '@ngrx/store';
+import { selectFormStyles } from 'src/app/reducers/form-styles/form-styles.selectors';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-form-general-styling',
   templateUrl: './form-general-styling.component.html',
   styleUrls: ['./form-general-styling.component.scss']
 })
-export class FormGeneralStylingComponent extends FormBuilderStyling implements OnInit, OnDestroy{
+export class FormGeneralStylingComponent extends FormBuilderStyling implements OnInit, OnDestroy {
 
   readonly borderStyles = BorderStyles;
 
@@ -23,10 +26,18 @@ export class FormGeneralStylingComponent extends FormBuilderStyling implements O
     borderWidth: new FormControl()
   });
 
-  public initValues: any = initialValues;
+  public initValues: any;
 
-  constructor(private handleChangesService: FormChangesHandlingService) {
-    super()
+
+  constructor(private handleChangesService: FormChangesHandlingService, private store: Store<FormStylingState>) {
+    super();
+    
+    this.store.pipe(
+      takeUntil(this.destroyStream$),
+      select(selectFormStyles),
+      ).subscribe(val=> {
+        this.initValues = val;
+      })
   }
 
   ngOnInit(): void {
@@ -36,7 +47,7 @@ export class FormGeneralStylingComponent extends FormBuilderStyling implements O
   }
 
   ngOnDestroy(): void {
-      this.destroyStream()
+    this.destroyStream()
   }
 
 }

@@ -8,12 +8,12 @@ import { FormElement } from 'src/app/classes/form-element.class';
 })
 export class FormElementComponent {
 
+  public inputValue: string;
 
   @Input() element: FormElement
 
   constructor() {
   }
-
 
   hideBorders() {
     return {

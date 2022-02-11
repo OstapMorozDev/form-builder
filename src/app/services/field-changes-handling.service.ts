@@ -12,7 +12,7 @@ export class FieldChangesHandlingService {
 
   constructor(private store$: Store<StyleSectionState>) { }
 
-  handleChanges(formType: string, value: string, elementId: number): void {
+  handleChanges(formType: string, value: any, elementId: number): void {
     switch (formType) {
       case FieldTypes.placeholderText:
         this.changePlaceholderText(elementId, value);
@@ -47,7 +47,6 @@ export class FieldChangesHandlingService {
         this.changeBackgroundColor(elementId, value)
         break;
 
-
       case FieldTypes.labelText:
         this.changeLabelText(elementId, value)
         break;
@@ -56,10 +55,11 @@ export class FieldChangesHandlingService {
         this.changeBorderControl(elementId, (value as unknown) as BorderControl)
         break;
       case FieldTypes.checkboxStyle:
-
         this.changecheckboxStyle(elementId, value)
         break;
-
+      case FieldTypes.required:
+        this.toggleIsRequired(elementId, value)
+        break;
     }
 
   }
@@ -97,8 +97,8 @@ export class FieldChangesHandlingService {
     this.store$.dispatch(changeBorderWidth({ elementID, width }))
   }
 
-  private toggleIsRequired(elementID: number, isRequired: boolean) {
-    this.store$.dispatch(toggleIsRequired({ elementID, isRequired }))
+  private toggleIsRequired(elementID: number, required: boolean) {
+    this.store$.dispatch(toggleIsRequired({ elementID, required }))
   }
 
   private changeTextColor(elementID: number, color: string) {

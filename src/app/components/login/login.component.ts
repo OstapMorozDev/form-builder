@@ -29,6 +29,4 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value
     this.store$.dispatch(logIn({ email, password }));
   }
-
-
 }

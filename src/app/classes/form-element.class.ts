@@ -12,7 +12,7 @@ export class FormElement {
   width?: string;
   height?: string;
   fontSize?: string;
-  isRequired?: boolean;
+  required?: boolean;
   color?: string;
   borderStyle?: string;
   borderWidth?: string;
@@ -22,8 +22,6 @@ export class FormElement {
   borderControl?: BorderControl;
   labelText?: string;
   checkboxStyle?: string;
-
-
 
   constructor(type: string) {
 
@@ -36,7 +34,7 @@ export class FormElement {
         this.width = "100%";
         this.height = "40px";
         this.fontSize = "16px";
-        this.isRequired = false;
+        this.required = false;
         this.color = FONT_PRIMARY;
         this.borderWidth = "2px";
         this.borderStyle = "solid";
@@ -55,7 +53,7 @@ export class FormElement {
         this.width = "100%";
         this.height = "60px";
         this.fontSize = "16px";
-        this.isRequired = false;
+        this.required = false;
         this.color = FONT_PRIMARY;
         this.borderWidth = "2px";
         this.borderStyle = "solid";
@@ -90,7 +88,7 @@ export class FormElement {
         this.width = "100%";
         this.height = "45px";
         this.fontSize = "16px";
-        this.isRequired = false;
+        this.required = false;
         this.color = FONT_PRIMARY;
         this.borderWidth = "2px";
         this.borderStyle = "solid";
@@ -104,7 +102,7 @@ export class FormElement {
         };
         break;
       case 'checkbox':
-        this.color= FONT_PRIMARY;
+        this.color = FONT_PRIMARY;
         this.fontSize = "16px";
         this.fontWeight = "400";
         this.labelText = 'Check me!';

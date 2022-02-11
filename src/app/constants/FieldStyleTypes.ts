@@ -2,7 +2,7 @@ export enum FieldTypes {
     placeholderText = "placeholderText",
     width = "width",
     height = "height",
-    isRequired = "isRequired",
+    required = "required",
     borderStyle = "borderStyle",
     borderWidth = "borderWidth",
     fontSize = "fontSize",

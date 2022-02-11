@@ -5,7 +5,7 @@ import { takeUntil, startWith, pairwise, map, Subject, Observable } from "rxjs";
 export abstract class FormBuilderStyling {
   abstract styleFormGroup: FormGroup;
   abstract initValues: any;
-  private destroyStream$: Subject<boolean>;
+  readonly destroyStream$: Subject<boolean>;
 
   protected constructor() {
     this.destroyStream$ = new Subject<boolean>();

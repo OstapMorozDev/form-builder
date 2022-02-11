@@ -102,11 +102,11 @@ export const dropSectionReducer = createReducer(
     }
   }),
 
-  on(DropSectionActions.toggleIsRequired, (state, { elementID, isRequired }) => {
+  on(DropSectionActions.toggleIsRequired, (state, { elementID, required }) => {
 
     const arrayCopy = state.formElements.map((el, index) => {
       if (el.id === elementID) {
-        return { ...el, isRequired: isRequired }
+        return { ...el, required: required }
       } return el;
     })
 

@@ -22,8 +22,6 @@ export enum dropSectionActionsType {
   changeCheckboxStyle = '[DROP-SECTION] changeCheckboxStyle'
 }
 
-
-
 export const addFormElement = createAction(
   dropSectionActionsType.addFormElement,
   props<{ formElement: FormElement, newIndex: number }>()
@@ -34,12 +32,10 @@ export const moveFormElement = createAction(
   props<{ currentIndex: number, nextIndex: number }>()
 );
 
-
 export const changeTitle = createAction(
   dropSectionActionsType.changeTitle,
   props<{ value: string }>()
 );
-
 
 export const changePlaceholderText = createAction(
   dropSectionActionsType.changePlaceholderText,
@@ -63,9 +59,8 @@ export const changeFontSize = createAction(
 
 export const toggleIsRequired = createAction(
   dropSectionActionsType.toggleIsRequired,
-  props<{ elementID: number, isRequired: boolean }>()
+  props<{ elementID: number, required: boolean }>()
 )
-
 
 export const changeBorderStyle = createAction(
   dropSectionActionsType.changeBorderStyle,
@@ -77,12 +72,10 @@ export const changeBorderWidth = createAction(
   props<{ elementID: number, width: string }>()
 )
 
-
 export const changeBorderColor = createAction(
   dropSectionActionsType.changeBorderColor,
   props<{ elementID: number, color: string }>()
 )
-
 
 export const changeTextColor = createAction(
   dropSectionActionsType.changeTextColor,

@@ -2,8 +2,8 @@ import { createAction, props } from '@ngrx/store';
 
 export enum FormStylesActionsType {
   changeBackgroundColor = '[FORM-STYLES] changeBackgroundColor',
-  changeHeight = '[FORM-styles] changeHeight',
-  changeWidth = '[FORM-styles] changeWidth',
+  changeHeight = '[FORM-STYLES] changeHeight',
+  changeWidth = '[FORM-STYLES] changeWidth',
   changeBorderColor = '[FORM-STYLES] changeBorderColor',
   changeBorderStyle = '[FORM-STYLES] changeBorderStyle',
   changeBorderWidth = '[FORM-STYLES] changeBorderWidth',

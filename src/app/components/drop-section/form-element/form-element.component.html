@@ -4,8 +4,11 @@
     placeholder="{{ element.placeholderText }}"
     [ngStyle]="getElementStyles()"
     [ngClass]="hideBorders()"
-    required="{{ element.isRequired }}"
+    required="{{ element.required }}"
+    [ngModel]="inputValue"
+    #input = "ngModel"
   />
+  <mat-error *ngIf="input.invalid && (input.dirty || input.touched)" class="allert">Field is required</mat-error>
 </div>
 
 <div class="drop-area__element" *ngIf="element.type === 'textarea'">
@@ -14,7 +17,7 @@
     placeholder="{{ element.placeholderText }}"
     [ngStyle]="getElementStyles()"
     [ngClass]="hideBorders()"
-    required="{{ element.isRequired }}"
+    required="{{ element.required }}"
   ></textarea>
 </div>
 

@@ -41,7 +41,6 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-
   logOut$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logOut),
     filter(() => {
@@ -53,7 +52,6 @@ export class AuthEffects {
       this.router.navigate(['/log-in'])
     })
   ), { dispatch: false })
-
 
   signUp$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.signUp),
@@ -73,7 +71,6 @@ export class AuthEffects {
       ),
     { dispatch: false }
   );
-
 
   initialAuth$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.initAuth),
