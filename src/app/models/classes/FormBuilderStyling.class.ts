@@ -1,10 +1,11 @@
 import { FormGroup } from "@angular/forms";
 import { takeUntil, startWith, pairwise, map, Subject, Observable } from "rxjs";
-
+import { FormStylingState } from "src/app/reducers/form-styles/form-styles.reducer";
+import { FormElement } from "./FormElement.class";
 
 export abstract class FormBuilderStyling {
   abstract styleFormGroup: FormGroup;
-  abstract initValues: any;
+  abstract initValues: FormStylingState | FormElement;
   readonly destroyStream$: Subject<boolean>;
 
   protected constructor() {
@@ -33,7 +34,6 @@ export abstract class FormBuilderStyling {
         } return { type: inputType, value: valChangesPair[1][inputType] }
       })
     )
-
   }
 
 }

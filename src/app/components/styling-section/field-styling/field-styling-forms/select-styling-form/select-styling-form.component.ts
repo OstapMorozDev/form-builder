@@ -1,13 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormElement } from 'src/app/classes/form-element.class';
-import { BorderStyles } from 'src/app/constants/BorderStyles';
-import { FontWeightGrade } from 'src/app/constants/FontWeightGrade';
+import { FormElement } from 'src/app/models/classes/FormElement.class';
+import { BorderStyles } from 'src/app/models/constants/BorderStyles';
+import { FontWeightGrade } from 'src/app/models/constants/FontWeightGrade';
 
 @Component({
   selector: 'app-select-styling-form',
   templateUrl: './select-styling-form.component.html',
-  styleUrls: ['./select-styling-form.component.scss', '../../field-styling.component.scss']
+  styleUrls: ['./select-styling-form.component.scss', '../../field-styling.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectStylingFormComponent {
   readonly borderStyles = BorderStyles;

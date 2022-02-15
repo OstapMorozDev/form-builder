@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FormElement } from 'src/app/classes/form-element.class';
+import { FormElement } from 'src/app/models/classes/FormElement.class';
 
 import { formStylesNode, FormStylingState } from './form-styles.reducer';
 

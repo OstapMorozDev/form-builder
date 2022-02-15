@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { changeTitle } from 'src/app/reducers/drop/drop.section.actions';
@@ -8,7 +8,8 @@ import { selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
-  styleUrls: ['./title.component.scss']
+  styleUrls: ['./title.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TitleComponent  {
 
@@ -23,11 +24,11 @@ export class TitleComponent  {
     this.store$.dispatch(changeTitle({ value }))
   }
 
-  onInputeDoubleClick($event: any) {
+  onInputDoubleClick($event: any) {
     this.titleEditMode = true;
   }
 
-  onTitleInputeBlur($event: any) {
+  onTitleInputBlur($event: any) {
     this.onTitleChange($event.target.value)
     this.titleEditMode = false;
   }

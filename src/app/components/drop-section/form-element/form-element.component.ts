@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { FormElement } from 'src/app/classes/form-element.class';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FormElement } from 'src/app/models/classes/FormElement.class';
 
 @Component({
   selector: 'app-form-element',
   templateUrl: './form-element.component.html',
-  styleUrls: ['./form-element.component.scss']
+  styleUrls: ['./form-element.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormElementComponent {
 

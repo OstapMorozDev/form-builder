@@ -24,9 +24,9 @@
         />
       </mat-form-field>
 
-      <ng-container *ngIf="(errorMessage$ | async) as errorMessage">
+      <ng-container *ngIf="errorMessage$ | async as errorMessage">
         <div class="error-container">
-          <mat-error>{{ errorMessage | errorMsg}}</mat-error>
+          <mat-error>{{ errorMessage | authErrorMessage }}</mat-error>
         </div>
       </ng-container>
 

@@ -6,12 +6,12 @@ import {
 import { environment } from '../../environments/environment';
 import { authNode, authReducer, AuthState } from './auth/auth.reducer';
 import { DropSectionState, dropSectionNode, dropSectionReducer } from './drop/drop.section.reducer';
-import { styleSectionNode, StyleSectionState, styleSectionReducer } from './fields-styles/style-section.reducer';
+import { styleSectionNode, FieldStylingState, styleSectionReducer } from './fields-styles/style-section.reducer';
 import { formStylesNode, formStylesReducer, FormStylingState } from './form-styles/form-styles.reducer';
 
 export interface State {
   [dropSectionNode]: DropSectionState
-  [styleSectionNode]: StyleSectionState
+  [styleSectionNode]: FieldStylingState
   [authNode]: AuthState
   [formStylesNode]: FormStylingState
 }

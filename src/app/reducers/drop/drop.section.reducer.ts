@@ -1,4 +1,4 @@
-import { FormElement } from 'src/app/classes/form-element.class';
+import { FormElement } from 'src/app/models/classes/FormElement.class';
 import { createReducer, on } from '@ngrx/store';
 import * as DropSectionActions from './drop.section.actions'
 import { moveItemInArray } from "@angular/cdk/drag-drop";

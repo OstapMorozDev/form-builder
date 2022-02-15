@@ -1,11 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FormElement } from 'src/app/classes/form-element.class';
-import { styleSectionNode, StyleSectionState } from './style-section.reducer';
+import { FormElement } from 'src/app/models/classes/FormElement.class';
+import { styleSectionNode, FieldStylingState } from './style-section.reducer';
 
 
-export const selectStyleSectionFeature = createFeatureSelector<StyleSectionState>(styleSectionNode);
+export const selectStyleSectionFeature = createFeatureSelector<FieldStylingState>(styleSectionNode);
 
 
 export const selectedElement = createSelector(
-    selectStyleSectionFeature,
-    (state: StyleSectionState): FormElement | null => state.selectedFormElement);
+  selectStyleSectionFeature,
+  (state: FieldStylingState): FormElement | null => state.selectedFormElement);

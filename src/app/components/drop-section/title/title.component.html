@@ -1,5 +1,5 @@
 <div class="title" #formTitlte [ngSwitch]="titleEditMode">
-  <h2 *ngSwitchCase="false" (dblclick)="onInputeDoubleClick($event)">
+  <h2 *ngSwitchCase="false" (dblclick)="onInputDoubleClick($event)">
     {{ formTitle$ | async }}
   </h2>
 
@@ -8,7 +8,7 @@
     <input
       matInput
       [ngModel]="formTitle$ | async"
-      (blur)="onTitleInputeBlur($event)"
+      (blur)="onTitleInputBlur($event)"
     />
   </mat-form-field>
 </div>

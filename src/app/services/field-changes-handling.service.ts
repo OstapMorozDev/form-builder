@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FieldTypes } from '../constants/FieldStyleTypes';
-import { BorderControl } from '../interfaces/BorderControl';
+import { FieldTypes } from '../models/constants/FieldStyleTypes';
+import { BorderControl } from '../models/interfaces/BorderControl';
 import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeCheckboxStyle, changeFontSize, changeFontWeight, changeHeight, changeLabelText, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
-import { StyleSectionState } from '../reducers/fields-styles/style-section.reducer';
+import { FieldStylingState } from '../reducers/fields-styles/style-section.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FieldChangesHandlingService {
 
-  constructor(private store$: Store<StyleSectionState>) { }
+  constructor(private store$: Store<FieldStylingState>) { }
 
   handleChanges(formType: string, value: any, elementId: number): void {
     switch (formType) {

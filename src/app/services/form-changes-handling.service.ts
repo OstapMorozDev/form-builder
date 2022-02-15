@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FormStyleTypes } from '../constants/FormStyleTypes';
+import { FormStyleTypes } from '../models/constants/FormStyleTypes';
 import { changeBackgroundColor, changeBorderColor, changeBorderStyle, changeBorderWidth, changeHeight, changeWidth } from '../reducers/form-styles/form-stlyes.actions';
 import { FormStylingState } from '../reducers/form-styles/form-styles.reducer';
 

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { AuthData } from 'src/app/interfaces/AuthData';
+import { AuthData } from 'src/app/models/interfaces/AuthData';
 import * as AuthActionsTypes from './auth.actions'
 
 

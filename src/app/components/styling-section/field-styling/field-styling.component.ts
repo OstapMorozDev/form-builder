@@ -2,12 +2,12 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '
 import { Store } from '@ngrx/store';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { FormElement } from 'src/app/classes/form-element.class';
+import { FormElement } from 'src/app/models/classes/FormElement.class';
 
-import { StyleSectionState } from 'src/app/reducers/fields-styles/style-section.reducer';
+import { FieldStylingState } from 'src/app/reducers/fields-styles/style-section.reducer';
 import { FieldChangesHandlingService } from 'src/app/services/field-changes-handling.service';
 import { Portal } from '@angular/cdk/portal';
-import { FormBuilderStyling } from 'src/app/classes/form-builder-styling.class';
+import { FormBuilderStyling } from 'src/app/models/classes/FormBuilderStyling.class';
 
 
 @Component({
@@ -17,7 +17,7 @@ import { FormBuilderStyling } from 'src/app/classes/form-builder-styling.class';
 })
 export class FieldStylingComponent extends FormBuilderStyling implements OnInit, OnChanges, OnDestroy {
 
-  styleFormGroup: FormGroup = new FormGroup({
+  public styleFormGroup: FormGroup = new FormGroup({
     placeholderText: new FormControl(),
     width: new FormControl(),
     height: new FormControl(),
@@ -33,13 +33,13 @@ export class FieldStylingComponent extends FormBuilderStyling implements OnInit,
     checkboxStyle: new FormControl(),
     labelText: new FormControl(),
   })
-  initValues: any;
+  public initValues: FormElement;
 
   @Input() element: FormElement;
 
   public selectedPortal: Portal<any>;
 
-  constructor(private store$: Store<StyleSectionState>, private fieldChangesHandlingService: FieldChangesHandlingService) {
+  constructor(private store$: Store<FieldStylingState>, private fieldChangesHandlingService: FieldChangesHandlingService) {
     super();
   }
 

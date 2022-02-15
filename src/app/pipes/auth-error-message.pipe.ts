@@ -1,11 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'errorMsg'
+  name: 'authErrorMessage'
 })
-export class ErrorMessagePipe implements PipeTransform {
+
+export class AuthErrorMessagePipe implements PipeTransform {
   transform(value: string, args?: any): string {
 
-    return `Error: ${value}!  `
+    return `Error: ${value}!`
   }
 }

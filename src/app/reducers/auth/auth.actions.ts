@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthData } from 'src/app/interfaces/AuthData';
+import { AuthData } from 'src/app/models/interfaces/AuthData';
 
 
 export enum authActionTypes {

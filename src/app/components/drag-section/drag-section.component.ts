@@ -1,6 +1,6 @@
 import {TemplatePortal} from '@angular/cdk/portal';
 import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {DragableElements} from 'src/app/constants/DragableElements';
+import {DragableElements} from 'src/app/models/constants/DragableElements';
 
 @Component({
   selector: 'app-drag-section',
