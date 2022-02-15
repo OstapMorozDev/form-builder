@@ -5,8 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-
-
+import { SignUpRoutingModule } from './sign-up-routing.module';
 
 @NgModule({
   declarations: [SignUpComponent],
@@ -16,7 +15,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    SignUpRoutingModule
   ],
   exports: [SignUpComponent]
 })

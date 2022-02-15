@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'log-in', loadChildren: () => import('./components/login/login-routing.module').then(m => m.LoginRoutingModule) },
-  { path: 'sign-up', loadChildren: () => import('./components/sign-up/sign-up-routing.module').then(m => m.SignUpRoutingModule) },
-  { path: '', loadChildren: () => import('./components/home/home-routing.module').then(m => m.HomeRoutingModule) },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: 'login', loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
+  { path: 'sign-up', loadChildren: () => import('./components/sign-up/sign-up.module').then(m => m.SignUpModule) },
+  { path: 'home', loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ]
 
 @NgModule({

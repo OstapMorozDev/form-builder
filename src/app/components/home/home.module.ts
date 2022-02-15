@@ -5,6 +5,7 @@ import { DropSectionModule } from '../drop-section/drop-section.module';
 import { HomeComponent } from './home.component';
 import { StylingSectionModule } from '../styling-section/styling-section.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HomeRoutingModule } from './home-routing.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DragSectionModule,
     DropSectionModule,
     StylingSectionModule,
-    DragDropModule
+    DragDropModule,
+    HomeRoutingModule
   ],
   exports: [HomeComponent]
 })

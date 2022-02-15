@@ -49,7 +49,7 @@ export class AuthEffects {
     }),
     tap(() => {
       localStorage.removeItem('authData');
-      this.router.navigate(['/log-in'])
+      this.router.navigate(['/login'])
     })
   ), { dispatch: false })
 
