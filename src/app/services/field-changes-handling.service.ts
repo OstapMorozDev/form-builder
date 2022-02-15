@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FieldTypes } from '../models/constants/FieldStyleTypes';
-import { BorderControl } from '../models/interfaces/BorderControl';
+import { IBorderControl } from '../models/interfaces/IBorderControl';
+import { IFieldStylingState } from '../models/interfaces/IFieldStylingState';
 import { changeBackgroundColor, changeBorderColor, changeBorderControl, changeBorderStyle, changeBorderWidth, changeCheckboxStyle, changeFontSize, changeFontWeight, changeHeight, changeLabelText, changePlaceholderText, changeTextColor, changeWidth, toggleIsRequired } from '../reducers/drop/drop.section.actions';
-import { FieldStylingState } from '../reducers/fields-styles/style-section.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FieldChangesHandlingService {
 
-  constructor(private store$: Store<FieldStylingState>) { }
+  constructor(private store$: Store<IFieldStylingState>) { }
 
   handleChanges(formType: string, value: any, elementId: number): void {
     switch (formType) {
@@ -52,7 +52,7 @@ export class FieldChangesHandlingService {
         break;
 
       case FieldTypes.borderControl:
-        this.changeBorderControl(elementId, (value as unknown) as BorderControl)
+        this.changeBorderControl(elementId, (value as unknown) as IBorderControl)
         break;
       case FieldTypes.checkboxStyle:
         this.changecheckboxStyle(elementId, value)
@@ -109,7 +109,7 @@ export class FieldChangesHandlingService {
     this.store$.dispatch(changeBackgroundColor({ elementID, color }));
   }
 
-  private changeBorderControl(elementID: number, borderControl: BorderControl) {
+  private changeBorderControl(elementID: number, borderControl: IBorderControl) {
     this.store$.dispatch(changeBorderControl({ elementID, borderControl }));
   }
 

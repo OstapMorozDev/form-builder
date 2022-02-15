@@ -14,7 +14,7 @@ export class HeaderComponent {
   isLogged: boolean = true;
 
   public isAuth$: Observable<boolean> = this.store$.pipe(select(selectIsAuthenticated));
-
+  
   constructor(private store$: Store) { }
 
   logOut() {

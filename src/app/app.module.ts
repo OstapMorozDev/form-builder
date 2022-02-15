@@ -1,26 +1,25 @@
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers } from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
-import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { MatButtonModule } from '@angular/material/button';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FieldChangesHandlingService } from './services/field-changes-handling.service';
-import { AuthService } from './services/auth.service';
-import { AuthEffects } from './reducers/auth/auth.effects';
-import { TokenInterceptor } from './services/token-interceptor.service';
-import { AuthGuardService } from './services/auth-guard.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
 import { HomeModule } from './components/home/home.module';
 import { LoginModule } from './components/login/login.module';
 import { SignUpModule } from './components/sign-up/sign-up.module';
-import { HeaderComponent } from './components/header/header.component';
-import { AppRoutingModule } from './app-routing.module';
+import { reducers } from './reducers';
+import { AuthEffects } from './reducers/auth/auth.effects';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { FieldChangesHandlingService } from './services/field-changes-handling.service';
+import { TokenInterceptor } from './services/token-interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +31,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     BrowserModule,
     HomeModule,
+    LoginModule,
+    SignUpModule,
     BrowserAnimationsModule,
     MatButtonModule,
     StoreModule.forRoot({}, {}),
@@ -39,8 +40,6 @@ import { AppRoutingModule } from './app-routing.module';
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),
-    LoginModule,
-    SignUpModule,
     EffectsModule.forRoot([AuthEffects]),
     JwtModule.forRoot({
       config: {

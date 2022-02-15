@@ -19,7 +19,7 @@
       >
         <div
           class="drop-area__list"
-          *ngFor="let el of formElements$ | async"
+          *ngFor="let el of formElements$ | async; index as i; trackBy: trackElChanges"
           (click)="onElementClick(el)"
           cdkDrag
         >

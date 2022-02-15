@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
-
+import { IAuthState } from 'src/app/models/interfaces/IAuthState';
 import { logIn } from 'src/app/reducers/auth/auth.actions';
-import { AuthState } from 'src/app/reducers/auth/auth.reducer';
 import { selectAuthErrorMsg } from 'src/app/reducers/auth/auth.selectors';
+
+
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
 
@@ -23,7 +24,7 @@ export class LoginComponent {
 
   public errorMessage$: Observable<string> = this.store$.select(selectAuthErrorMsg)
 
-  constructor(private store$: Store<AuthState>) { }
+  constructor(private store$: Store<IAuthState>) { }
 
   onSubmit() {
     const { email, password } = this.loginForm.value

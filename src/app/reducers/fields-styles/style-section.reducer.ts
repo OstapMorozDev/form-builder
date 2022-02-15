@@ -1,14 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { FormElement } from 'src/app/models/classes/FormElement.class';
-import * as StyleSectionActions from './style-section.actions'
+import { IFieldStylingState } from 'src/app/models/interfaces/IFieldStylingState';
+import * as StyleSectionActions from './style-section.actions';
 
 export const styleSectionNode = "style";
 
-export interface FieldStylingState {
-    selectedFormElement: FormElement | null
-}
 
-const initialState: FieldStylingState = {
+
+const initialState: IFieldStylingState = {
     selectedFormElement: null
 }
 

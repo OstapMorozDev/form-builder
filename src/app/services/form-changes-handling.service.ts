@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormStyleTypes } from '../models/constants/FormStyleTypes';
+import { IFormStylingState } from '../models/interfaces/IFormStylingState';
 import { changeBackgroundColor, changeBorderColor, changeBorderStyle, changeBorderWidth, changeHeight, changeWidth } from '../reducers/form-styles/form-stlyes.actions';
-import { FormStylingState } from '../reducers/form-styles/form-styles.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormChangesHandlingService {
 
-  constructor(private store$: Store<FormStylingState>) { }
-
+  constructor(private store$: Store<IFormStylingState>) { }
 
   handleChanges(type: string, value: string) {
     switch (type) {

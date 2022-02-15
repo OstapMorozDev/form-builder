@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { IDropSectionState } from 'src/app/models/interfaces/IDropSectionState';
 import { changeTitle } from 'src/app/reducers/drop/drop.section.actions';
-import { DropSectionState } from 'src/app/reducers/drop/drop.section.reducer';
 import { selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
 
 @Component({
@@ -16,9 +16,7 @@ export class TitleComponent  {
   public formTitle$: Observable<string> = this.store$.pipe(select(selectFormTitle));
   public titleEditMode: boolean = false;
 
-  constructor(private store$: Store<DropSectionState>) { }
-
-
+  constructor(private store$: Store<IDropSectionState>) { }
 
   onTitleChange(value: string) {
     this.store$.dispatch(changeTitle({ value }))

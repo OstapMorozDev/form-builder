@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { FormElement } from 'src/app/models/classes/FormElement.class';
-import { BorderControl } from 'src/app/models/interfaces/BorderControl';
+import { IBorderControl } from 'src/app/models/interfaces/IBorderControl';
 
 export enum dropSectionActionsType {
   addFormElement = '[DROP-SECTION] addFormElement',
@@ -94,7 +94,7 @@ export const changeBackgroundColor = createAction(
 
 export const changeBorderControl = createAction(
   dropSectionActionsType.changeBorderControl,
-  props<{ elementID: number, borderControl: BorderControl }>()
+  props<{ elementID: number, borderControl: IBorderControl }>()
 )
 
 export const changeCheckboxStyle = createAction(
@@ -106,3 +106,4 @@ export const changeLabelText = createAction(
   dropSectionActionsType.changeLabelText,
   props<{ elementID: number, labelText: string }>()
 )
+

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthData } from 'src/app/models/interfaces/AuthData';
+import {  IAuthData } from 'src/app/models/interfaces/IAuthData';
 
 
 export enum authActionTypes {
@@ -21,7 +21,7 @@ export const logIn = createAction(
 
 export const logInSuccess = createAction(
   authActionTypes.logInSucces,
-  props<{ authData: AuthData }>()
+  props<{ authData: IAuthData }>()
 );
 
 export const logInFailure = createAction(

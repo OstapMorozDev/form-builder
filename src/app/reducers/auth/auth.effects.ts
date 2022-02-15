@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
-import { AuthData } from 'src/app/models/interfaces/AuthData';
+import { IAuthData } from 'src/app/models/interfaces/IAuthData';
 import { AuthService } from 'src/app/services/auth.service';
 import * as AuthActions from './auth.actions'
 
-
 @Injectable()
 export class AuthEffects {
-
   constructor(
     private actions$: Actions,
     private authService: AuthService,
@@ -80,7 +78,7 @@ export class AuthEffects {
         return AuthActions.logOut();
       }
 
-      const authData: AuthData = JSON.parse(authDataString);
+      const authData: IAuthData = JSON.parse(authDataString);
 
       if ((authData.exp * 1000 - 10 * 1000 - Date.now()) < 0) {
         return AuthActions.logOut();

@@ -1,21 +1,10 @@
 import { createReducer, on } from "@ngrx/store"
+import { IFormStylingState } from "src/app/models/interfaces/IFormStylingState"
 import * as FormStyleActions from "./form-stlyes.actions"
-
 
 export const formStylesNode = "formStyles"
 
-
-export interface FormStylingState {
-  backgroundColor: string;
-  width: string;
-  height: string;
-  borderStyle: string;
-  borderColor: string;
-  borderWidth: string;
-}
-
-
-const initialState: FormStylingState = {
+const initialState: IFormStylingState = {
   backgroundColor: "#FFFFF",
   width: "100%",
   height: "200px",
@@ -23,7 +12,6 @@ const initialState: FormStylingState = {
   borderColor: "#2b7a78",
   borderWidth: "2px"
 }
-
 
 export const formStylesReducer = createReducer(
   initialState,

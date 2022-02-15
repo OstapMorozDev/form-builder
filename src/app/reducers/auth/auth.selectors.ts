@@ -1,17 +1,18 @@
 
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { authNode, AuthState } from "./auth.reducer";
+import { IAuthState } from "src/app/models/interfaces/IAuthState";
+import { authNode } from "./auth.reducer";
 
-export const selectAuthFeature = createFeatureSelector<AuthState>(authNode);
+export const selectAuthFeature = createFeatureSelector<IAuthState>(authNode);
 
 export const selectAuthErrorMsg = createSelector(
   selectAuthFeature,
-  (state: AuthState): string => state.errorMessage
+  (state: IAuthState): string => state.errorMessage
 );
 
 export const selectIsAuthenticated = createSelector(
   selectAuthFeature,
-  (state: AuthState): boolean => state.isAuthenticated
+  (state: IAuthState): boolean => state.isAuthenticated
 );
 
 

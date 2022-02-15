@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class AuthErrorMessagePipe implements PipeTransform {
   transform(value: string, args?: any): string {
-
     return `Error: ${value}!`
   }
 }

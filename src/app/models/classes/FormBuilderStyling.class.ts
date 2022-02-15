@@ -1,11 +1,11 @@
 import { FormGroup } from "@angular/forms";
 import { takeUntil, startWith, pairwise, map, Subject, Observable } from "rxjs";
-import { FormStylingState } from "src/app/reducers/form-styles/form-styles.reducer";
+import { IFormStylingState } from "src/app/models/interfaces/IFormStylingState";
 import { FormElement } from "./FormElement.class";
 
 export abstract class FormBuilderStyling {
   abstract styleFormGroup: FormGroup;
-  abstract initValues: FormStylingState | FormElement;
+  abstract initValues: IFormStylingState | FormElement;
   readonly destroyStream$: Subject<boolean>;
 
   protected constructor() {

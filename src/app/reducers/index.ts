@@ -2,18 +2,22 @@ import {
   ActionReducerMap,
   MetaReducer
 } from '@ngrx/store';
-
 import { environment } from '../../environments/environment';
-import { authNode, authReducer, AuthState } from './auth/auth.reducer';
-import { DropSectionState, dropSectionNode, dropSectionReducer } from './drop/drop.section.reducer';
-import { styleSectionNode, FieldStylingState, styleSectionReducer } from './fields-styles/style-section.reducer';
-import { formStylesNode, formStylesReducer, FormStylingState } from './form-styles/form-styles.reducer';
+import { IAuthState } from '../models/interfaces/IAuthState';
+import { IDropSectionState } from '../models/interfaces/IDropSectionState';
+import { IFieldStylingState } from '../models/interfaces/IFieldStylingState';
+import { IFormStylingState } from '../models/interfaces/IFormStylingState';
+import { authNode, authReducer } from './auth/auth.reducer';
+import { dropSectionNode, dropSectionReducer } from './drop/drop.section.reducer';
+import { styleSectionNode, styleSectionReducer } from './fields-styles/style-section.reducer';
+import { formStylesNode, formStylesReducer } from './form-styles/form-styles.reducer';
+
 
 export interface State {
-  [dropSectionNode]: DropSectionState
-  [styleSectionNode]: FieldStylingState
-  [authNode]: AuthState
-  [formStylesNode]: FormStylingState
+  [dropSectionNode]: IDropSectionState
+  [styleSectionNode]: IFieldStylingState
+  [authNode]: IAuthState
+  [formStylesNode]: IFormStylingState
 }
 
 export const reducers: ActionReducerMap<State> = {

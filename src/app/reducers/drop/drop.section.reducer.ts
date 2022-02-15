@@ -2,17 +2,13 @@ import { FormElement } from 'src/app/models/classes/FormElement.class';
 import { createReducer, on } from '@ngrx/store';
 import * as DropSectionActions from './drop.section.actions'
 import { moveItemInArray } from "@angular/cdk/drag-drop";
+import { IDropSectionState } from 'src/app/models/interfaces/IDropSectionState';
 
 
 export const dropSectionNode = 'drop';
 
-export interface DropSectionState {
-  formElements: FormElement[],
-  formTitle: string,
 
-}
-
-const initialState: DropSectionState = {
+const initialState: IDropSectionState = {
   formElements: [],
   formTitle: 'My Form',
 

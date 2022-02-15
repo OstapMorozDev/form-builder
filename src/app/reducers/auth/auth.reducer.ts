@@ -1,19 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { AuthData } from 'src/app/models/interfaces/AuthData';
+import { IAuthState } from 'src/app/models/interfaces/IAuthState';
 import * as AuthActionsTypes from './auth.actions'
-
-
 
 export const authNode = "auth";
 
-export interface AuthState {
-  isAuthenticated: boolean;
-  authData: AuthData | null;
-  errorMessage: string ;
-}
-
-
-const initialState: AuthState = {
+const initialState: IAuthState = {
   isAuthenticated: false,
   authData: null,
   errorMessage: ''

@@ -1,4 +1,4 @@
-import { BorderControl } from "../interfaces/BorderControl";
+import { IBorderControl } from "../interfaces/IBorderControl";
 
 
 const PRIMARY_COLOR: string = "#3aafa9";
@@ -19,7 +19,7 @@ export class FormElement {
   borderColor?: string;
   fontWeight?: string;
   backgroundColor?: string;
-  borderControl?: BorderControl;
+  borderControl?: IBorderControl;
   labelText?: string;
   checkboxStyle?: string;
 

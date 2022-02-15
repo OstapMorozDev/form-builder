@@ -1,19 +1,17 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { FormControl, FormGroup } from '@angular/forms';
-
-import { FormElement } from 'src/app/models/classes/FormElement.class';
-
-import { FieldStylingState } from 'src/app/reducers/fields-styles/style-section.reducer';
-import { FieldChangesHandlingService } from 'src/app/services/field-changes-handling.service';
 import { Portal } from '@angular/cdk/portal';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { FormBuilderStyling } from 'src/app/models/classes/FormBuilderStyling.class';
-
+import { FormElement } from 'src/app/models/classes/FormElement.class';
+import { IFieldStylingState } from 'src/app/models/interfaces/IFieldStylingState';
+import { FieldChangesHandlingService } from 'src/app/services/field-changes-handling.service';
 
 @Component({
   selector: 'app-field-styling',
   templateUrl: './field-styling.component.html',
   styleUrls: ['./field-styling.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldStylingComponent extends FormBuilderStyling implements OnInit, OnChanges, OnDestroy {
 
@@ -39,7 +37,7 @@ export class FieldStylingComponent extends FormBuilderStyling implements OnInit,
 
   public selectedPortal: Portal<any>;
 
-  constructor(private store$: Store<FieldStylingState>, private fieldChangesHandlingService: FieldChangesHandlingService) {
+  constructor(private store$: Store<IFieldStylingState>, private fieldChangesHandlingService: FieldChangesHandlingService) {
     super();
   }
 

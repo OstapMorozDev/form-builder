@@ -1,4 +1,4 @@
-export interface BorderControl {
+export interface IBorderControl {
     borderBottom: boolean,
     borderTop: boolean,
     borderLeft: boolean,
