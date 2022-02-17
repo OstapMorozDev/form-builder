@@ -9,7 +9,6 @@ export enum FormStylesActionsType {
   changeBorderWidth = '[FORM-STYLES] changeBorderWidth',
 }
 
-
 export const changeBackgroundColor = createAction(
   FormStylesActionsType.changeBackgroundColor,
   props<{ color: string }>()

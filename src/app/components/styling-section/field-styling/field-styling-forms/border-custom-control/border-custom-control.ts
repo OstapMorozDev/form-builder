@@ -1,5 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {IBorderControl} from '../../../../../models/interfaces/IBorderControl'
 
 @Component({
   selector: 'app-border-input',
@@ -13,11 +14,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class BorderControlComponent implements ControlValueAccessor {
 
-  public value: any;
+  public value: IBorderControl;
   onTouched: () => void;
   onChange(_: any) { }
 
-  writeValue(value: any): void {
+  writeValue(value: IBorderControl): void {
     this.value = { ...value };
   }
   registerOnChange(fn: any): void {
@@ -48,3 +49,5 @@ export class BorderControlComponent implements ControlValueAccessor {
     this.onChange({ ...this.value });
   }
 }
+
+

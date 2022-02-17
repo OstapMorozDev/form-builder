@@ -1,20 +1,14 @@
 import { FormGroup } from "@angular/forms";
-import { takeUntil, startWith, pairwise, map, Subject, Observable } from "rxjs";
-import { IFormStylingState } from "src/app/models/interfaces/IFormStylingState";
-import { FormElement } from "./FormElement.class";
+import { map, Observable, pairwise, startWith, Subject, takeUntil } from "rxjs";
 
-export abstract class FormBuilderStyling {
+export abstract class FormBuilderStyling<T> {
+
   abstract styleFormGroup: FormGroup;
-  abstract initValues: IFormStylingState | FormElement;
-  readonly destroyStream$: Subject<boolean>;
+  abstract initValues: T;
+  public readonly destroyStream$: Subject<boolean>;
 
   protected constructor() {
     this.destroyStream$ = new Subject<boolean>();
-  }
-
-  public destroyStream(): void {
-    this.destroyStream$.next(true);
-    this.destroyStream$.unsubscribe();
   }
 
   public valueChanges(): Observable<{ type: string, value: any }> {
@@ -36,4 +30,8 @@ export abstract class FormBuilderStyling {
     )
   }
 
+  protected destroyStream(): void {
+    this.destroyStream$.next(true);
+    this.destroyStream$.unsubscribe();
+  }
 }

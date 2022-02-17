@@ -16,7 +16,6 @@ export class DragSectionComponent implements OnInit {
   elements = DragableElements;
   templatePortal: TemplatePortal<any>;
 
-
   constructor(private _viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {

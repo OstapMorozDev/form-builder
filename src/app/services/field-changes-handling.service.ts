@@ -12,6 +12,7 @@ export class FieldChangesHandlingService {
 
   constructor(private store$: Store<IFieldStylingState>) { }
 
+
   handleChanges(formType: string, value: any, elementId: number): void {
     switch (formType) {
       case FieldTypes.placeholderText:
@@ -52,7 +53,7 @@ export class FieldChangesHandlingService {
         break;
 
       case FieldTypes.borderControl:
-        this.changeBorderControl(elementId, (value as unknown) as IBorderControl)
+        this.changeBorderControl(elementId, value)
         break;
       case FieldTypes.checkboxStyle:
         this.changecheckboxStyle(elementId, value)

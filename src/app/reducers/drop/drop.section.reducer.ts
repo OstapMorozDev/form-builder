@@ -11,7 +11,6 @@ export const dropSectionNode = 'drop';
 const initialState: IDropSectionState = {
   formElements: [],
   formTitle: 'My Form',
-
 }
 
 export const dropSectionReducer = createReducer(

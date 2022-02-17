@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IDropSectionState } from 'src/app/models/interfaces/IDropSectionState';
@@ -12,8 +12,8 @@ import { selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TitleComponent  {
+  @Input() formTitle = '';
 
-  public formTitle$: Observable<string> = this.store$.pipe(select(selectFormTitle));
   public titleEditMode: boolean = false;
 
   constructor(private store$: Store<IDropSectionState>) { }

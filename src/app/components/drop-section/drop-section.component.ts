@@ -7,7 +7,7 @@ import { FormElement } from 'src/app/models/classes/FormElement.class';
 import { IDropSectionState } from 'src/app/models/interfaces/IDropSectionState';
 import { IFormStylingState } from 'src/app/models/interfaces/IFormStylingState';
 import { addFormElement, moveFormElement } from 'src/app/reducers/drop/drop.section.actions';
-import { selectFormElements } from 'src/app/reducers/drop/drop.section.selectors';
+import { selectFormElements, selectFormTitle } from 'src/app/reducers/drop/drop.section.selectors';
 import { setSelectedElement } from 'src/app/reducers/fields-styles/style-section.actions';
 import { selectFormStyles } from 'src/app/reducers/form-styles/form-styles.selectors';
 import { FormGeneralStylingComponent } from './form-general-styling/form-general-styling.component';
@@ -21,7 +21,8 @@ import { FormGeneralStylingComponent } from './form-general-styling/form-general
 export class DropSectionComponent {
 
   public formElements$: Observable<FormElement[]> = this.store$.pipe(select(selectFormElements));
-  public formStyles$: Observable<IFormStylingState> = this.store$.pipe(select(selectFormStyles))
+  public formStyles$: Observable<IFormStylingState> = this.store$.pipe(select(selectFormStyles));
+  public formTitle$: Observable<string> = this.store$.pipe(select(selectFormTitle));
   public componentPortal: ComponentPortal<FormGeneralStylingComponent>;
 
   constructor(private store$: Store<IDropSectionState>) { }

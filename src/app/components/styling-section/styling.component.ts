@@ -7,7 +7,6 @@ import { IFieldStylingState } from 'src/app/models/interfaces/IFieldStylingState
 import { selectedElement } from '../../reducers/fields-styles/style-section.selectors';
 import { FormGeneralStylingComponent } from '../drop-section/form-general-styling/form-general-styling.component';
 
-
 @Component({
   selector: 'app-styling',
   templateUrl: './styling.component.html',

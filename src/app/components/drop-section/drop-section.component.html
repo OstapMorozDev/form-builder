@@ -1,12 +1,14 @@
 <section class="section">
   <div class="drop-area-container">
-    <app-title></app-title>
+    <ng-template *ngIf="formTitle$ | async as formTitle">
+      <app-title [formTitle]="formTitle"></app-title>
+    </ng-template>
 
-    <ng-container *ngIf="(formStyles$ | async) as formStyles">
+    <ng-container *ngIf="formStyles$ | async as formStyles">
       <form
         class="drop-area"
         cdkDropList
-        [cdkDropListData]="formElements$"
+        [cdkDropListData]="formElements$ | async"
         (cdkDropListDropped)="drop($event)"
         [ngStyle]="{
           width: formStyles.width,
@@ -19,7 +21,11 @@
       >
         <div
           class="drop-area__list"
-          *ngFor="let el of formElements$ | async; index as i; trackBy: trackElChanges"
+          *ngFor="
+            let el of formElements$ | async;
+            index as i;
+            trackBy: trackElChanges
+          "
           (click)="onElementClick(el)"
           cdkDrag
         >

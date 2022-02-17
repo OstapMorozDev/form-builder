@@ -1,13 +1,13 @@
 <div class="title" #formTitlte [ngSwitch]="titleEditMode">
   <h2 *ngSwitchCase="false" (dblclick)="onInputDoubleClick($event)">
-    {{ formTitle$ | async }}
+    {{ formTitle }}
   </h2>
 
   <mat-form-field  *ngSwitchCase="true">
     <mat-label>Form title</mat-label>
     <input
       matInput
-      [ngModel]="formTitle$ | async"
+      [ngModel]="formTitle"
       (blur)="onTitleInputBlur($event)"
     />
   </mat-form-field>

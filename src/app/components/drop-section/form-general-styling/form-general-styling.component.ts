@@ -14,9 +14,9 @@ import { FormChangesHandlingService } from 'src/app/services/form-changes-handli
   styleUrls: ['./form-general-styling.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormGeneralStylingComponent extends FormBuilderStyling implements OnInit, OnDestroy {
+export class FormGeneralStylingComponent extends FormBuilderStyling<IFormStylingState> implements OnInit, OnDestroy {
 
-  readonly borderStyles = BorderStyles;
+  public borderStyles = BorderStyles;
 
   public styleFormGroup: FormGroup = new FormGroup({
     backgroundColor: new FormControl(),

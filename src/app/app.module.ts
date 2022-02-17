@@ -20,7 +20,6 @@ import { AuthService } from './services/auth.service';
 import { FieldChangesHandlingService } from './services/field-changes-handling.service';
 import { TokenInterceptor } from './services/token-interceptor.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +34,6 @@ import { TokenInterceptor } from './services/token-interceptor.service';
     SignUpModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

@@ -13,7 +13,7 @@ import { FieldChangesHandlingService } from 'src/app/services/field-changes-hand
   styleUrls: ['./field-styling.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FieldStylingComponent extends FormBuilderStyling implements OnInit, OnChanges, OnDestroy {
+export class FieldStylingComponent extends FormBuilderStyling<FormElement> implements OnInit, OnChanges, OnDestroy {
 
   public styleFormGroup: FormGroup = new FormGroup({
     placeholderText: new FormControl(),
