@@ -33,21 +33,24 @@ export class AuthEffects {
         ofType(AuthActions.logInSuccess),
         tap((data) => {
           localStorage.setItem('authData', JSON.stringify(data.authData));
-          this.router.navigate(['/'])
-        })
+        }),
+        filter((data) => {
+          return localStorage.getItem('authData') ? true : false;
+        }),
+        map((data) => {
+          this.router.navigateByUrl('/')
+          console.log(data)
+          return AuthActions.setAuthData({ authData: data.authData })
+        }),
       ),
-    { dispatch: false }
   );
 
   logOut$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logOut),
-    filter(() => {
-      const authData = localStorage.getItem('authData');
-      return authData ? true : false;
-    }),
+
     tap(() => {
       localStorage.removeItem('authData');
-      this.router.navigate(['/login'])
+      this.router.navigateByUrl('/login')
     })
   ), { dispatch: false })
 
@@ -64,7 +67,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.signUpSuccess),
         tap(() => {
-          this.router.navigate(['/log-in'])
+          this.router.navigateByUrl('/login')
         })
       ),
     { dispatch: false }
@@ -84,7 +87,7 @@ export class AuthEffects {
         return AuthActions.logOut();
       }
 
-      return AuthActions.logInSuccess({ authData });
+      return AuthActions.setAuthData({ authData });
     })
   ))
 }

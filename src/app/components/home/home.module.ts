@@ -1,11 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragSectionModule } from '../drag-section/drag-section.module';
-import { DropSectionModule } from '../drop-section/drop-section.module';
-import { HomeComponent } from './home.component';
-import { StylingSectionModule } from '../styling-section/styling-section.module';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { HomeRoutingModule } from './home-routing.module';
+import { HomeComponent } from './home.component';
 
 
 @NgModule({
@@ -14,11 +11,8 @@ import { HomeRoutingModule } from './home-routing.module';
   ],
   imports: [
     CommonModule,
-    DragSectionModule,
-    DropSectionModule,
-    StylingSectionModule,
-    DragDropModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MatButtonModule
   ],
   exports: [HomeComponent]
 })

@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormElement } from 'src/app/models/classes/FormElement.class';
 import { IFieldStylingState } from 'src/app/models/interfaces/IFieldStylingState';
-import { selectedElement } from '../../reducers/fields-styles/style-section.selectors';
+import { selectedElement } from '../../../reducers/fields-styles/style-section.selectors';
 import { FormGeneralStylingComponent } from '../drop-section/form-general-styling/form-general-styling.component';
 
 @Component({

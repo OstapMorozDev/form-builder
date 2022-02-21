@@ -1,5 +1,3 @@
-@import "../../common/colors.scss";
-@import "../../common/drag-drop-styles.scss";
 
 .drop-area-container {
   padding: 50px 25px;
@@ -9,15 +7,18 @@
   flex-direction: column;
 
   .drop-area {
-
     border-radius: 5px;
     box-sizing: border-box;
     padding: 10px 15px;
-
   }
+
 }
 
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
 
+}
 
 
 

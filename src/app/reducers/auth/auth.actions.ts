@@ -9,18 +9,22 @@ export enum authActionTypes {
   logOut = '[Auth] Logout',
   signUp = '[Auth] Signup',
   signtUpSuccess = '[Auth] Signup Success',
-  initAuth = '[Auth] Initial Auth'
+  initAuth = '[Auth] Initial Auth',
+  setAuthData = '[Auth] setAuthData'
 }
-
 
 export const logIn = createAction(
   authActionTypes.logIn,
   props<{ email: string, password: string }>()
 );
 
-
 export const logInSuccess = createAction(
   authActionTypes.logInSucces,
+  props<{ authData: IAuthData }>()
+);
+
+export const setAuthData = createAction(
+  authActionTypes.setAuthData,
   props<{ authData: IAuthData }>()
 );
 
@@ -28,7 +32,6 @@ export const logInFailure = createAction(
   authActionTypes.logInFailure,
   props<{ message: string }>()
 );
-
 
 export const logOut = createAction(
   authActionTypes.logOut

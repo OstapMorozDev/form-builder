@@ -17,6 +17,18 @@
     color: $font-secondary;
     font-size: 1.8rem;
     font-weight: 600;
+    cursor: pointer
+  }
+
+  .btn-username-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .username {
+    padding-top: 10px;
+    margin-right: 7px;
   }
 
   &__button {

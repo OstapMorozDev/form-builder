@@ -1,0 +1,10 @@
+@import "./colors.scss";
+.green-btn {
+  background-color: $secondary-color;
+  color: $font-secondary;
+}
+
+.btn-150 {
+  width: 150px;
+  height: 100%;
+}

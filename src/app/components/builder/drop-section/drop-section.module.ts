@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormElementComponent } from './form-element/form-element.component';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,
     FormsModule,
     MatCheckboxModule,
+    MatButtonModule
   ],
   declarations: [
     DropSectionComponent,

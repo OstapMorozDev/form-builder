@@ -6,9 +6,6 @@ import { IAuthState } from 'src/app/models/interfaces/IAuthState';
 import { logIn } from 'src/app/reducers/auth/auth.actions';
 import { selectAuthErrorMsg } from 'src/app/reducers/auth/auth.selectors';
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

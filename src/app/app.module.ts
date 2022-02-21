@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BuilderModule } from './components/builder/builder.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeModule } from './components/home/home.module';
 import { LoginModule } from './components/login/login.module';
@@ -20,10 +21,12 @@ import { AuthService } from './services/auth.service';
 import { FieldChangesHandlingService } from './services/field-changes-handling.service';
 import { TokenInterceptor } from './services/token-interceptor.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+
   ],
   imports: [
     HttpClientModule,
@@ -32,6 +35,7 @@ import { TokenInterceptor } from './services/token-interceptor.service';
     HomeModule,
     LoginModule,
     SignUpModule,
+    BuilderModule,
     BrowserAnimationsModule,
     MatButtonModule,
     StoreModule.forRoot(reducers),
@@ -47,7 +51,6 @@ import { TokenInterceptor } from './services/token-interceptor.service';
         },
       },
     })
-
   ],
   providers: [FieldChangesHandlingService, AuthService, AuthGuardService,
     {

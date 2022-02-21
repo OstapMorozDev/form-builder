@@ -12,7 +12,7 @@ const initialState: IAuthState = {
 
 export const authReducer = createReducer(
   initialState,
-  on(AuthActionsTypes.logInSuccess, (state, { authData }) => {
+  on(AuthActionsTypes.setAuthData, (state, { authData }) => {
     return {
       ...state,
       isAuthenticated: true,

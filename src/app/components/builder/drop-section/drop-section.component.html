@@ -35,4 +35,15 @@
       </form>
     </ng-container>
   </div>
+
+  <div class="btn-container">
+    <button class="green-btn btn-150" (click)="createForm()" mat-raised-button>
+      Create form
+    </button>
+    <button class="btn-150" mat-raised-button color="primary">Discard</button>
+  </div>
+
+  <div *ngIf="isFormCreated">
+    <textarea [value]="createdFormHtml"></textarea>
+  </div>
 </section>
